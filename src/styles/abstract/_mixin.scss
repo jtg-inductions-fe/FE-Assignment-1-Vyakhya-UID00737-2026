@@ -1,0 +1,58 @@
+// This files contains th resuable components
+
+@mixin media-tablet($mobile) {
+    @media (min-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin media-desktop($desktop) {
+    @media (min-width: $desktop) {
+        @content;
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-col-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin grid-col($col, $gap: 1rem) {
+    display: grid;
+    grid-template-columns: repeat($col, 1fr);
+    gap: $gap;
+}
+
+@mixin grid-rows($rows, $gap: 1rem) {
+    display: grid;
+    grid-template-rows: repeat($rows, 1fr);
+    gap: $gap;
+}
+
+@mixin grid-col-rows($col, $rows, $gap: 1rem) {
+    display: grid;
+    grid-template-rows: repeat($rows, 1fr);
+    grid-template-columns: repeat($col, 1fr);
+    gap: $gap;
+}
