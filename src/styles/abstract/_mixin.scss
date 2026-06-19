@@ -56,3 +56,12 @@
     grid-template-columns: repeat($col, 1fr);
     gap: $gap;
 }
+
+@mixin btn-style {
+    border-radius: 100px;
+    padding: 14px 28px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}
