@@ -1,0 +1,17 @@
+// This file sets project default styling
+@use '../abstract' as *;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-color: $global-background-color;
+    color: $text-primary;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
