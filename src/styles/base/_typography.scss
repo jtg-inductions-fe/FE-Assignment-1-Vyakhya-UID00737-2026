@@ -1,0 +1,18 @@
+// This file is to set the default stylings of the HTML tags in project
+@use '../abstract' as *;
+
+body {
+    font-family: $global-font;
+}
+
+h1 {
+    font-size: $h1-font-size;
+}
+
+h2 {
+    font-size: $h2-font-size;
+}
+
+p {
+    line-height: $p-line-height;
+}
