@@ -1,4 +1,6 @@
 // This file removes browser default behaviour
+@use '../abstract/variables';
+
 *,
 *::before,
 *::after {
@@ -9,4 +11,5 @@
 
 a {
     text-decoration: none;
+    color: variables.$text-primary;
 }
