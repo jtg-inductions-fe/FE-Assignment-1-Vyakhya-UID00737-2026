@@ -22,6 +22,33 @@
         z-index: 30;
     }
 
+    &__auth {
+        display: none;
+    }
+
+    &__auth--mobile {
+        @include flex-col-between;
+        width: 100%;
+        gap: functions.px-to-rem(12);
+    }
+
+    &__btn {
+        cursor: pointer;
+        padding: functions.px-to-rem(7);
+        border-radius: functions.px-to-rem(10);
+        border: none;
+    }
+
+    &__btn--login,
+    &__btn--signup {
+        color: variables.$global-background-color;
+        background-color: variables.$background-violet;
+    }
+
+    &__auth--mobile &__btn {
+        width: 100%;
+    }
+
     @include media-tablet(431px) {
         padding: functions.px-to-rem(32) functions.px-to-rem(60);
         &__logo {
@@ -30,6 +57,25 @@
 
         &__hamburger {
             order: 1;
+        }
+
+        & > &__auth {
+            @include flex-between;
+            order: 3;
+            gap: functions.px-to-rem(8);
+            display: flex;
+        }
+
+        &__btn--login {
+            @include btn-style;
+            color: variables.$text-primary;
+            background-color: transparent;
+        }
+
+        &__btn--signup {
+            @include btn-style;
+            color: variables.$global-background-color;
+            background-color: variables.$background-violet;
         }
     }
 
