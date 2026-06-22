@@ -53,7 +53,7 @@
         height: auto;
         background-color: variables.$global-background-color;
         z-index: 20;
-        padding: functions.px-to-rem(90) functions.px-to-rem(20)
+        padding: functions.px-to-rem(90) functions.px-to-rem(70)
             functions.px-to-rem(20);
         gap: functions.px-to-rem(14);
         transform: translateY(-100%);
@@ -67,8 +67,9 @@
         display: block;
         width: 100%;
         text-align: center;
+        color: variables.$text-secondary;
         padding: functions.px-to-rem(10);
-
+        white-space: nowrap;
         &:hover {
             background-color: variables.$background-violet;
             color: variables.$global-background-color;
@@ -149,6 +150,11 @@
             align-items: center;
             font-size: functions.px-to-rem(14);
             font-weight: 700;
+        }
+
+        &__link:hover {
+            background: none;
+            color: variables.$text-secondary;
         }
 
         &__menu {
