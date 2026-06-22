@@ -6,7 +6,7 @@
     @include flex-col-center;
     width: 100%;
     box-sizing: border-box;
-    padding: functions.px-to-rem(35);
+    padding: 0 functions.px-to-rem(35);
 
     &__info {
         @include flex-col-center;
@@ -41,10 +41,14 @@
         color: variables.$accent-color;
         font-weight: 700;
         display: flex;
-        padding: functions.px-to-rem(15);
+        padding: functions.px-to-rem(20);
         gap: functions.px-to-rem(10);
         font-size: functions.px-to-rem(20);
         align-items: center;
+        background-color: variables.$global-background-color;
+        border-radius: functions.px-to-rem(25);
+        box-shadow: 0 functions.px-to-rem(15) functions.px-to-rem(30)
+            rgba(188, 187, 187, 0.35);
     }
 
     &__buttons {
@@ -78,10 +82,7 @@
     }
 
     @include media-tablet(431px) {
-        &__image {
-            padding: functions.px-to-rem(20);
-        }
-
+        padding: 0 functions.px-to-rem(60);
         &__content--h1 {
             margin: 0;
             max-width: functions.px-to-rem(500);
@@ -100,6 +101,31 @@
 
         &__btn {
             padding: functions.px-to-rem(15) functions.px-to-rem(25);
+        }
+    }
+
+    @include media-desktop(1025px) {
+        padding: 0 functions.px-to-rem(130);
+        &__info {
+            @include flex-center;
+            flex-direction: row;
+        }
+        &__content {
+            padding: functions.px-to-rem(20) 0;
+            order: 1;
+            text-align: left;
+            align-items: flex-start;
+            gap: functions.px-to-rem(30);
+        }
+        &__image {
+            @include flex-col-center;
+            order: 2;
+        }
+        &__image--img {
+            padding: functions.px-to-rem(10) 0;
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
     }
 }
