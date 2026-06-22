@@ -3,10 +3,8 @@
 @use '../abstract/variables';
 
 .navbar {
+    @include flex-between;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: functions.px-to-rem(30) functions.px-to-rem(20);
     box-sizing: border-box;
 
@@ -81,19 +79,9 @@
         @include flex-col-between;
         width: 100%;
         gap: functions.px-to-rem(12);
-    }
-
-    &__btn {
-        cursor: pointer;
-        padding: functions.px-to-rem(7);
-        border-radius: functions.px-to-rem(10);
-        border: none;
-    }
-
-    &__btn--login,
-    &__btn--signup {
-        color: variables.$global-background-color;
-        background-color: variables.$background-violet;
+        .btn--primary {
+            padding: functions.px-to-rem(8);
+        }
     }
 
     &__auth--mobile &__btn {
@@ -101,7 +89,7 @@
     }
 
     @include media-tablet(431px) {
-        padding: functions.px-to-rem(32) functions.px-to-rem(60);
+        padding: functions.px-to-rem(32) functions.px-to-rem(65);
         &__logo {
             order: 2;
         }
@@ -120,18 +108,6 @@
         &__menu &__auth--mobile {
             display: none;
         }
-
-        &__btn--login {
-            @include btn-style;
-            color: variables.$text-primary;
-            background-color: transparent;
-        }
-
-        &__btn--signup {
-            @include btn-style;
-            color: variables.$global-background-color;
-            background-color: variables.$background-violet;
-        }
     }
 
     @include media-desktop(1025px) {
@@ -148,6 +124,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
             font-size: functions.px-to-rem(14);
             font-weight: 700;
         }
