@@ -6,7 +6,7 @@
     @include flex-col-center;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 functions.px-to-rem(35);
+    padding: functions.px-to-rem(20) functions.px-to-rem(35);
 
     &__info {
         @include flex-col-center;
@@ -14,7 +14,7 @@
 
     &__content {
         @include flex-col-center;
-        gap: functions.px-to-rem(10);
+        gap: functions.px-to-rem(15);
         text-align: center;
         order: 2;
     }
@@ -82,7 +82,7 @@
     }
 
     @include media-tablet(431px) {
-        padding: 0 functions.px-to-rem(60);
+        padding: functions.px-to-rem(30) functions.px-to-rem(60);
         &__content--h1 {
             margin: 0;
             max-width: functions.px-to-rem(500);
@@ -101,6 +101,16 @@
 
         &__btn {
             padding: functions.px-to-rem(15) functions.px-to-rem(25);
+        }
+
+        &__image {
+            @include flex-col-center;
+        }
+
+        &__image--img {
+            max-width: 80%;
+            height: auto;
+            display: block;
         }
     }
 
@@ -121,11 +131,9 @@
             @include flex-col-center;
             order: 2;
         }
+
         &__image--img {
-            padding: functions.px-to-rem(10) 0;
             max-width: 100%;
-            height: auto;
-            display: block;
         }
     }
 }
