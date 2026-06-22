@@ -1,0 +1,20 @@
+@use '../abstract/mixin' as *;
+@use '../abstract/functions';
+@use '../abstract/variables';
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: functions.px-to-rem(30) functions.px-to-rem(20);
+    box-sizing: border-box;
+
+    @include media-tablet(431px) {
+        padding: functions.px-to-rem(32) functions.px-to-rem(60);
+    }
+
+    @include media-desktop(1025px) {
+        padding: functions.px-to-rem(65) functions.px-to-rem(130);
+    }
+}
