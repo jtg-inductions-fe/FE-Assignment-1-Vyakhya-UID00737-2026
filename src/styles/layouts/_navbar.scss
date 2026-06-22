@@ -15,14 +15,29 @@
         height: functions.px-to-rem(40);
     }
 
+    &__hamburger {
+        @include flex-center;
+        cursor: pointer;
+        font-size: functions.px-to-rem(40);
+        z-index: 30;
+    }
+
     @include media-tablet(431px) {
         padding: functions.px-to-rem(32) functions.px-to-rem(60);
         &__logo {
             order: 2;
         }
+
+        &__hamburger {
+            order: 1;
+        }
     }
 
     @include media-desktop(1025px) {
         padding: functions.px-to-rem(65) functions.px-to-rem(130);
+
+        &__hamburger {
+            display: none;
+        }
     }
 }
