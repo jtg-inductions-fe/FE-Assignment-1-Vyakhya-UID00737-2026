@@ -76,4 +76,30 @@
         gap: functions.px-to-rem(5);
         white-space: nowrap; // to keep button text on a single line
     }
+
+    @include media-tablet(431px) {
+        &__image {
+            padding: functions.px-to-rem(20);
+        }
+
+        &__content--h1 {
+            margin: 0;
+            max-width: functions.px-to-rem(500);
+            font-size: variables.$h1-font-size;
+        }
+
+        &__content {
+            gap: functions.px-to-rem(20);
+        }
+
+        &__buttons {
+            @include flex-center;
+            flex-direction: row;
+            width: auto;
+        }
+
+        &__btn {
+            padding: functions.px-to-rem(15) functions.px-to-rem(25);
+        }
+    }
 }
