@@ -10,8 +10,16 @@
     padding: functions.px-to-rem(30) functions.px-to-rem(20);
     box-sizing: border-box;
 
+    &__logo {
+        width: functions.px-to-rem(40);
+        height: functions.px-to-rem(40);
+    }
+
     @include media-tablet(431px) {
         padding: functions.px-to-rem(32) functions.px-to-rem(60);
+        &__logo {
+            order: 2;
+        }
     }
 
     @include media-desktop(1025px) {
