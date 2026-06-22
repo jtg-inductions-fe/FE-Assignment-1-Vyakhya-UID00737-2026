@@ -1,18 +1,77 @@
 // This file is to set the default stylings of the HTML tags in project
-@use '../abstract' as *;
+@use '../abstract/variables';
+@use '../abstract/functions';
 
 body {
-    font-family: $global-font;
+    font-family: variables.$font-primary;
 }
 
-h1 {
-    font-size: $h1-font-size;
-}
-
-h2 {
-    font-size: $h2-font-size;
+a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: functions.px-to-rem(14);
+    line-height: 120%;
 }
 
 p {
-    line-height: $p-line-height;
+    font-family: variables.$font-secondary;
+    font-weight: 400;
+    font-size: functions.px-to-rem(18);
+    line-height: 160%;
+}
+
+.workbag-para {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(14);
+    line-height: 120%;
+}
+
+.secondary-para {
+    font-weight: 450;
+    font-size: functions.px-to-rem(23);
+}
+
+h1 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(69);
+    line-height: 120%;
+}
+
+h2 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(44);
+    line-height: 120%;
+}
+
+h3 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(44);
+    line-height: 120%;
+    letter-spacing: 20%;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-family: variables.$font-primary;
+    font-weight: 900;
+    font-size: functions.px-to-rem(24);
+    line-height: functions.px-to-rem(40);
+}
+
+h5 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(28);
+    line-height: 120%;
+}
+
+h6 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(23);
+    line-height: 120%;
 }
