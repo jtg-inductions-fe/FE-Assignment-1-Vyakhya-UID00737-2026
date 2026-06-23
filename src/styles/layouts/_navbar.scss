@@ -2,6 +2,11 @@
 @use '../abstract/functions';
 @use '../abstract/variables';
 
+// Implementation:
+// - Mobile-first approach.
+// - Hamburger menu shown on smaller screens.
+// - Desktop layout replaces mobile menu with inline links.
+// BEM methodology is used to keep styles modular and maintainable.
 .navbar {
     @include flex-between;
     width: 100%;
@@ -28,6 +33,9 @@
         display: none;
     }
 
+    // Background overlay.
+    // Improves focus on the navigation drawer and allows
+    // users to close the menu by clicking outside of it.
     &__overlay {
         position: fixed;
         inset: 0;
@@ -42,6 +50,11 @@
             visibility: visible;
         }
     }
+    /// Mobile navigation drawer.
+    /// Hidden outside the viewport using transform.
+    /// JavaScript toggles the modifier class to animate
+    /// the menu into view.
+
     &__menu {
         @include flex-col-center;
         position: fixed;
@@ -88,6 +101,7 @@
         width: 100%;
     }
 
+    //These media queries are added for responsiveness on tablet and desktop screen
     @include media-tablet(431px) {
         padding: functions.px-to-rem(32) functions.px-to-rem(65);
         &__logo {
