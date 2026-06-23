@@ -57,6 +57,7 @@
         border: 1px solid #1918251a;
         border-radius: functions.px-to-rem(12);
         padding: functions.px-to-rem(32);
+        text-align: center;
     }
 
     &__stat--count {
@@ -71,6 +72,7 @@
 
     @include media-tablet(431px) {
         gap: functions.px-to-rem(75);
+
         &__info {
             padding: 0 functions.px-to-rem(65);
             gap: functions.px-to-rem(64);
@@ -99,12 +101,18 @@
             height: auto;
             display: block;
         }
+
+        &__grid {
+            @include grid-col-rows(2, 2, functions.px-to-rem(16));
+            width: 100%;
+            row-gap: functions.px-to-rem(20);
+        }
     }
 
     @include media-desktop(1025px) {
         @include flex-between;
         flex-direction: row;
-        padding: functions.px-to-rem(30) functions.px-to-rem(70)
+        padding: functions.px-to-rem(30) functions.px-to-rem(95)
             functions.px-to-rem(30) 0;
         gap: 0;
 
@@ -127,6 +135,10 @@
 
         &__info {
             flex: 1;
+        }
+
+        &__grid {
+            gap: functions.px-to-rem(32);
         }
     }
 }
