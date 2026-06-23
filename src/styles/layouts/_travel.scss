@@ -1,0 +1,42 @@
+@use '../abstract/mixin' as *;
+@use '../abstract/functions';
+@use '../abstract/variables';
+
+.travel {
+    @include flex-col-center;
+    width: 100%;
+    padding: functions.px-to-rem(90) 0;
+    gap: functions.px-to-rem(35);
+
+    &__info {
+        @include flex-col-between;
+        gap: functions.px-to-rem(32);
+        padding: 0 functions.px-to-rem(32);
+        text-align: center;
+    }
+
+    &__header {
+        @include flex-col-center;
+        gap: functions.px-to-rem(28);
+    }
+
+    &__header--travelpoint {
+        font-size: functions.px-to-rem(16);
+        color: variables.$accent-color;
+    }
+
+    &__header--heading {
+        font-size: functions.px-to-rem(30);
+    }
+
+    &__header--para {
+        font-size: functions.px-to-rem(16);
+        color: variables.$p-text;
+    }
+
+    @include media-tablet(431px) {
+        gap: functions.px-to-rem(64);
+    }
+    @include media-desktop(1025px) {
+    }
+}
