@@ -70,6 +70,10 @@
         color: variables.$text-secondary;
     }
 
+    &__bag {
+        display: none;
+    }
+
     @include media-tablet(431px) {
         gap: functions.px-to-rem(75);
 
@@ -139,6 +143,12 @@
 
         &__grid {
             gap: functions.px-to-rem(32);
+        }
+
+        &__bag {
+            position: absolute;
+            display: block;
+            right: functions.px-to-rem(55);
         }
     }
 }
