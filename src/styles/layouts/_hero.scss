@@ -21,11 +21,13 @@
 
     &__info {
         @include flex-col-center;
+        padding: functions.px-to-rem(20) functions.px-to-rem(35);
     }
 
     &__content {
         @include flex-col-center;
-        gap: functions.px-to-rem(15);
+        padding-top: functions.px-to-rem(60);
+        gap: functions.px-to-rem(20);
         text-align: center;
         order: 2;
     }
@@ -46,16 +48,13 @@
         font-size: functions.px-to-rem(16);
         font-weight: 400;
         white-space: nowrap;
-        padding: functions.px-to-rem(15);
     }
 
     &__workbag {
         color: variables.$accent-color;
-        font-weight: 700;
         display: flex;
         padding: functions.px-to-rem(15);
         gap: functions.px-to-rem(10);
-        font-size: functions.px-to-rem(20);
         align-items: center;
         background-color: variables.$global-background-color;
         border-radius: functions.px-to-rem(25);
@@ -67,10 +66,23 @@
         @include flex-col-between;
         gap: functions.px-to-rem(15);
         width: 100%;
+        white-space: nowrap;
+    }
+
+    &__btn {
+        width: 100%;
+        padding: functions.px-to-rem(30);
+    }
+
+    .btn--secondary {
+        border: 1px solid variables.$p-text;
     }
 
     @include media-tablet(431px) {
-        padding: functions.px-to-rem(30) functions.px-to-rem(60);
+        &__info {
+            padding: functions.px-to-rem(70);
+        }
+
         &__content--h1 {
             margin: 0;
             max-width: functions.px-to-rem(600);
@@ -78,7 +90,7 @@
         }
 
         &__content {
-            gap: functions.px-to-rem(20);
+            gap: functions.px-to-rem(50);
         }
 
         &__buttons {
@@ -88,7 +100,8 @@
         }
 
         &__btn {
-            padding: functions.px-to-rem(15) functions.px-to-rem(25);
+            width: 100%;
+            padding: functions.px-to-rem(20);
         }
 
         &__image {
@@ -96,24 +109,33 @@
         }
 
         &__image--img {
-            max-width: 80%;
+            max-width: 100%;
             height: auto;
             display: block;
+        }
+        .btn--primary,
+        .btn--secondary {
+            padding-left: functions.px-to-rem(30);
+            padding-right: functions.px-to-rem(30);
         }
     }
 
     @include media-desktop(1025px) {
-        padding: 0 functions.px-to-rem(130);
         &__info {
             @include flex-center;
             flex-direction: row;
+            padding: functions.px-to-rem(20) functions.px-to-rem(80);
         }
         &__content {
             padding: functions.px-to-rem(20) 0;
             order: 1;
             text-align: left;
             align-items: flex-start;
-            gap: functions.px-to-rem(30);
+            gap: functions.px-to-rem(50);
+        }
+        &__content--h1 {
+            max-width: functions.px-to-rem(400);
+            font-size: functions.px-to-rem(69);
         }
         &__image {
             @include flex-col-center;
