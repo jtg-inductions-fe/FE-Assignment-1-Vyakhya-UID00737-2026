@@ -8,15 +8,15 @@
     box-sizing: border-box;
 
     .ellipse {
-        height: functions.px-to-rem(348);
-        width: functions.px-to-rem(272);
+        position: absolute;
+        height: functions.px-to-rem(272);
+        width: functions.px-to-rem(348);
         background-color: variables.$data-primary;
         border-radius: 50%;
-        filter: blur(150px);
+        filter: blur(130px);
         opacity: 0.5;
-        position: absolute;
         top: functions.px-to-rem(-36);
-        left: functions.px-to-rem(-36);
+        left: functions.px-to-rem(-33);
     }
 
     &__info {
@@ -94,6 +94,14 @@
     }
 
     @include media-tablet(431px) {
+        .ellipse {
+            height: functions.px-to-rem(500);
+            width: functions.px-to-rem(500);
+            filter: blur(210px);
+            top: functions.px-to-rem(-136);
+            left: functions.px-to-rem(-120);
+        }
+
         &__info {
             padding: functions.px-to-rem(70);
         }
@@ -128,6 +136,7 @@
             height: auto;
             display: block;
         }
+
         .btn--primary,
         .btn--secondary {
             padding-left: functions.px-to-rem(30);
@@ -149,11 +158,24 @@
     }
 
     @include media-desktop(1025px) {
+        .ellipse {
+            height: functions.px-to-rem(500);
+            width: functions.px-to-rem(570);
+            background-color: variables.$data-primary;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: 0.5;
+            position: absolute;
+            top: functions.px-to-rem(30);
+            left: functions.px-to-rem(-25);
+        }
+
         &__info {
             @include flex-center;
             flex-direction: row;
             padding: functions.px-to-rem(20) functions.px-to-rem(80);
         }
+
         &__content {
             padding: functions.px-to-rem(20) 0;
             order: 1;
@@ -161,10 +183,12 @@
             align-items: flex-start;
             gap: functions.px-to-rem(50);
         }
+
         &__content--h1 {
             max-width: functions.px-to-rem(400);
             font-size: functions.px-to-rem(69);
         }
+
         &__image {
             @include flex-col-center;
             order: 2;
