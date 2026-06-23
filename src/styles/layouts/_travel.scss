@@ -44,6 +44,31 @@
         display: block;
     }
 
+    &__grid {
+        @include grid-col-rows(1, 2, functions.px-to-rem(16));
+        width: 100%;
+        row-gap: functions.px-to-rem(20);
+    }
+
+    &__stat {
+        @include grid-col(1, functions.px-to-rem(16));
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #1918251a;
+        border-radius: functions.px-to-rem(12);
+        padding: functions.px-to-rem(32);
+    }
+
+    &__stat--count {
+        font-size: functions.px-to-rem(35);
+        color: variables.$data-primary;
+    }
+
+    &__stat--label {
+        font-size: functions.px-to-rem(18);
+        color: variables.$text-secondary;
+    }
+
     @include media-tablet(431px) {
         gap: functions.px-to-rem(75);
         &__info {
