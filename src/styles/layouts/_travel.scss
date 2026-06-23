@@ -35,8 +35,43 @@
     }
 
     @include media-tablet(431px) {
-        gap: functions.px-to-rem(64);
+        gap: functions.px-to-rem(75);
+        &__info {
+            padding: 0 functions.px-to-rem(65);
+            gap: functions.px-to-rem(64);
+        }
+
+        &__header--travelpoint {
+            font-size: functions.px-to-rem(23);
+        }
+
+        &__header--heading {
+            font-size: functions.px-to-rem(39);
+        }
+
+        &__header--para {
+            font-size: functions.px-to-rem(18);
+        }
     }
+
     @include media-desktop(1025px) {
+        @include flex-between;
+        flex-direction: row;
+        padding: functions.px-to-rem(30) functions.px-to-rem(70)
+            functions.px-to-rem(30) 0;
+        gap: 0;
+
+        &__info {
+            padding: 0;
+            text-align: left;
+        }
+
+        &__header {
+            align-items: flex-start;
+        }
+
+        &__header--heading {
+            font-size: functions.px-to-rem(44);
+        }
     }
 }
