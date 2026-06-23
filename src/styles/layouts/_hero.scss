@@ -6,7 +6,18 @@
     @include flex-col-center;
     width: 100%;
     box-sizing: border-box;
-    padding: functions.px-to-rem(20) functions.px-to-rem(35);
+
+    .ellipse {
+        height: functions.px-to-rem(348);
+        width: functions.px-to-rem(272);
+        background-color: variables.$data-primary;
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.5;
+        position: absolute;
+        top: functions.px-to-rem(-36);
+        left: functions.px-to-rem(-36);
+    }
 
     &__info {
         @include flex-col-center;
