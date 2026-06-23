@@ -1,4 +1,5 @@
-// This file has the functions that can help us to make changes
+// Contains reusable SASS helper functions.
+// px-to-rem converts pixel values into rem for responsive and scalable sizing.
 
 @use 'sass:math';
 

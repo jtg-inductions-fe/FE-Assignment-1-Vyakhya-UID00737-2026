@@ -1,4 +1,5 @@
-// This files contains th resuable components
+// Contains reusable SASS mixins for media queries, flexbox, grid layouts,
+// and common button styling to avoid repeating code across sections.
 
 @mixin media-tablet($mobile) {
     @media (min-width: $mobile) {

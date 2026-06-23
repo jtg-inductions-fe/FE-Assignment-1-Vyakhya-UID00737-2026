@@ -1,4 +1,6 @@
-// This file removes browser default behaviour
+// Resets default browser spacing and applies border-box sizing globally
+// to make layout behavior consistent across all browsers.
+
 @use '../abstract/variables';
 
 *,
