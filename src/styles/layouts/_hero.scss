@@ -7,6 +7,7 @@
     width: 100%;
     box-sizing: border-box;
 
+    // Made the backgorund elements as absolute so that can be placed properly on exact postion of it
     .ellipse {
         position: absolute;
         height: functions.px-to-rem(272);
@@ -19,11 +20,13 @@
         left: functions.px-to-rem(-33);
     }
 
+    // Made flex visible to the all content in the hero section
     &__info {
         @include flex-col-center;
         padding: functions.px-to-rem(20) functions.px-to-rem(35);
     }
 
+    // Made the flex visible to nested content in text section
     &__content {
         @include flex-col-center;
         padding-top: functions.px-to-rem(60);
@@ -36,7 +39,7 @@
         color: variables.$accent-color;
     }
 
-    // to make h2 heading aligned in center using width, height and font size properties
+    // to make h1 heading aligned in center using width, height and font size properties
     &__content--h1 {
         margin: 0;
         max-width: functions.px-to-rem(400);
@@ -62,6 +65,7 @@
             rgba(188, 187, 187, 0.35);
     }
 
+    // Restyled some properties of button component according to screen size as needed
     &__buttons {
         @include flex-col-between;
         gap: functions.px-to-rem(15);
@@ -78,6 +82,7 @@
         border: 1px solid variables.$p-text;
     }
 
+    // Flex wrapped the partner section so that each brand should visible clearly as given in figma design and can automatically occupy next row itself
     &__partner {
         @include flex-center;
         flex-wrap: wrap;
@@ -97,6 +102,7 @@
         display: none;
     }
 
+    // These are added to make each element of the hero section responsive on each screen size
     @include media-tablet(431px) {
         .ellipse {
             height: functions.px-to-rem(500);
