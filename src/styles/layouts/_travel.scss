@@ -34,6 +34,16 @@
         color: variables.$p-text;
     }
 
+    &__image {
+        width: 100%;
+    }
+
+    &__image--img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
     @include media-tablet(431px) {
         gap: functions.px-to-rem(75);
         &__info {
@@ -51,6 +61,18 @@
 
         &__header--para {
             font-size: functions.px-to-rem(18);
+        }
+
+        &__image {
+            padding: 0;
+            @include flex-col-center;
+            align-items: flex-start;
+        }
+
+        &__image--img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
     }
 
@@ -72,6 +94,14 @@
 
         &__header--heading {
             font-size: functions.px-to-rem(44);
+        }
+
+        &__image {
+            flex: 1.75;
+        }
+
+        &__info {
+            flex: 1;
         }
     }
 }
