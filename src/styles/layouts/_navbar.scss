@@ -5,7 +5,7 @@
 .navbar {
     @include flex-between;
     width: 100%;
-    padding: functions.px-to-rem(30) functions.px-to-rem(20);
+    padding: functions.px-to-rem(40) functions.px-to-rem(20);
     box-sizing: border-box;
 
     &__logo {
