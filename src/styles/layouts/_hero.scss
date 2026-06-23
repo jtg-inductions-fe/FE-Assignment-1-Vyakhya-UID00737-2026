@@ -93,6 +93,10 @@
         width: auto;
     }
 
+    &__overlay {
+        display: none;
+    }
+
     @include media-tablet(431px) {
         .ellipse {
             height: functions.px-to-rem(500);
@@ -100,6 +104,17 @@
             filter: blur(210px);
             top: functions.px-to-rem(-136);
             left: functions.px-to-rem(-120);
+        }
+
+        &__overlay {
+            display: block;
+            position: absolute;
+            left: functions.px-to-rem(38);
+            top: functions.px-to-rem(1270);
+        }
+
+        &__overlay--img {
+            width: 100%;
         }
 
         &__info {
@@ -168,6 +183,10 @@
             position: absolute;
             top: functions.px-to-rem(30);
             left: functions.px-to-rem(-25);
+        }
+
+        &__overlay {
+            top: functions.px-to-rem(870);
         }
 
         &__info {
