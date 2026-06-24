@@ -7,7 +7,7 @@
     // display travel section in column flex direction
     @include flex-col-center;
     width: 100%;
-    padding-top: functions.px-to-rem(90) 0;
+    padding-top: functions.px-to-rem(55);
     gap: functions.px-to-rem(35);
 
     // Displays right side content in column flex direction
@@ -85,7 +85,21 @@
 
     // creating this section responsive at tablet view
     @include media-tablet(431px) {
+        padding-top: functions.px-to-rem(55);
         gap: functions.px-to-rem(75);
+
+        // ellipse styling added at tablet and desktop view
+        &__ellipse {
+            position: absolute;
+            height: functions.px-to-rem(500);
+            width: functions.px-to-rem(100);
+            background-color: variables.$ellipse-primary;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            top: functions.px-to-rem(1400);
+            right: 0;
+        }
 
         &__info {
             padding: 0 functions.px-to-rem(65);
@@ -130,6 +144,10 @@
         padding: functions.px-to-rem(30) functions.px-to-rem(95)
             functions.px-to-rem(30) 0;
         gap: 0;
+
+        &__ellipse {
+            top: functions.px-to-rem(900);
+        }
 
         &__info {
             padding: 0;
