@@ -7,7 +7,7 @@
     // display travel section in column flex direction
     @include flex-col-center;
     width: 100%;
-    padding: functions.px-to-rem(90) 0;
+    padding-top: functions.px-to-rem(90) 0;
     gap: functions.px-to-rem(35);
 
     // Displays right side content in column flex direction
