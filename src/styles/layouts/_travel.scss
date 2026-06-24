@@ -83,6 +83,19 @@
             right: 0;
         }
 
+        // ellipse styling added at tablet and desktop view
+        &__ellipse {
+            position: absolute;
+            height: functions.px-to-rem(500);
+            width: functions.px-to-rem(100);
+            background-color: variables.$ellipse-primary;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.5;
+            top: functions.px-to-rem(1400);
+            right: 0;
+        }
+
         &__info {
             padding: 0 functions.px-to-rem(75);
             gap: functions.px-to-rem(70);
