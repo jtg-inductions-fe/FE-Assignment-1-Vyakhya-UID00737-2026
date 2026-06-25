@@ -5,32 +5,39 @@
 .hero {
     @include flex-col-center;
     width: 100%;
+    position: relative;
     box-sizing: border-box;
 
-    // Made the backgorund elements as absolute so that can be placed properly on exact postion of it
-    .ellipse {
+    //This is to display the gradient design at top left of navabr
+    &::before {
+        content: '';
         position: absolute;
-        height: functions.px-to-rem(272);
-        width: functions.px-to-rem(348);
-        background-color: variables.$data-primary;
-        border-radius: 50%;
-        filter: blur(130px);
-        opacity: 0.5;
-        top: functions.px-to-rem(-36);
-        left: functions.px-to-rem(-33);
+        top: functions.px-to-rem(-200);
+        left: functions.px-to-rem(-120);
+        width: functions.px-to-rem(500);
+        height: functions.px-to-rem(500);
+        background: radial-gradient(
+            circle,
+            rgba(255, 87, 34, 0.28) 0%,
+            rgba(255, 87, 34, 0.18) 35%,
+            rgba(255, 87, 34, 0.06) 60%,
+            transparent 75%
+        );
+        z-index: 1;
+        pointer-events: none;
     }
 
     // Made flex visible to the all content in the hero section
     &__info {
         @include flex-col-center;
-        padding: functions.px-to-rem(20) functions.px-to-rem(35);
+        padding: functions.px-to-rem(20) functions.px-to-rem(16);
     }
 
     // Made the flex visible to nested content in text section
     &__content {
         @include flex-col-center;
-        padding-top: functions.px-to-rem(60);
-        gap: functions.px-to-rem(20);
+        padding-top: functions.px-to-rem(40);
+        gap: functions.px-to-rem(25);
         text-align: center;
         order: 2;
     }
@@ -68,18 +75,31 @@
     // Restyled some properties of button component according to screen size as needed
     &__buttons {
         @include flex-col-between;
-        gap: functions.px-to-rem(15);
+        gap: functions.px-to-rem(22);
         width: 100%;
         white-space: nowrap;
     }
 
     &__btn {
         width: 100%;
-        padding: functions.px-to-rem(30);
+        padding: functions.px-to-rem(25);
     }
 
     .btn--secondary {
         border: 1px solid variables.$p-text;
+    }
+
+    .icon-play-btn {
+        font-size: functions.px-to-rem(20);
+    }
+
+    &__image {
+        width: 100%;
+    }
+
+    &__image--img {
+        width: 100%;
+        object-fit: cover;
     }
 
     // Flex wrapped the partner section so that each brand should visible clearly as given in figma design and can automatically occupy next row itself
@@ -89,7 +109,7 @@
         width: 100%;
         padding: functions.px-to-rem(40) functions.px-to-rem(15);
         box-sizing: border-box;
-        gap: 20px;
+        gap: functions.px-to-rem(20);
     }
 
     &__partner--img {
@@ -104,19 +124,18 @@
 
     // These are added to make each element of the hero section responsive on each screen size
     @include media-tablet(431px) {
-        .ellipse {
-            height: functions.px-to-rem(500);
-            width: functions.px-to-rem(500);
-            filter: blur(210px);
-            top: functions.px-to-rem(-136);
-            left: functions.px-to-rem(-120);
+        &::before {
+            top: functions.px-to-rem(-200);
+            left: functions.px-to-rem(-180);
+            height: functions.px-to-rem(600);
+            width: functions.px-to-rem(600);
         }
 
         &__overlay {
             display: block;
             position: absolute;
             left: functions.px-to-rem(38);
-            top: functions.px-to-rem(1270);
+            top: functions.px-to-rem(1155);
         }
 
         &__overlay--img {
@@ -127,14 +146,19 @@
             padding: functions.px-to-rem(70);
         }
 
+        &__content {
+            padding-top: functions.px-to-rem(62);
+            gap: functions.px-to-rem(45);
+        }
+
         &__content--h1 {
             margin: 0;
             max-width: functions.px-to-rem(600);
             font-size: functions.px-to-rem(56);
         }
 
-        &__content {
-            gap: functions.px-to-rem(50);
+        &__content--p {
+            font-size: functions.px-to-rem(18);
         }
 
         &__buttons {
@@ -145,7 +169,7 @@
 
         &__btn {
             width: 100%;
-            padding: functions.px-to-rem(20);
+            padding: functions.px-to-rem(16) functions.px-to-rem(32);
         }
 
         &__image {
@@ -158,15 +182,9 @@
             display: block;
         }
 
-        .btn--primary,
-        .btn--secondary {
-            padding-left: functions.px-to-rem(30);
-            padding-right: functions.px-to-rem(30);
-        }
-
         &__partner {
             width: 100%;
-            padding: functions.px-to-rem(50) functions.px-to-rem(190);
+            padding: functions.px-to-rem(55) functions.px-to-rem(187);
             box-sizing: border-box;
             gap: 25px;
         }
@@ -179,20 +197,15 @@
     }
 
     @include media-desktop(1025px) {
-        .ellipse {
-            height: functions.px-to-rem(500);
-            width: functions.px-to-rem(570);
-            background-color: variables.$data-primary;
-            border-radius: 50%;
-            filter: blur(220px);
-            opacity: 0.5;
-            position: absolute;
-            top: functions.px-to-rem(30);
-            left: functions.px-to-rem(-25);
+        &::before {
+            top: functions.px-to-rem(-350);
+            left: functions.px-to-rem(-280);
+            height: functions.px-to-rem(900);
+            width: functions.px-to-rem(900);
         }
 
         &__overlay {
-            top: functions.px-to-rem(870);
+            top: functions.px-to-rem(690);
         }
 
         &__info {
@@ -207,6 +220,14 @@
             text-align: left;
             align-items: flex-start;
             gap: functions.px-to-rem(50);
+        }
+
+        &__workbag {
+            padding: functions.px-to-rem(15) functions.px-to-rem(30);
+        }
+
+        .workbag-para {
+            font-size: functions.px-to-rem(16);
         }
 
         &__content--h1 {
@@ -225,9 +246,9 @@
 
         &__partner {
             width: 100%;
-            padding: functions.px-to-rem(110) functions.px-to-rem(10);
+            padding: functions.px-to-rem(100) functions.px-to-rem(10);
             box-sizing: border-box;
-            gap: 105px;
+            gap: functions.px-to-rem(110);
         }
 
         &__partner--img {
