@@ -103,7 +103,7 @@
 
     //These media queries are added for responsiveness on tablet and desktop screen
     @include media-tablet(431px) {
-        padding: functions.px-to-rem(32) functions.px-to-rem(65);
+        padding: functions.px-to-rem(33) functions.px-to-rem(66);
         &__logo {
             order: 2;
         }
@@ -125,7 +125,7 @@
     }
 
     @include media-desktop(1025px) {
-        padding: functions.px-to-rem(65) functions.px-to-rem(130);
+        padding: functions.px-to-rem(67) functions.px-to-rem(130);
 
         &__hamburger {
             display: none;
@@ -138,7 +138,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            gap: functions.px-to-rem(40);
             font-size: functions.px-to-rem(14);
             font-weight: 700;
         }
