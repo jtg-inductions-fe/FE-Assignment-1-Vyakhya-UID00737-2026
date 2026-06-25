@@ -10,11 +10,13 @@
     text-align: center;
     box-sizing: border-box;
 
+    // Made heading part to be visible flexed in columns
     &__heading {
         @include flex-col-center;
         gap: functions.px-to-rem(16);
     }
 
+    // resized headings according to mobile view
     &__heading--tag {
         font-size: functions.px-to-rem(16);
         color: variables.$accent-color;
@@ -24,33 +26,40 @@
         font-size: functions.px-to-rem(32);
     }
 
+    // Made slider to take full width of the screen and positon relative so that could place background and buttons w.r.t it
     &__slider {
         width: 100%;
         position: relative;
     }
 
+    // made the content available in card flexed in columns & gave margin to card to keep it distant from control buttons
     &__card {
         @include flex-col-center;
         gap: functions.px-to-rem(65);
         margin: 0 auto; // to keep distance from side buttons
     }
 
+    // made image to be resized according to carousel
     &__image {
         width: functions.px-to-rem(128);
         height: functions.px-to-rem(128);
         object-fit: cover;
     }
 
+    // made rating stars to be visible in a single row
     &__stars {
         @include flex-center;
         gap: functions.px-to-rem(18);
+        font-size: functions.px-to-rem(30);
     }
 
+    // made rating section content flexed column wise
     &__rating {
         @include flex-col-center;
         gap: functions.px-to-rem(34);
     }
 
+    // Rised the name of customer according to mobile view
     &__name {
         font-size: functions.px-to-rem(25);
         color: variables.$data-primary;
@@ -60,15 +69,12 @@
         }
     }
 
-    &__stars {
-        font-size: functions.px-to-rem(30);
-    }
-
     &__text {
         color: variables.$p-text;
         font-size: functions.px-to-rem(18);
     }
 
+    // customised the styling of the arrows that are pre-available in splide
     .splide__arrow {
         width: functions.px-to-rem(60);
         height: functions.px-to-rem(60);
@@ -80,7 +86,9 @@
         right: functions.px-to-rem(-14);
         span {
             display: inline-block;
-            transform: rotate(180deg);
+            transform: rotate(
+                180deg
+            ); // rotated the next arrow as styling was same as prev arrow
         }
     }
 
@@ -88,12 +96,14 @@
         left: functions.px-to-rem(-14);
     }
 
+    // made backgroud color of arrows to be violet when clicked on them
     .splide__arrow--prev:focus,
     .splide__arrow--next:focus {
         background-color: variables.$background-violet;
         color: variables.$global-background-color;
     }
 
+    // customised the design of pagination that is pre-available in splide
     .splide__pagination {
         margin-top: functions.px-to-rem(24);
         position: static;
@@ -104,6 +114,7 @@
         height: functions.px-to-rem(14);
     }
 
+    // change the background color of active pagination
     .splide__pagination__page.is-active {
         background: variables.$accent-color;
         transform: scale(1.3);
@@ -113,6 +124,7 @@
         display: none;
     }
 
+    // Made the carousel section pixel fit to the screen for tablet view
     @include media-tablet(431px) {
         padding: functions.px-to-rem(34);
 
@@ -161,6 +173,7 @@
         }
     }
 
+    // Made the carousel section pixel fit to the screen for desktop view
     @include media-desktop(1025px) {
         padding-top: functions.px-to-rem(100);
 
