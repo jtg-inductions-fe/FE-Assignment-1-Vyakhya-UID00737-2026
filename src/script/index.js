@@ -1,3 +1,5 @@
+/* global Splide */
+
 const hamburger = document.querySelector('.navbar__hamburger');
 const menuLinks = document.querySelector('.navbar__menu');
 const overlay = document.querySelector('.navbar__overlay');
@@ -33,3 +35,14 @@ document.addEventListener('keydown', (e) => {
         closeMenu();
     }
 });
+
+// Defining properties of carousel using splide and make it visible on browser
+const splide = new Splide('.splide', {
+    type: 'loop',
+    perPage: 1,
+    perMove: 1,
+    arrows: true,
+    pagination: true,
+    gap: '20px',
+});
+splide.mount();
