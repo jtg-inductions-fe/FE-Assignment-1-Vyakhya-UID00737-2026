@@ -24,6 +24,51 @@
         font-size: functions.px-to-rem(32);
     }
 
+    &__slider {
+        width: 100%;
+        position: relative;
+    }
+
+    &__card {
+        @include flex-col-center;
+        gap: functions.px-to-rem(65);
+        margin: 0 auto; // to keep distance from side buttons
+    }
+
+    &__image {
+        width: functions.px-to-rem(128);
+        height: functions.px-to-rem(128);
+        object-fit: cover;
+    }
+
+    &__stars {
+        @include flex-center;
+        gap: functions.px-to-rem(18);
+    }
+
+    &__rating {
+        @include flex-col-center;
+        gap: functions.px-to-rem(34);
+    }
+
+    &__name {
+        font-size: functions.px-to-rem(25);
+        color: variables.$data-primary;
+
+        span {
+            color: variables.$text-secondary;
+        }
+    }
+
+    &__stars {
+        font-size: functions.px-to-rem(30);
+    }
+
+    &__text {
+        color: variables.$p-text;
+        font-size: functions.px-to-rem(18);
+    }
+
     @include media-tablet(431px) {
         padding: functions.px-to-rem(34);
 
@@ -34,9 +79,23 @@
         &__heading--title {
             font-size: functions.px-to-rem(40);
         }
+
+        &__text {
+            font-size: functions.px-to-rem(23);
+        }
+
+        &__card {
+            gap: functions.px-to-rem(55);
+            margin: 0 functions.px-to-rem(180);
+        }
     }
 
     @include media-desktop(1025px) {
         padding-top: functions.px-to-rem(100);
+
+        &__card {
+            gap: functions.px-to-rem(58);
+            margin: 0 functions.px-to-rem(270);
+        }
     }
 }
