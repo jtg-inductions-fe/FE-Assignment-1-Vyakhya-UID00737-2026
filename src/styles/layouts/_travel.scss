@@ -7,7 +7,7 @@
     // display travel section in column flex direction
     @include flex-col-center;
     width: 100%;
-    padding-top: functions.px-to-rem(55);
+    padding-top: functions.px-to-rem(50);
     gap: functions.px-to-rem(35);
 
     // Displays right side content in column flex direction
@@ -85,8 +85,8 @@
 
     // creating this section responsive at tablet view
     @include media-tablet(431px) {
-        padding-top: functions.px-to-rem(55);
-        gap: functions.px-to-rem(75);
+        padding-top: functions.px-to-rem(80);
+        gap: functions.px-to-rem(85);
 
         // ellipse styling added at tablet and desktop view
         &__ellipse {
@@ -102,8 +102,12 @@
         }
 
         &__info {
-            padding: 0 functions.px-to-rem(65);
-            gap: functions.px-to-rem(64);
+            padding: 0 functions.px-to-rem(75);
+            gap: functions.px-to-rem(70);
+        }
+
+        &__header {
+            gap: functions.px-to-rem(25);
         }
 
         &__header--travelpoint {
@@ -141,7 +145,7 @@
     @include media-desktop(1025px) {
         @include flex-between;
         flex-direction: row;
-        padding: functions.px-to-rem(30) functions.px-to-rem(95)
+        padding: functions.px-to-rem(45) functions.px-to-rem(95)
             functions.px-to-rem(30) 0;
         gap: 0;
 
@@ -156,6 +160,7 @@
 
         &__header {
             align-items: flex-start;
+            gap: functions.px-to-rem(28);
         }
 
         &__header--heading {
