@@ -178,8 +178,28 @@
         padding-top: functions.px-to-rem(100);
 
         &__card {
-            gap: functions.px-to-rem(58);
+            gap: functions.px-to-rem(52);
             margin: 0 functions.px-to-rem(270);
+        }
+
+        .splide__arrow {
+            top: 33%;
+        }
+
+        .splide__arrow--next {
+            right: functions.px-to-rem(80);
+        }
+
+        .splide__arrow--prev {
+            left: functions.px-to-rem(80);
+        }
+
+        &__heading--title {
+            font-size: functions.px-to-rem(44);
+        }
+
+        &__background {
+            top: functions.px-to-rem(-169);
         }
     }
 }
