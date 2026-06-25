@@ -1,0 +1,9 @@
+@use '../abstract/mixin' as *;
+@use '../abstract/functions';
+@use '../abstract/variables';
+
+.footer {
+    @include flex-col-center;
+    width: 100%;
+    box-sizing: border-box;
+}
