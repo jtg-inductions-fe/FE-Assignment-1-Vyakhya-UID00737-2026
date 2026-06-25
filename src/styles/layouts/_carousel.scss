@@ -10,8 +10,30 @@
     text-align: center;
     box-sizing: border-box;
 
+    &__heading {
+        @include flex-col-center;
+        gap: functions.px-to-rem(16);
+    }
+
+    &__heading--tag {
+        font-size: functions.px-to-rem(16);
+        color: variables.$accent-color;
+    }
+
+    &__heading--title {
+        font-size: functions.px-to-rem(32);
+    }
+
     @include media-tablet(431px) {
         padding: functions.px-to-rem(34);
+
+        &__heading--tag {
+            font-size: functions.px-to-rem(23);
+        }
+
+        &__heading--title {
+            font-size: functions.px-to-rem(40);
+        }
     }
 
     @include media-desktop(1025px) {
