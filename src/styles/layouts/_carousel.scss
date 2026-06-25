@@ -69,6 +69,31 @@
         font-size: functions.px-to-rem(18);
     }
 
+    .splide__arrow {
+        width: functions.px-to-rem(60);
+        height: functions.px-to-rem(60);
+        background-color: variables.$global-background-color;
+        top: 12%;
+    }
+
+    .splide__arrow--next {
+        right: functions.px-to-rem(-14);
+        span {
+            display: inline-block;
+            transform: rotate(180deg);
+        }
+    }
+
+    .splide__arrow--prev {
+        left: functions.px-to-rem(-14);
+    }
+
+    .splide__arrow--prev:focus,
+    .splide__arrow--next:focus {
+        background-color: variables.$background-violet;
+        color: variables.$global-background-color;
+    }
+
     @include media-tablet(431px) {
         padding: functions.px-to-rem(34);
 
@@ -87,6 +112,20 @@
         &__card {
             gap: functions.px-to-rem(55);
             margin: 0 functions.px-to-rem(180);
+        }
+
+        .splide__arrow {
+            width: functions.px-to-rem(100);
+            height: functions.px-to-rem(100);
+            top: 36%;
+        }
+
+        .splide__arrow--next {
+            right: functions.px-to-rem(30);
+        }
+
+        .splide__arrow--prev {
+            left: functions.px-to-rem(30);
         }
     }
 
