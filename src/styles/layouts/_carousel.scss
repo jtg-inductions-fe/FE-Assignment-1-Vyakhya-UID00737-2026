@@ -109,6 +109,10 @@
         transform: scale(1.3);
     }
 
+    &__background {
+        display: none;
+    }
+
     @include media-tablet(431px) {
         padding: functions.px-to-rem(34);
 
@@ -145,6 +149,15 @@
 
         .splide__pagination {
             margin-top: functions.px-to-rem(54);
+        }
+
+        &__background {
+            display: block;
+            position: absolute;
+            width: 100vw;
+            top: functions.px-to-rem(-125);
+            left: 50%;
+            transform: translateX(-50%);
         }
     }
 

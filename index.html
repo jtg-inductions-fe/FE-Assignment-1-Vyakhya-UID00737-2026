@@ -277,7 +277,217 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Travel Section -->
+            <section class="travel">
+                <!-- Ellipse Layout -->
+                <div class="travel__ellipse"></div>
+                <!-- Div to display travel bag icon in this section -->
+                <div class="travel__bag">
+                    <img
+                        class="travel__bag--img"
+                        src="/assets/images/travel-bag.svg"
+                        alt="travel-bag"
+                    />
+                </div>
+                <!-- Traveling gil image section -->
+                <div class="travel__image">
+                    <img
+                        class="travel__image--img"
+                        src="/assets/images/travelPoint-img.svg"
+                        alt="travel-girl-img"
+                    />
+                </div>
+                <!-- Right side content section -->
+                <div class="travel__info">
+                    <!-- Right side header content section layout -->
+                    <div class="travel__header">
+                        <h6 class="travel__header--travelpoint">
+                            Travel Point
+                        </h6>
+                        <h3 class="travel__header--heading">
+                            We helping you find your dream location
+                        </h3>
+                        <p class="travel__header--para">
+                            Contrary to popular belief, Lorem Ipsum is not
+                            simply random text. It has roots in a piece of
+                            classical Latin literature from 45 BC.
+                        </p>
+                    </div>
+                    <!-- Right side statistics grid layout -->
+                    <div class="travel__grid">
+                        <div class="travel__stat">
+                            <h4 class="travel__stat--count">500+</h4>
+                            <p class="travel__stat--label">Holiday Package</p>
+                        </div>
+                        <div class="travel__stat">
+                            <h4 class="travel__stat--count">100</h4>
+                            <p class="travel__stat--label">Luxury Hotel</p>
+                        </div>
+                        <div class="travel__stat">
+                            <h4 class="travel__stat--count">7</h4>
+                            <p class="travel__stat--label">Premium Airlines</p>
+                        </div>
+                        <div class="travel__stat">
+                            <h4 class="travel__stat--count">2k+</h4>
+                            <p class="travel__stat--label">Happy Customer</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Carousel Section -->
+            <!-- Using splide for carousel as it is lightweight and dependency free JS that will easily create responsive carousel-->
+            <section class="testimonial">
+                <!-- Heading for carousel section -->
+                <div class="testimonial__heading">
+                    <h6 class="testimonial__heading--tag">Testimonials</h6>
+                    <h3 class="testimonial__heading--title">
+                        Trust our clients
+                    </h3>
+                </div>
+                <!-- Using splide library classes for making slider -->
+                <div class="splide testimonial__slider">
+                    <div class="testimonial__background">
+                        <img
+                            class="testimonial__background--img"
+                            src="/assets/images/background.svg"
+                            alt="carousel-background"
+                        />
+                    </div>
+                    <!-- Adding custom arrows using splide library -->
+                    <div class="splide__arrows">
+                        <button class="splide__arrow splide__arrow--prev">
+                            <span class="icon-left-arow1"></span>
+                        </button>
+                        <button class="splide__arrow splide__arrow--next">
+                            <span class="icon-left-arow1"></span>
+                        </button>
+                    </div>
+                    <!-- Adding middle content layout using the classes of same library -->
+                    <div class="splide__track">
+                        <!-- Making unorder list of each information present in middle of slider -->
+                        <ul class="splide__list">
+                            <!-- list for content 1 at middle -->
+                            <li class="splide__slide">
+                                <div class="testimonial__card">
+                                    <img
+                                        class="testimonial__image"
+                                        src="/assets/images/carousel-info-img.svg"
+                                        alt="Mark Smith"
+                                    />
+                                    <div class="testimonial__rating">
+                                        <h5 class="testimonial__name">
+                                            Mark Smith
+                                            <span>/ Travel Enthusiast</span>
+                                        </h5>
+                                        <div class="testimonial__stars">
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                        </div>
+                                    </div>
+                                    <p class="testimonial__text">
+                                        Contrary to popular belief, Lorem Ipsum
+                                        is not simply random text. It has roots
+                                        in a piece of classical Latin literature
+                                        from 45 BC.
+                                    </p>
+                                </div>
+                            </li>
+                            <!-- list for content 2 at middle -->
+                            <li class="splide__slide">
+                                <div class="testimonial__card">
+                                    <img
+                                        class="testimonial__image"
+                                        src="/assets/images/carousel-info-img.svg"
+                                        alt="John Smith"
+                                    />
+                                    <div class="testimonial__rating">
+                                        <h5 class="testimonial__name">
+                                            John Smith
+                                            <span>/ Travel Enthusiast</span>
+                                        </h5>
+                                        <div class="testimonial__stars">
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                        </div>
+                                    </div>
+                                    <p class="testimonial__text">
+                                        The service was amazing and the travel
+                                        experience was very smooth.
+                                    </p>
+                                </div>
+                            </li>
+                            <!-- list for content 3 at middle -->
+                            <li class="splide__slide">
+                                <div class="testimonial__card">
+                                    <img
+                                        class="testimonial__image"
+                                        src="/assets/images/carousel-info-img.svg"
+                                        alt="John Smith"
+                                    />
+                                    <div class="testimonial__rating">
+                                        <h5 class="testimonial__name">
+                                            David Flora
+                                            <span>/ Travel Enthusiast</span>
+                                        </h5>
+                                        <div class="testimonial__stars">
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                            <span
+                                                class="icon-rating-star"
+                                            ></span>
+                                        </div>
+                                    </div>
+                                    <p class="testimonial__text">
+                                        I had a fantastic experience. The entire
+                                        process was seamless and the team made
+                                        the journey incredibly smooth.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>
