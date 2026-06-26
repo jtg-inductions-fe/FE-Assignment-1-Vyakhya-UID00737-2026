@@ -128,12 +128,31 @@
         font-size: functions.px-to-rem(23);
     }
 
+    // displayed none footer background in mobile view
+    &__background {
+        display: none;
+    }
+
     // created footer section responsive at tablet view
     @include media-tablet(431px) {
+        position: relative;
         padding: functions.px-to-rem(200) functions.px-to-rem(65)
             functions.px-to-rem(64);
         gap: functions.px-to-rem(64);
 
+        &__background {
+            position: absolute;
+            display: block;
+            width: functions.px-to-rem(130);
+            height: functions.px-to-rem(38);
+            top: functions.px-to-rem(390);
+            right: 0;
+        }
+
+        &__background--img {
+            width: 100%;
+            object-fit: cover;
+        }
         &__travlog {
             gap: functions.px-to-rem(30);
         }
@@ -205,6 +224,11 @@
         align-items: flex-start;
         padding: functions.px-to-rem(245) functions.px-to-rem(130) 0;
         gap: functions.px-to-rem(73);
+
+        &__background {
+            width: functions.px-to-rem(120);
+            top: functions.px-to-rem(290);
+        }
 
         &__travlog {
             flex: 1;
