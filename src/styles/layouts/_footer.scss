@@ -2,91 +2,192 @@
 @use '../abstract/functions';
 @use '../abstract/variables';
 
+// styling for mobile first view of footer section
 .footer {
+    // styled footer content in column direction in mobile view
+    @include flex-col-center;
     width: 100%;
-    padding: functions.px-to-rem(45) functions.px-to-rem(64);
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: functions.px-to-rem(26) functions.px-to-rem(32);
+    gap: functions.px-to-rem(80);
     box-sizing: border-box;
 
+    // styled travlog in column to show the full content of travlog
     &__travlog {
-        @include grid-rows(2, functions.px-to-rem(64));
-        align-self: self-start;
+        @include flex-col-center;
+        align-items: flex-start;
+        gap: functions.px-to-rem(30);
     }
 
+    // styled logo and paragraph content in column direction
     &__top {
         @include flex-col-center;
         align-items: flex-start;
         gap: functions.px-to-rem(32);
     }
 
+    // aligns footer logo image and website name in one row
     &__logo {
         @include flex-center;
         gap: functions.px-to-rem(16);
     }
 
+    // resizing footer logo image
     &__logo--img {
         width: functions.px-to-rem(40);
         height: functions.px-to-rem(40);
     }
 
+    // styling footer paragraph text
     .secondary-para {
+        font-size: functions.px-to-rem(16);
         color: variables.$p-text;
     }
 
+    // displays social media icons in row
     &__social {
-        @include flex-center;
+        display: flex;
+        justify-content: flex-start;
         align-items: flex-start;
         gap: functions.px-to-rem(32);
-        justify-content: flex-start;
         font-size: functions.px-to-rem(32);
     }
 
+    // displays all footer resource sections in column direction for mobile
+    &__resources {
+        @include flex-col-center;
+        align-items: flex-start;
+        width: 100%;
+        gap: functions.px-to-rem(80);
+    }
+
+    // gives equal full width to each accordion section
+    &__company,
+    &__contact,
+    &__meetus {
+        @include flex-col-center;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    // accordion button styling for mobile footer links
+    &__accordian {
+        @include flex-between;
+        width: 100%;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+
+        span {
+            font-size: functions.px-to-rem(28);
+        }
+    }
+
+    // hides accordion content by default in mobile view
+    &__company--card,
+    &__contact--card,
+    &__meetus--card {
+        @include flex-col-center;
+        align-items: flex-start;
+        gap: functions.px-to-rem(12);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        box-sizing: border-box;
+        transition:
+            max-height 0.3s ease,
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    // displays accordion card content when active class is added using JS
+    &__card--active {
+        padding-top: functions.px-to-rem(12);
+        max-height: functions.px-to-rem(160);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    // adds smooth transition to accordion arrow icon
+    &__accordian .icon-accordian {
+        transition: transform 0.3s ease;
+    }
+
+    // rotates it when card opens & closes
+    &__accordian.active .icon-accordian {
+        transform: rotate(180deg);
+    }
+
+    // resizing footer section headings for mobile view
+    &__company--heading,
+    &__contact--heading,
+    &__meetus--heading {
+        font-size: functions.px-to-rem(23);
+    }
+
+    // created footer section responsive at tablet view
     @include media-tablet(431px) {
-        @include grid-rows(2, functions.px-to-rem(18));
         padding: functions.px-to-rem(200) functions.px-to-rem(65)
             functions.px-to-rem(64);
-        grid-template-rows: repeat(2, 0.1fr);
         gap: functions.px-to-rem(64);
 
         &__travlog {
-            grid-template-rows: repeat(2, 0.1fr);
             gap: functions.px-to-rem(30);
         }
 
-        &__resources {
-            @include grid-col(3, functions.px-to-rem(38));
-            align-self: self-start;
+        .secondary-para {
+            font-size: functions.px-to-rem(23);
         }
 
-        &__accordian {
-            border: none;
-            background: transparent;
-            span {
-                display: none;
-            }
+        &__resources {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            gap: functions.px-to-rem(38);
         }
 
         &__company,
         &__contact,
         &__meetus {
-            @include flex-col-between;
-            justify-content: flex-start;
+            display: flex;
+            flex-direction: column;
             align-items: flex-start;
+            justify-content: flex-start;
+            flex: 1;
+            width: 100%;
             gap: functions.px-to-rem(32);
+        }
+
+        &__accordian {
+            padding: 0;
+            cursor: default;
+
+            span {
+                display: none;
+            }
         }
 
         &__company--card,
         &__contact--card,
         &__meetus--card {
-            @include flex-col-between;
-            width: 100%;
+            display: flex;
+            flex-direction: column;
             align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
             gap: functions.px-to-rem(32);
-        }
 
-        &__company--heading,
-        &__contact--heading,
-        &__meetus--heading {
-            font-size: functions.px-to-rem(23);
+            max-height: none;
+            height: auto;
+            overflow: visible;
+            opacity: 1;
+            visibility: visible;
+            padding-top: 0;
         }
 
         &__company--content,
@@ -96,27 +197,35 @@
         }
     }
 
+    // created footer section responsive at desktop view
     @include media-desktop(1025px) {
-        @include grid-col(2, functions.px-to-rem(73));
-        padding: functions.px-to-rem(245) functions.px-to-rem(130)
-            functions.px-to-rem(0);
-        align-self: self-start;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: functions.px-to-rem(245) functions.px-to-rem(130) 0;
+        gap: functions.px-to-rem(73);
 
         &__travlog {
+            flex: 1;
             gap: functions.px-to-rem(62);
         }
 
         &__resources {
-            @include grid-col(3, functions.px-to-rem(48));
-            align-self: self-start;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex: 1;
+            width: 100%;
+            gap: functions.px-to-rem(48);
         }
 
         &__company,
         &__contact,
         &__meetus {
-            @include flex-col-between;
-            justify-content: flex-start;
-            align-items: flex-start;
+            flex: 1;
+            width: 100%;
             gap: functions.px-to-rem(28);
         }
 
@@ -124,6 +233,11 @@
         &__contact--card,
         &__meetus--card {
             gap: functions.px-to-rem(35);
+            max-height: none;
+            overflow: visible;
+            opacity: 1;
+            visibility: visible;
+            padding-top: 0;
         }
     }
 }

@@ -47,3 +47,16 @@ const splide = new Splide('.splide', {
 
 // this function called the splide to be visible on web page
 splide.mount();
+
+// Defining accordian working
+const accordians = document.querySelectorAll('.footer__accordian');
+
+accordians.forEach((accordian) => {
+    accordian.addEventListener('click', function () {
+        // Toggling between adding and removing the .active class to opens the accordian content
+        // Displaying card of the according on which clicked
+        const card = this.nextElementSibling;
+        this.classList.toggle('active');
+        card.classList.toggle('footer__card--active');
+    });
+});
