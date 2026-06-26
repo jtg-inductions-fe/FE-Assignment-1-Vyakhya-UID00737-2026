@@ -3,7 +3,75 @@
 @use '../abstract/variables';
 
 .footer {
-    @include flex-col-center;
     width: 100%;
+    padding: functions.px-to-rem(45) functions.px-to-rem(64);
     box-sizing: border-box;
+
+    &__travlog {
+        @include grid-rows(2, functions.px-to-rem(64));
+        align-self: self-start;
+    }
+
+    &__top {
+        @include flex-col-center;
+        align-items: flex-start;
+        gap: functions.px-to-rem(32);
+    }
+
+    &__logo {
+        @include flex-center;
+        gap: functions.px-to-rem(16);
+    }
+
+    &__logo--img {
+        width: functions.px-to-rem(40);
+        height: functions.px-to-rem(40);
+    }
+
+    .secondary-para {
+        color: variables.$p-text;
+    }
+
+    &__social {
+        @include flex-center;
+        align-items: flex-start;
+        gap: functions.px-to-rem(32);
+        justify-content: flex-start;
+        font-size: functions.px-to-rem(32);
+    }
+
+    @include media-tablet(431px) {
+        &__resources {
+            @include grid-col(3, functions.px-to-rem(55));
+            align-self: self-start;
+        }
+
+        &__company,
+        &__contact,
+        &__meetus {
+            @include flex-col-between;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: functions.px-to-rem(27);
+        }
+
+        &__company--heading,
+        &__contact--heading,
+        &__meetus--heading {
+            font-size: functions.px-to-rem(23);
+        }
+
+        &__company--content,
+        &__contact--content,
+        &__meetus--content {
+            color: variables.$p-text;
+        }
+    }
+
+    @include media-desktop(1025px) {
+        @include grid-col(2, functions.px-to-rem(70));
+        padding: functions.px-to-rem(245) functions.px-to-rem(130)
+            functions.px-to-rem(0);
+        align-self: self-start;
+    }
 }
