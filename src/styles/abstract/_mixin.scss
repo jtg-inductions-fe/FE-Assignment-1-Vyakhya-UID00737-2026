@@ -1,15 +1,25 @@
 // Contains reusable SASS mixins for media queries, flexbox, grid layouts,
 // and common button styling to avoid repeating code across sections.
 
-@mixin media-tablet($mobile) {
-    @media (min-width: $mobile) {
-        @content;
-    }
-}
+@use '/src/styles/abstract/_variables.scss';
 
-@mixin media-desktop($desktop) {
-    @media (min-width: $desktop) {
-        @content;
+$breakpoints: (
+    'tablet': 431px,
+    'desktop': 1025px,
+);
+
+// function for responding to the passed breakpoint of screen
+@mixin respond($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "No breakpoint of this size exists. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
     }
 }
 
@@ -59,9 +69,9 @@
 }
 
 @mixin btn-style {
-    border-radius: 100px;
-    padding: 14px 28px;
-    font-size: 14px;
+    border-radius: functions.px-to-rem(100);
+    padding: functions.px-to-rem(14) functions.px-to-rem(28);
+    font-size: functions.px-to-rem(14);
     font-weight: 700;
     border: none;
     cursor: pointer;

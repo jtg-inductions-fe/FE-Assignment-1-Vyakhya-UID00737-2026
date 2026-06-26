@@ -3,7 +3,13 @@
 
 $mobile: 431px;
 $desktop: 1025px;
-$global-font: 'Circular Std';
+$global-font:
+    'Circular Std',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
 $global-background-color: white;
 $text-primary: #000000;
 $text-secondary: #191825;

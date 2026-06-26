@@ -2,8 +2,8 @@
 // Modifier classes handle button variants like primary, secondary, pill,
 // shadow, icon button, and full-width button.
 
-@use '../abstract/functions';
-@use '../abstract/variables';
+@use '/src/styles/abstract/_functions.scss';
+@use '/src/styles/abstract/_variables.scss';
 
 .btn {
     cursor: pointer;

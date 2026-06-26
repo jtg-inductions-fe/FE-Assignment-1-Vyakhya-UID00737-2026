@@ -1,8 +1,8 @@
 // Defines default typography styles for headings, paragraphs, links,
 // and reusable text classes based on the project design system.
 
-@use '../abstract/variables';
-@use '../abstract/functions';
+@use '/src/styles/abstract/_variables.scss';
+@use '/src/styles/abstract/_functions.scss';
 
 body {
     font-family: variables.$font-primary;
@@ -22,14 +22,14 @@ p {
     line-height: 160%;
 }
 
-.workbag-para {
+.primary-text {
     font-family: variables.$font-primary;
     font-weight: 700;
     font-size: functions.px-to-rem(14);
     line-height: 120%;
 }
 
-.secondary-para {
+.secondary-text {
     font-weight: 450;
     font-size: functions.px-to-rem(23);
 }

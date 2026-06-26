@@ -1,7 +1,7 @@
 // Defines global base styles for the page such as smooth scrolling,
 // body background, image behavior, and menu scroll locking.
 
-@use '../abstract' as *;
+@use '/src/styles/abstract' as *;
 
 html {
     scroll-behavior: smooth;
