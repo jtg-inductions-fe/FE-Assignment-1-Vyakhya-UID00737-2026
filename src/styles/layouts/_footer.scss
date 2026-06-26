@@ -41,9 +41,28 @@
     }
 
     @include media-tablet(431px) {
+        @include grid-rows(2, functions.px-to-rem(18));
+        padding: functions.px-to-rem(200) functions.px-to-rem(65)
+            functions.px-to-rem(64);
+        grid-template-rows: repeat(2, 0.1fr);
+        gap: functions.px-to-rem(64);
+
+        &__travlog {
+            grid-template-rows: repeat(2, 0.1fr);
+            gap: functions.px-to-rem(30);
+        }
+
         &__resources {
-            @include grid-col(3, functions.px-to-rem(55));
+            @include grid-col(3, functions.px-to-rem(38));
             align-self: self-start;
+        }
+
+        &__accordian {
+            border: none;
+            background: transparent;
+            span {
+                display: none;
+            }
         }
 
         &__company,
@@ -52,7 +71,16 @@
             @include flex-col-between;
             justify-content: flex-start;
             align-items: flex-start;
-            gap: functions.px-to-rem(27);
+            gap: functions.px-to-rem(32);
+        }
+
+        &__company--card,
+        &__contact--card,
+        &__meetus--card {
+            @include flex-col-between;
+            width: 100%;
+            align-items: flex-start;
+            gap: functions.px-to-rem(32);
         }
 
         &__company--heading,
@@ -69,9 +97,33 @@
     }
 
     @include media-desktop(1025px) {
-        @include grid-col(2, functions.px-to-rem(70));
+        @include grid-col(2, functions.px-to-rem(73));
         padding: functions.px-to-rem(245) functions.px-to-rem(130)
             functions.px-to-rem(0);
         align-self: self-start;
+
+        &__travlog {
+            gap: functions.px-to-rem(62);
+        }
+
+        &__resources {
+            @include grid-col(3, functions.px-to-rem(48));
+            align-self: self-start;
+        }
+
+        &__company,
+        &__contact,
+        &__meetus {
+            @include flex-col-between;
+            justify-content: flex-start;
+            align-items: flex-start;
+            gap: functions.px-to-rem(28);
+        }
+
+        &__company--card,
+        &__contact--card,
+        &__meetus--card {
+            gap: functions.px-to-rem(35);
+        }
     }
 }
