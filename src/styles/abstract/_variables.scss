@@ -19,3 +19,8 @@ $background-violet: #5d50c6;
 $data-primary: #ff5722;
 $font-primary: 'Circular Std', sans-serif;
 $font-secondary: 'Inter', sans-serif;
+$z-index: (
+    'hamburger': 30,
+    'overlay': 10,
+    'menu': 20,
+);

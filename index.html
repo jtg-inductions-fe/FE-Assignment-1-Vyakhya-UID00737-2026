@@ -9,6 +9,69 @@
     </head>
 
     <body>
+        <!-- header section -->
+        <!--
+            This contains following properties:
+            - Responsive navigation layout.
+            - Hamburger menu for mobile and tablet devices.
+            - Desktop navigation links.
+            - Authentication actions (Login / Sign Up).
+
+            The mobile menu is displayed through JavaScript by toggling
+            modifier classes on the menu and overlay elements.
+        -->
+        <nav class="navbar">
+            <div class="navbar__overlay"></div>
+            <!--
+                Mobile navigation drawer.
+
+                Hidden by default and slides into view when the user clicks
+                the hamburger icon. Contains navigation links and mobile-only
+                authentication buttons.
+            -->
+            <aside class="navbar__menu">
+                <a class="navbar__link" href="##hero-section">Home</a>
+                <a class="navbar__link" href="#travel-section">Discover</a>
+                <a class="navbar__link" href="#testimonial-section"
+                    >Special Deals</a
+                >
+                <a class="navbar__link" href="#footer-section">Contact</a>
+                <div class="navbar__auth navbar__auth--mobile">
+                    <button class="navbar__auth-btn btn btn--primary btn--pill">
+                        Log In
+                    </button>
+                    <button class="navbar__auth-btn btn btn--primary btn--pill">
+                        Sign Up
+                    </button>
+                </div>
+            </aside>
+
+            <div class="navbar__logo">
+                <a href="/">
+                    <img
+                        class="navbar__logo-img"
+                        src="/assets/icons/logo.svg"
+                        alt="logo-icon"
+                    />
+                </a>
+            </div>
+            <button class="navbar__hamburger">
+                <span class="icon-hamburger"></span>
+            </button>
+            <div class="navbar__links">
+                <a class="navbar__link" href="#hero-section">Home</a>
+                <a class="navbar__link" href="#travel-section">Discover</a>
+                <a class="navbar__link" href="#testimonial-section"
+                    >Special Deals</a
+                >
+                <a class="navbar__link" href="#footer-section">Contact</a>
+            </div>
+            <div class="navbar__auth">
+                <button class="btn btn--secondary btn--pill">Log In</button>
+                <button class="btn btn--primary btn--pill">Sign Up</button>
+            </div>
+        </nav>
+
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

@@ -1,0 +1,159 @@
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
+@use 'sass:map';
+
+// Implementation:
+// - Mobile-first approach.
+// - Hamburger menu shown on smaller screens.
+// - Desktop layout replaces mobile menu with inline links.
+.navbar {
+    @include mixin.flex-between;
+    width: 100%;
+    padding: functions.px-to-rem(40) functions.px-to-rem(20);
+    box-sizing: border-box;
+
+    &__logo {
+        width: functions.px-to-rem(40);
+        height: functions.px-to-rem(40);
+        a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__links {
+        display: none;
+    }
+
+    &__hamburger {
+        @include mixin.flex-center;
+        cursor: pointer;
+        font-size: functions.px-to-rem(40);
+        border: none;
+        background-color: transparent;
+        z-index: map.get(variables.$z-index, 'hamburger');
+    }
+
+    &__auth {
+        display: none;
+        &--mobile {
+            @include mixin.flex-col-between;
+            width: 100%;
+            gap: functions.px-to-rem(12);
+        }
+    }
+
+    &__auth-btn {
+        width: 100%;
+        padding: functions.px-to-rem(8);
+    }
+
+    // Background overlay.
+    // Improves focus on the navigation drawer and allows
+    // to close the menu by clicking outside of it as well.
+    &__overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.8s ease;
+        z-index: map.get(variables.$z-index, 'overlay');
+
+        &--active {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+    /// Mobile navigation drawer.
+    /// Hidden outside the viewport using transform.
+    /// JavaScript toggles the modifier class to animate
+    /// the menu into view.
+
+    &__menu {
+        @include mixin.flex-col-center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        background-color: variables.$global-background-color;
+        z-index: map.get(variables.$z-index, 'menu');
+        padding: functions.px-to-rem(90) functions.px-to-rem(70)
+            functions.px-to-rem(20);
+        gap: functions.px-to-rem(14);
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+
+        &--active {
+            transform: translateY(0);
+        }
+    }
+    &__link {
+        display: block;
+        width: 100%;
+        text-align: center;
+        color: variables.$text-secondary;
+        padding: functions.px-to-rem(10);
+        white-space: nowrap;
+        &:hover {
+            background-color: variables.$background-violet;
+            color: variables.$global-background-color;
+            transition: 0.3s ease;
+        }
+    }
+
+    //These media queries are added for responsiveness on tablet and desktop screen
+    @include mixin.respond('tablet') {
+        padding: functions.px-to-rem(33) functions.px-to-rem(66);
+        &__logo {
+            order: 2;
+        }
+
+        &__hamburger {
+            order: 1;
+        }
+
+        &__auth {
+            @include mixin.flex-between;
+            order: 3;
+            gap: functions.px-to-rem(8);
+            display: flex;
+        }
+
+        &__menu &__auth--mobile {
+            display: none;
+        }
+    }
+
+    @include mixin.respond('desktop') {
+        padding: functions.px-to-rem(67) functions.px-to-rem(130);
+
+        &__hamburger {
+            display: none;
+        }
+
+        &__links {
+            order: 2;
+            width: functions.px-to-rem(428);
+            height: functions.px-to-rem(17);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: functions.px-to-rem(40);
+            font-size: functions.px-to-rem(14);
+            font-weight: 700;
+        }
+
+        &__link:hover {
+            background: none;
+            color: variables.$text-secondary;
+        }
+
+        &__menu {
+            display: none;
+        }
+    }
+}
