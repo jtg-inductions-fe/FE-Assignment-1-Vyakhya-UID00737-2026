@@ -1,0 +1,78 @@
+// Contains reusable SASS mixins for media queries, flexbox, grid layouts,
+// and common button styling to avoid repeating code across sections.
+
+@use '/src/styles/abstract/_variables.scss';
+
+$breakpoints: (
+    'tablet': 431px,
+    'desktop': 1025px,
+);
+
+// function for responding to the passed breakpoint of screen
+@mixin respond($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+
+    // If the key doesn't exist in the map
+    @else {
+        @warn "No breakpoint of this size exists. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin flex-col-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin grid-col($col, $gap: 1rem) {
+    display: grid;
+    grid-template-columns: repeat($col, 1fr);
+    gap: $gap;
+}
+
+@mixin grid-rows($rows, $gap: 1rem) {
+    display: grid;
+    grid-template-rows: repeat($rows, 1fr);
+    gap: $gap;
+}
+
+@mixin grid-col-rows($col, $rows, $gap: 1rem) {
+    display: grid;
+    grid-template-rows: repeat($rows, 1fr);
+    grid-template-columns: repeat($col, 1fr);
+    gap: $gap;
+}
+
+@mixin btn-style {
+    border-radius: functions.px-to-rem(100);
+    padding: functions.px-to-rem(14) functions.px-to-rem(28);
+    font-size: functions.px-to-rem(14);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+}

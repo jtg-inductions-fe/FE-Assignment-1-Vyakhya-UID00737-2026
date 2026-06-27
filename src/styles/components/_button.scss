@@ -1,0 +1,44 @@
+// Contains reusable button component styles.
+// Modifier classes handle button variants like primary, secondary, pill,
+// shadow, icon button, and full-width button.
+
+@use '/src/styles/abstract/_functions.scss';
+@use '/src/styles/abstract/_variables.scss';
+
+.btn {
+    cursor: pointer;
+    border: none;
+    border-radius: functions.px-to-rem(35);
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.btn--primary {
+    background-color: variables.$background-violet;
+    color: variables.$global-background-color;
+}
+
+.btn--secondary {
+    background-color: transparent;
+    color: variables.$text-primary;
+}
+
+.btn--pill {
+    padding: functions.px-to-rem(15) functions.px-to-rem(25);
+}
+
+.btn--full-width {
+    width: 100%;
+}
+
+.btn--shadow {
+    box-shadow: 0 functions.px-to-rem(15) functions.px-to-rem(30)
+        rgba(0, 0, 0, 0.35);
+}
+
+.btn--icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: functions.px-to-rem(5);
+}

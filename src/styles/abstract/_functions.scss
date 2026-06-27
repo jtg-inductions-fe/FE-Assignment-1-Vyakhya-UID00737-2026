@@ -1,0 +1,8 @@
+// Contains reusable SASS helper functions.
+// px-to-rem converts pixel values into rem for responsive and scalable sizing.
+
+@use 'sass:math';
+
+@function px-to-rem($px) {
+    @return math.div($px, 16) * 1rem;
+}

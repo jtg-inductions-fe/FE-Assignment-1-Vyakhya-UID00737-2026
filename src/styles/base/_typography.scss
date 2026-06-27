@@ -1,0 +1,79 @@
+// Defines default typography styles for headings, paragraphs, links,
+// and reusable text classes based on the project design system.
+
+@use '/src/styles/abstract/_variables.scss';
+@use '/src/styles/abstract/_functions.scss';
+
+body {
+    font-family: variables.$font-primary;
+}
+
+a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: functions.px-to-rem(14);
+    line-height: 120%;
+}
+
+p {
+    font-family: variables.$font-secondary;
+    font-weight: 400;
+    font-size: functions.px-to-rem(18);
+    line-height: 160%;
+}
+
+.primary-text {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(14);
+    line-height: 120%;
+}
+
+.secondary-text {
+    font-weight: 450;
+    font-size: functions.px-to-rem(23);
+}
+
+h1 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(69);
+    line-height: 120%;
+}
+
+h2 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(44);
+    line-height: 120%;
+}
+
+h3 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(44);
+    line-height: 120%;
+}
+
+h4 {
+    font-family: variables.$font-primary;
+    font-weight: 900;
+    font-size: functions.px-to-rem(24);
+    line-height: functions.px-to-rem(40);
+}
+
+h5 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(28);
+    line-height: 120%;
+}
+
+h6 {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(23);
+    line-height: 120%;
+    letter-spacing: 20%;
+    text-transform: uppercase;
+}

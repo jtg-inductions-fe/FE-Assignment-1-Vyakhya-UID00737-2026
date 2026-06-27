@@ -1,0 +1,19 @@
+// Defines global base styles for the page such as smooth scrolling,
+// body background, image behavior, and menu scroll locking.
+
+@use '/src/styles/abstract' as *;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-color: $global-background-color;
+    color: $text-primary;
+}
+
+img {
+    width: 100%;
+    display: block;
+}

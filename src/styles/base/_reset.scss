@@ -1,0 +1,12 @@
+// Resets default browser spacing and applies border-box sizing globally
+// to make layout behavior consistent across all browsers.
+
+@use '/src/styles/abstract/_variables.scss';
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
