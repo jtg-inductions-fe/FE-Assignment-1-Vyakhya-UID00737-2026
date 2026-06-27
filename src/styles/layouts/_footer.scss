@@ -1,95 +1,83 @@
-@use '../abstract/mixin' as *;
-@use '../abstract/functions';
-@use '../abstract/variables';
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
 
 // styling for mobile first view of footer section
 .footer {
     // styled footer content in column direction in mobile view
-    @include flex-col-center;
+    @include mixin.flex-col-center;
     width: 100%;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: functions.px-to-rem(26) functions.px-to-rem(32);
+    padding: functions.px-to-rem(20) functions.px-to-rem(32);
     gap: functions.px-to-rem(80);
     box-sizing: border-box;
 
     // styled travlog in column to show the full content of travlog
     &__travlog {
-        @include flex-col-center;
+        @include mixin.flex-col-center;
         align-items: flex-start;
         gap: functions.px-to-rem(30);
     }
 
     // styled logo and paragraph content in column direction
     &__top {
-        @include flex-col-center;
+        @include mixin.flex-col-center;
         align-items: flex-start;
         gap: functions.px-to-rem(32);
     }
 
     // aligns footer logo image and website name in one row
     &__logo {
-        @include flex-center;
+        @include mixin.flex-center;
         gap: functions.px-to-rem(16);
     }
 
     // resizing footer logo image
-    &__logo--img {
+    &__logo-img {
         width: functions.px-to-rem(40);
         height: functions.px-to-rem(40);
     }
 
     // styling footer paragraph text
-    .secondary-para {
-        font-size: functions.px-to-rem(16);
+    &__para {
         color: variables.$p-text;
     }
 
     // displays social media icons in row
     &__social {
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
         gap: functions.px-to-rem(32);
-        font-size: functions.px-to-rem(32);
     }
 
     // displays all footer resource sections in column direction for mobile
     &__resources {
-        @include flex-col-center;
+        @include mixin.flex-col-center;
         align-items: flex-start;
         width: 100%;
         gap: functions.px-to-rem(80);
     }
 
     // gives equal full width to each accordion section
-    &__company,
-    &__contact,
-    &__meetus {
-        @include flex-col-center;
+    &__contact {
+        @include mixin.flex-col-center;
         align-items: flex-start;
         width: 100%;
     }
 
     // accordion button styling for mobile footer links
     &__accordian {
-        @include flex-between;
+        @include mixin.flex-between;
         width: 100%;
         border: none;
         background: transparent;
         padding: 0;
         cursor: pointer;
-
-        span {
-            font-size: functions.px-to-rem(28);
-        }
     }
 
     // hides accordion content by default in mobile view
-    &__company--card,
-    &__contact--card,
-    &__meetus--card {
-        @include flex-col-center;
+    &__contact-card {
+        @include mixin.flex-col-center;
         align-items: flex-start;
         gap: functions.px-to-rem(12);
         max-height: 0;
@@ -121,22 +109,15 @@
         transform: rotate(180deg);
     }
 
-    // resizing footer section headings for mobile view
-    &__company--heading,
-    &__contact--heading,
-    &__meetus--heading {
-        font-size: functions.px-to-rem(23);
-    }
-
     // displayed none footer background in mobile view
     &__background {
         display: none;
     }
 
     // created footer section responsive at tablet view
-    @include media-tablet(431px) {
+    @include mixin.respond('tablet') {
         position: relative;
-        padding: functions.px-to-rem(200) functions.px-to-rem(65)
+        padding: functions.px-to-rem(195) functions.px-to-rem(65)
             functions.px-to-rem(64);
         gap: functions.px-to-rem(64);
 
@@ -149,81 +130,58 @@
             right: 0;
         }
 
-        &__background--img {
+        &__background-img {
             width: 100%;
-            object-fit: cover;
         }
+
         &__travlog {
             gap: functions.px-to-rem(30);
         }
 
-        .secondary-para {
-            font-size: functions.px-to-rem(23);
-        }
-
         &__resources {
-            display: flex;
             flex-direction: row;
             justify-content: space-between;
-            align-items: flex-start;
             width: 100%;
             gap: functions.px-to-rem(38);
         }
 
-        &__company,
-        &__contact,
-        &__meetus {
-            display: flex;
-            flex-direction: column;
+        &__contact {
             align-items: flex-start;
             justify-content: flex-start;
-            flex: 1;
-            width: 100%;
-            gap: functions.px-to-rem(32);
+            gap: functions.px-to-rem(40);
         }
 
         &__accordian {
-            padding: 0;
             cursor: default;
-
-            span {
-                display: none;
-            }
         }
 
-        &__company--card,
-        &__contact--card,
-        &__meetus--card {
-            display: flex;
-            flex-direction: column;
+        &__accordian-icon {
+            display: none;
+        }
+
+        &__contact-card {
             align-items: flex-start;
             justify-content: flex-start;
             width: 100%;
-            gap: functions.px-to-rem(32);
-
+            gap: functions.px-to-rem(42);
             max-height: none;
-            height: auto;
             overflow: visible;
             opacity: 1;
             visibility: visible;
             padding-top: 0;
         }
 
-        &__company--content,
-        &__contact--content,
-        &__meetus--content {
+        &__contact-content {
             color: variables.$p-text;
         }
     }
 
     // created footer section responsive at desktop view
-    @include media-desktop(1025px) {
-        display: flex;
+    @include mixin.respond('desktop') {
         flex-direction: row;
         justify-content: space-between;
-        align-items: flex-start;
-        padding: functions.px-to-rem(245) functions.px-to-rem(130) 0;
-        gap: functions.px-to-rem(73);
+        padding: functions.px-to-rem(190) functions.px-to-rem(130) 0;
+        gap: functions.px-to-rem(0);
 
         &__background {
             width: functions.px-to-rem(120);
@@ -231,37 +189,19 @@
         }
 
         &__travlog {
-            flex: 1;
             gap: functions.px-to-rem(62);
         }
 
         &__resources {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex: 1;
-            width: 100%;
-            gap: functions.px-to-rem(48);
-        }
-
-        &__company,
-        &__contact,
-        &__meetus {
-            flex: 1;
-            width: 100%;
-            gap: functions.px-to-rem(28);
-        }
-
-        &__company--card,
-        &__contact--card,
-        &__meetus--card {
             gap: functions.px-to-rem(35);
-            max-height: none;
-            overflow: visible;
-            opacity: 1;
-            visibility: visible;
-            padding-top: 0;
+        }
+
+        &__contact {
+            gap: functions.px-to-rem(35);
+        }
+
+        &__contact-card {
+            gap: functions.px-to-rem(35);
         }
     }
 }

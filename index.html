@@ -119,7 +119,7 @@
                             >
                                 <!-- kept in different spans because play-btn was not in center without it-->
                                 <span
-                                    class="icon-play-btn hero__play-icon icon-md"
+                                    class="icon-play-btn hero__play-icon icon-sm"
                                     aria-hidden="true"
                                 ></span>
                                 <span>Watch Demo</span>
@@ -459,9 +459,10 @@
             <!-- Added background image for footer section -->
             <div class="footer__background">
                 <img
-                    class="footer__background--img"
+                    class="footer__background-img"
                     src="/assets/images/footer-background.svg"
                     alt="footer-background"
+                    loading="lazy"
                 />
             </div>
             <!-- Divided footer in resources(right side) and travelog section(left side) -->
@@ -469,14 +470,16 @@
                 <!--created sub-sections for logo and social links -->
                 <div class="footer__top">
                     <div class="footer__logo">
-                        <img
-                            class="footer__logo--img"
-                            src="/assets/icons/logo.svg"
-                            alt="logo-icon"
-                        />
-                        <h4 class="footer__logo--name">Travlog</h4>
+                        <a href="/" aria-label="Go to HomePage">
+                            <img
+                                class="footer__logo-img"
+                                src="/assets/icons/logo.svg"
+                                alt="logo-icon"
+                            />
+                        </a>
+                        <h4 class="footer__logo-name">Travlog</h4>
                     </div>
-                    <p class="secondary-para">
+                    <p class="footer__para text-body">
                         Contrary to popular belief, Lorem Ipsum is not simply
                         random text. It has roots in a piece of classical Latin
                         literature from 45 BC.
@@ -484,54 +487,122 @@
                 </div>
                 <!-- Section to connect on social links -->
                 <div class="footer__social">
-                    <span class="icon-fb-icon"></span>
-                    <span class="icon-twittor-icon"
-                        ><span class="path1"></span><span class="path2"></span
-                    ></span>
-                    <span class="icon-insta-icon"
-                        ><span class="path1"></span><span class="path2"></span
-                    ></span>
+                    <a
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="icon-xl"
+                        ><span class="icon-fb-icon" aria-hidden="true"></span
+                    ></a>
+                    <a
+                        href="https://x.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="icon-xl"
+                        ><span class="icon-twittor-icon" aria-hidden="true"
+                            ><span class="path1"></span
+                            ><span class="path2"></span></span
+                    ></a>
+                    <a
+                        href="https://www.instagram.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="icon-xl"
+                        ><span class="icon-insta-icon" aria-hidden="true"
+                            ><span class="path1"></span
+                            ><span class="path2"></span></span
+                    ></a>
                 </div>
             </div>
             <!-- Section provides the contact resources to users -->
             <div class="footer__resources">
                 <!-- Section to show about company -->
-                <div class="footer__company">
+                <div class="footer__contact">
                     <button class="footer__accordian">
-                        <h5 class="footer__company--heading">Company</h5>
-                        <span class="icon-accordian"></span>
+                        <span class="footer__contact-heading text-xl"
+                            >Company</span
+                        >
+                        <span
+                            class="icon-accordian footer__accordian-icon icon-md"
+                        ></span>
                     </button>
-                    <div class="footer__company--card">
-                        <p class="footer__company--content">About</p>
-                        <p class="footer__company--content">Career</p>
-                        <p class="footer__company--content">Mobile</p>
+                    <div class="footer__contact-card">
+                        <a href="#"
+                            ><span class="footer__contact-content text-sm">
+                                About
+                            </span></a
+                        >
+                        <a href="#"
+                            ><span class="footer__contact-content text-sm">
+                                Career
+                            </span></a
+                        >
+                        <a href="#"
+                            ><span class="footer__contact-content text-sm">
+                                Mobile
+                            </span></a
+                        >
                     </div>
                 </div>
                 <!-- Contact Us section for company -->
                 <div class="footer__contact">
                     <button class="footer__accordian">
-                        <h5 class="footer__contact--heading">Contact Us</h5>
-                        <span class="icon-accordian"></span>
+                        <span class="footer__contact-heading text-xl">
+                            Contact Us
+                        </span>
+                        <span
+                            class="icon-accordian footer__accordian-icon icon-md"
+                        ></span>
                     </button>
-                    <div class="footer__contact--card">
-                        <p class="footer__contact--content">Why Travlog?</p>
-                        <p class="footer__contact--content">Partner with us</p>
-                        <p class="footer__contact--content">FAQ's</p>
-                        <p class="footer__contact--content">Blog</p>
+                    <div class="footer__contact-card">
+                        <a href="#"
+                            ><span class="footer__contact-content text-sm">
+                                Why Travlog?
+                            </span></a
+                        >
+                        <a href="#"
+                            ><span class="footer__contact-content text-sm">
+                                Partner with us
+                            </span></a
+                        >
+                        <a href="#"
+                            ><span class="footer__contact-content text-sm">
+                                FAQ's
+                            </span></a
+                        >
+                        <a href="#"
+                            ><span class="footer__contact-content text-sm">
+                                Blog
+                            </span></a
+                        >
                     </div>
                 </div>
                 <!-- contact information for company -->
-                <div class="footer__meetus">
+                <div class="footer__contact">
                     <button class="footer__accordian">
-                        <h5 class="footer__meetus--heading">Meet Us</h5>
-                        <span class="icon-accordian"></span>
+                        <span class="footer__contact-heading text-xl"
+                            >Meet Us</span
+                        >
+                        <span
+                            class="icon-accordian footer__accordian-icon icon-md"
+                        ></span>
                     </button>
-                    <div class="footer__meetus--card">
-                        <p class="footer__meetus--content">+00 92 1234 56789</p>
-                        <p class="footer__meetus--content">info@travlog.com</p>
-                        <p class="footer__meetus--content">
-                            205. R Street, New York, BD23200
-                        </p>
+                    <div class="footer__contact-card">
+                        <span href="#"
+                            ><p class="footer__contact-content text-sm">
+                                +00 92 1234 56789
+                            </p></span
+                        >
+                        <span href="#"
+                            ><p class="footer__contact-content text-sm">
+                                info@travlog.com
+                            </p></span
+                        >
+                        <span href="#"
+                            ><p class="footer__contact-content text-sm">
+                                205. R Street, New York, BD23200
+                            </p></span
+                        >
                     </div>
                 </div>
             </div>

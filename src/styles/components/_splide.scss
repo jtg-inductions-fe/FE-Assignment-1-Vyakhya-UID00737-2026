@@ -18,7 +18,7 @@
     }
 
     .splide__arrow--next {
-        right: functions.px-to-rem(-14);
+        right: functions.px-to-rem(14);
 
         span {
             display: inline-block;
@@ -29,7 +29,7 @@
     }
 
     .splide__arrow--prev {
-        left: functions.px-to-rem(-14);
+        left: functions.px-to-rem(14);
     }
 
     .splide__arrow--prev:focus,
@@ -64,11 +64,11 @@
         }
 
         .splide__arrow--next {
-            right: functions.px-to-rem(40);
+            right: functions.px-to-rem(65);
         }
 
         .splide__arrow--prev {
-            left: functions.px-to-rem(40);
+            left: functions.px-to-rem(65);
         }
 
         .splide__pagination {
@@ -83,11 +83,11 @@
         }
 
         .splide__arrow--next {
-            right: functions.px-to-rem(90);
+            right: functions.px-to-rem(110);
         }
 
         .splide__arrow--prev {
-            left: functions.px-to-rem(110);
+            left: functions.px-to-rem(130);
         }
     }
 }
