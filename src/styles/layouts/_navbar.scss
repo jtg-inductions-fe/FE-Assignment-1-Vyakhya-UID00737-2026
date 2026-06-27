@@ -1,13 +1,14 @@
-@use '/src/styles/abstract/mixin' as *;
+@use '/src/styles/abstract/mixin';
 @use '/src/styles/abstract/functions';
 @use '/src/styles/abstract/variables';
+@use 'sass:map';
 
 // Implementation:
 // - Mobile-first approach.
 // - Hamburger menu shown on smaller screens.
 // - Desktop layout replaces mobile menu with inline links.
 .navbar {
-    @include flex-between;
+    @include mixin.flex-between;
     width: 100%;
     padding: functions.px-to-rem(40) functions.px-to-rem(20);
     box-sizing: border-box;
@@ -22,14 +23,26 @@
     }
 
     &__hamburger {
-        @include flex-center;
+        @include mixin.flex-center;
         cursor: pointer;
         font-size: functions.px-to-rem(40);
-        z-index: variables.$z-index;
+        border: none;
+        background-color: transparent;
+        z-index: map.get(variables.$z-index, 'hamburger');
     }
 
     &__auth {
         display: none;
+        &--mobile {
+            @include mixin.flex-col-between;
+            width: 100%;
+            gap: functions.px-to-rem(12);
+        }
+    }
+
+    &__auth-btn {
+        width: 100%;
+        padding: functions.px-to-rem(8);
     }
 
     // Background overlay.
@@ -42,7 +55,7 @@
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.8s ease;
-        z-index: variables.$z-index-secondary;
+        z-index: map.get(variables.$z-index, 'overlay');
 
         &--active {
             opacity: 1;
@@ -55,14 +68,14 @@
     /// the menu into view.
 
     &__menu {
-        @include flex-col-center;
+        @include mixin.flex-col-center;
         position: fixed;
         top: 0;
         right: 0;
         width: 100%;
         height: auto;
         background-color: variables.$global-background-color;
-        z-index: variables.$z-index-primary;
+        z-index: map.get(variables.$z-index, 'menu');
         padding: functions.px-to-rem(90) functions.px-to-rem(70)
             functions.px-to-rem(20);
         gap: functions.px-to-rem(14);
@@ -87,21 +100,8 @@
         }
     }
 
-    &__auth--mobile {
-        @include flex-col-between;
-        width: 100%;
-        gap: functions.px-to-rem(12);
-        .btn--primary {
-            padding: functions.px-to-rem(8);
-        }
-    }
-
-    &__auth--mobile &__btn {
-        width: 100%;
-    }
-
     //These media queries are added for responsiveness on tablet and desktop screen
-    @include respond('tablet') {
+    @include mixin.respond('tablet') {
         padding: functions.px-to-rem(33) functions.px-to-rem(66);
         &__logo {
             order: 2;
@@ -112,7 +112,7 @@
         }
 
         &__auth {
-            @include flex-between;
+            @include mixin.flex-between;
             order: 3;
             gap: functions.px-to-rem(8);
             display: flex;
@@ -123,7 +123,7 @@
         }
     }
 
-    @include respond('desktop') {
+    @include mixin.respond('desktop') {
         padding: functions.px-to-rem(67) functions.px-to-rem(130);
 
         &__hamburger {
