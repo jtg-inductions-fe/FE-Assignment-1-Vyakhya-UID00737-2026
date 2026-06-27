@@ -5,7 +5,7 @@
 @use '/src/styles/abstract/_functions.scss';
 @use '/src/styles/abstract/_variables.scss';
 
-.btn {
+button {
     cursor: pointer;
     border: none;
     border-radius: functions.px-to-rem(35);
@@ -15,6 +15,7 @@
         outline: 2px solid variables.$text-secondary;
         outline-offset: functions.px-to-rem(3);
     }
+<<<<<<< HEAD
 
     &:active {
         transform: scale(0.98);
@@ -23,6 +24,32 @@
     &:hover {
         background-color: variables.$secondary-hover;
     }
+=======
+
+    &:active {
+        transform: scale(0.98);
+    }
+}
+
+.btn--primary {
+    background-color: variables.$background-violet;
+    color: variables.$global-background-color;
+    &:hover {
+        background-color: variables.$primary-hover;
+    }
+}
+
+.btn--secondary {
+    background-color: transparent;
+    color: variables.$text-primary;
+    &:focus-visible {
+        outline-color: variables.$background-violet;
+    }
+    &:hover {
+        background-color: variables.$secondary-hover;
+    }
+}
+>>>>>>> 43a77d2 (VN_A1_02: review fixes done)
 
     &--primary {
         background-color: variables.$background-violet;
