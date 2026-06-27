@@ -1,9 +1,9 @@
-@use '../abstract/mixin' as *;
-@use '../abstract/functions';
-@use '../abstract/variables';
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
 
 .hero {
-    @include flex-col-center;
+    @include mixin.flex-col-center;
     width: 100%;
     position: relative;
     box-sizing: border-box;
@@ -29,14 +29,14 @@
 
     // Made flex visible to the all content in the hero section
     &__info {
-        @include flex-col-center;
-        padding: functions.px-to-rem(20) functions.px-to-rem(16);
+        @include mixin.flex-col-center;
+        padding: functions.px-to-rem(27) functions.px-to-rem(16);
     }
 
     // Made the flex visible to nested content in text section
     &__content {
-        @include flex-col-center;
-        padding-top: functions.px-to-rem(40);
+        @include mixin.flex-col-center;
+        padding-top: functions.px-to-rem(30);
         gap: functions.px-to-rem(25);
         text-align: center;
         order: 2;
@@ -74,7 +74,7 @@
 
     // Restyled some properties of button component according to screen size as needed
     &__buttons {
-        @include flex-col-between;
+        @include mixin.flex-col-between;
         gap: functions.px-to-rem(22);
         width: 100%;
         white-space: nowrap;
@@ -104,10 +104,10 @@
 
     // Flex wrapped the partner section so that each brand should visible clearly as given in figma design and can automatically occupy next row itself
     &__partner {
-        @include flex-center;
+        @include mixin.flex-center;
         flex-wrap: wrap;
         width: 100%;
-        padding: functions.px-to-rem(40) functions.px-to-rem(15);
+        padding: functions.px-to-rem(33) functions.px-to-rem(15);
         box-sizing: border-box;
         gap: functions.px-to-rem(20);
     }
@@ -123,7 +123,7 @@
     }
 
     // These are added to make each element of the hero section responsive on each screen size
-    @include media-tablet(431px) {
+    @include mixin.respond('tablet') {
         &::before {
             top: functions.px-to-rem(-200);
             left: functions.px-to-rem(-180);
@@ -143,12 +143,12 @@
         }
 
         &__info {
-            padding: functions.px-to-rem(70);
+            padding: functions.px-to-rem(60);
         }
 
         &__content {
-            padding-top: functions.px-to-rem(62);
-            gap: functions.px-to-rem(45);
+            padding-top: functions.px-to-rem(57);
+            gap: functions.px-to-rem(42);
         }
 
         &__content--h1 {
@@ -162,7 +162,7 @@
         }
 
         &__buttons {
-            @include flex-center;
+            @include mixin.flex-center;
             flex-direction: row;
             width: auto;
         }
@@ -173,7 +173,7 @@
         }
 
         &__image {
-            @include flex-col-center;
+            @include mixin.flex-col-center;
         }
 
         &__image--img {
@@ -184,9 +184,9 @@
 
         &__partner {
             width: 100%;
-            padding: functions.px-to-rem(55) functions.px-to-rem(187);
+            padding: functions.px-to-rem(70) functions.px-to-rem(187);
             box-sizing: border-box;
-            gap: 25px;
+            gap: functions.px-to-rem(25);
         }
 
         &__partner--img {
@@ -196,7 +196,7 @@
         }
     }
 
-    @include media-desktop(1025px) {
+    @include mixin.respond('desktop') {
         &::before {
             top: functions.px-to-rem(-350);
             left: functions.px-to-rem(-280);
@@ -209,9 +209,11 @@
         }
 
         &__info {
-            @include flex-center;
+            @include mixin.flex-center;
             flex-direction: row;
-            padding: functions.px-to-rem(20) functions.px-to-rem(80);
+            padding: functions.px-to-rem(10) functions.px-to-rem(80)
+                functions.px-to-rem(20) functions.px-to-rem(120);
+            // padding: functions.px-to-rem(20) functions.px-to-rem(60)
         }
 
         &__content {
@@ -226,7 +228,7 @@
             padding: functions.px-to-rem(15) functions.px-to-rem(30);
         }
 
-        .workbag-para {
+        .primary-text {
             font-size: functions.px-to-rem(16);
         }
 
@@ -236,7 +238,7 @@
         }
 
         &__image {
-            @include flex-col-center;
+            @include mixin.flex-col-center;
             order: 2;
         }
 
