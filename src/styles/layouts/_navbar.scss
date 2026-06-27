@@ -1,12 +1,11 @@
-@use '../abstract/mixin' as *;
-@use '../abstract/functions';
-@use '../abstract/variables';
+@use '/src/styles/abstract/mixin' as *;
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
 
 // Implementation:
 // - Mobile-first approach.
 // - Hamburger menu shown on smaller screens.
 // - Desktop layout replaces mobile menu with inline links.
-// BEM methodology is used to keep styles modular and maintainable.
 .navbar {
     @include flex-between;
     width: 100%;
@@ -26,7 +25,7 @@
         @include flex-center;
         cursor: pointer;
         font-size: functions.px-to-rem(40);
-        z-index: 30;
+        z-index: variables.$z-index;
     }
 
     &__auth {
@@ -35,7 +34,7 @@
 
     // Background overlay.
     // Improves focus on the navigation drawer and allows
-    // users to close the menu by clicking outside of it.
+    // to close the menu by clicking outside of it as well.
     &__overlay {
         position: fixed;
         inset: 0;
@@ -43,7 +42,7 @@
         opacity: 0;
         visibility: hidden;
         transition: opacity 0.8s ease;
-        z-index: 10;
+        z-index: variables.$z-index-secondary;
 
         &--active {
             opacity: 1;
@@ -63,7 +62,7 @@
         width: 100%;
         height: auto;
         background-color: variables.$global-background-color;
-        z-index: 20;
+        z-index: variables.$z-index-primary;
         padding: functions.px-to-rem(90) functions.px-to-rem(70)
             functions.px-to-rem(20);
         gap: functions.px-to-rem(14);
@@ -102,7 +101,7 @@
     }
 
     //These media queries are added for responsiveness on tablet and desktop screen
-    @include media-tablet(431px) {
+    @include respond('tablet') {
         padding: functions.px-to-rem(33) functions.px-to-rem(66);
         &__logo {
             order: 2;
@@ -112,7 +111,7 @@
             order: 1;
         }
 
-        & > &__auth {
+        &__auth {
             @include flex-between;
             order: 3;
             gap: functions.px-to-rem(8);
@@ -124,7 +123,7 @@
         }
     }
 
-    @include media-desktop(1025px) {
+    @include respond('desktop') {
         padding: functions.px-to-rem(67) functions.px-to-rem(130);
 
         &__hamburger {
