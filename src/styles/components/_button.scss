@@ -11,34 +11,52 @@
     border-radius: functions.px-to-rem(35);
     font-weight: 700;
     transition: all 0.3s ease;
-}
+    &:focus-visible {
+        outline: 2px solid variables.$text-secondary;
+        outline-offset: functions.px-to-rem(3);
+    }
 
-.btn--primary {
-    background-color: variables.$background-violet;
-    color: variables.$global-background-color;
-}
+    &:active {
+        transform: scale(0.98);
+    }
 
-.btn--secondary {
-    background-color: transparent;
-    color: variables.$text-primary;
-}
+    &:hover {
+        background-color: variables.$secondary-hover;
+    }
 
-.btn--pill {
-    padding: functions.px-to-rem(15) functions.px-to-rem(25);
-}
+    &--primary {
+        background-color: variables.$background-violet;
+        color: variables.$global-background-color;
+        &:hover {
+            background-color: variables.$primary-hover;
+        }
+    }
 
-.btn--full-width {
-    width: 100%;
-}
+    &--secondary {
+        background-color: transparent;
+        color: variables.$text-primary;
+        &:focus-visible {
+            outline-color: variables.$background-violet;
+        }
+    }
 
-.btn--shadow {
-    box-shadow: 0 functions.px-to-rem(15) functions.px-to-rem(30)
-        rgba(0, 0, 0, 0.35);
-}
+    &--pill {
+        padding: functions.px-to-rem(15) functions.px-to-rem(25);
+    }
 
-.btn--icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: functions.px-to-rem(5);
+    &--full-width {
+        width: 100%;
+    }
+
+    &--shadow {
+        box-shadow: 0 functions.px-to-rem(15) functions.px-to-rem(30)
+            rgba(0, 0, 0, 0.35);
+    }
+
+    &--icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: functions.px-to-rem(5);
+    }
 }

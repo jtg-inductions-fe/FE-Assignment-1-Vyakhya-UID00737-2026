@@ -78,7 +78,7 @@
                 <!-- This contains floating overlay-->
                 <div class="hero__overlay">
                     <img
-                        class="hero__overlay--img"
+                        class="hero__overlay-image"
                         src="/assets/images/hero-float.svg"
                         alt="overlay"
                     />
@@ -90,17 +90,14 @@
                             Explore the world!
                             <span class="icon-work-bag"></span>
                         </div>
-                        <h1 class="hero__content--h1">
+                        <h1 class="hero__heading heading-primary">
                             Travel
-                            <span class="hero__content--highlight"
-                                >top destination</span
-                            >
+                            <span class="hero__highlight">top destination</span>
                             of the world
                         </h1>
-                        <p class="hero__content--p secondary-text">
-                            We always make our customer happy by providing
-                            <br />
-                            as many choices as possible
+                        <p class="hero__para text-sm">
+                            We always make our customer happy by providing as
+                            many choices as possible
                         </p>
                         <!-- used the already implemented components of buttons -->
                         <div class="hero__buttons">
@@ -110,47 +107,53 @@
                                 Get Started
                             </button>
                             <button
-                                class="hero__btn btn btn--secondary btn--icon"
+                                class="hero__btn btn btn--secondary btn--icon hero__demo-btn"
                             >
-                                <!-- kept in different spans bcoz play-btn was not in center without it-->
-                                <span class="icon-play-btn"></span>
+                                <!-- kept in different spans because play-btn was not in center without it-->
+                                <span
+                                    class="icon-play-btn hero__play-icon icon-md"
+                                ></span>
                                 <span>Watch Demo</span>
                             </button>
                         </div>
                     </div>
                     <!-- Hero image to be displayed on hero section -->
-                    <div class="hero__image">
+                    <picture class="hero__image">
+                        <source
+                            media="(max-width: 767px)"
+                            srcset="/assets/images/hero-img-mobile.png"
+                        />
                         <img
-                            class="hero_image hero__image--img"
+                            class="hero__image-content"
                             src="/assets/images/hero-img.png"
                             alt="hero-image"
                         />
-                    </div>
+                    </picture>
                 </section>
                 <!-- All the brands partner are visible here -->
                 <section class="hero__partner">
                     <img
-                        class="hero__partner--img"
+                        class="hero__partner-logo"
                         src="/assets/images/partner-img1.svg"
                         alt="partner-img1"
                     />
                     <img
-                        class="hero__partner--img"
+                        class="hero__partner-logo"
                         src="/assets/images/partner-img2.svg"
                         alt="partner-img2"
                     />
                     <img
-                        class="hero__partner--img"
+                        class="hero__partner-logo"
                         src="/assets/images/partner-img3.svg"
                         alt="partner-img3"
                     />
                     <img
-                        class="hero__partner--img"
+                        class="hero__partner-logo"
                         src="/assets/images/partner-img5.svg"
                         alt="partner-img5"
                     />
                     <img
-                        class="hero__partner--img"
+                        class="hero__partner-logo"
                         src="/assets/images/partner-img4.svg"
                         alt="partner-img4"
                     />

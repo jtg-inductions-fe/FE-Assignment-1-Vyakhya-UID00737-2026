@@ -1,6 +1,7 @@
 @use '/src/styles/abstract/mixin';
 @use '/src/styles/abstract/functions';
 @use '/src/styles/abstract/variables';
+@use 'sass:map';
 
 .hero {
     @include mixin.flex-col-center;
@@ -23,7 +24,7 @@
             rgba(255, 87, 34, 0.06) 60%,
             transparent 75%
         );
-        z-index: 1;
+        z-index: map.get(variables.$z-index, 'overlay');
         pointer-events: none;
     }
 
@@ -36,28 +37,25 @@
     // Made the flex visible to nested content in text section
     &__content {
         @include mixin.flex-col-center;
-        padding-top: functions.px-to-rem(30);
+        padding-top: functions.px-to-rem(32);
         gap: functions.px-to-rem(25);
         text-align: center;
         order: 2;
     }
 
-    &__content--highlight {
+    // to make heading aligned in center using width, height and font size properties
+    &__heading {
+        margin: 0;
+        max-width: functions.px-to-rem(400);
+    }
+
+    &__highlight {
         color: variables.$accent-color;
     }
 
-    // to make h1 heading aligned in center using width, height and font size properties
-    &__content--h1 {
-        margin: 0;
-        max-width: functions.px-to-rem(400);
-        font-size: functions.px-to-rem(40);
-    }
-
-    &__content--p {
-        opacity: 0.5;
-        font-size: functions.px-to-rem(16);
-        font-weight: 400;
-        white-space: nowrap;
+    &__para {
+        max-width: functions.px-to-rem(430);
+        color: variables.$p-text;
     }
 
     &__workbag {
@@ -85,19 +83,16 @@
         padding: functions.px-to-rem(25);
     }
 
-    .btn--secondary {
+    &__demo-btn {
         border: 1px solid variables.$p-text;
-    }
-
-    .icon-play-btn {
-        font-size: functions.px-to-rem(20);
     }
 
     &__image {
         width: 100%;
+        display: block;
     }
 
-    &__image--img {
+    &__image-content {
         width: 100%;
         object-fit: cover;
     }
@@ -107,12 +102,12 @@
         @include mixin.flex-center;
         flex-wrap: wrap;
         width: 100%;
-        padding: functions.px-to-rem(33) functions.px-to-rem(15);
+        padding: functions.px-to-rem(40) functions.px-to-rem(15);
         box-sizing: border-box;
         gap: functions.px-to-rem(20);
     }
 
-    &__partner--img {
+    &__partner-logo {
         max-width: functions.px-to-rem(120);
         height: auto;
         width: auto;
@@ -138,27 +133,22 @@
             top: functions.px-to-rem(1155);
         }
 
-        &__overlay--img {
+        &__overlay-image {
             width: 100%;
         }
 
         &__info {
-            padding: functions.px-to-rem(60);
+            padding: functions.px-to-rem(68);
         }
 
         &__content {
-            padding-top: functions.px-to-rem(57);
-            gap: functions.px-to-rem(42);
+            padding-top: functions.px-to-rem(50);
+            gap: functions.px-to-rem(43);
         }
 
-        &__content--h1 {
+        &__heading {
             margin: 0;
             max-width: functions.px-to-rem(600);
-            font-size: functions.px-to-rem(56);
-        }
-
-        &__content--p {
-            font-size: functions.px-to-rem(18);
         }
 
         &__buttons {
@@ -176,7 +166,7 @@
             @include mixin.flex-col-center;
         }
 
-        &__image--img {
+        &__image-content {
             max-width: 100%;
             height: auto;
             display: block;
@@ -184,12 +174,12 @@
 
         &__partner {
             width: 100%;
-            padding: functions.px-to-rem(70) functions.px-to-rem(187);
+            padding: functions.px-to-rem(62) functions.px-to-rem(187);
             box-sizing: border-box;
             gap: functions.px-to-rem(25);
         }
 
-        &__partner--img {
+        &__partner-logo {
             max-width: functions.px-to-rem(180);
             height: auto;
             width: auto;
@@ -211,30 +201,29 @@
         &__info {
             @include mixin.flex-center;
             flex-direction: row;
-            padding: functions.px-to-rem(10) functions.px-to-rem(80)
-                functions.px-to-rem(20) functions.px-to-rem(120);
-            // padding: functions.px-to-rem(20) functions.px-to-rem(60)
+            align-items: flex-start;
+            padding: functions.px-to-rem(27) functions.px-to-rem(80)
+                functions.px-to-rem(20) functions.px-to-rem(130);
         }
 
         &__content {
-            padding: functions.px-to-rem(20) 0;
+            padding: functions.px-to-rem(70) 0;
             order: 1;
             text-align: left;
             align-items: flex-start;
             gap: functions.px-to-rem(50);
         }
 
+        &__heading {
+            max-width: functions.px-to-rem(400);
+        }
+
+        &__para {
+            max-width: none;
+        }
+
         &__workbag {
             padding: functions.px-to-rem(15) functions.px-to-rem(30);
-        }
-
-        .primary-text {
-            font-size: functions.px-to-rem(16);
-        }
-
-        &__content--h1 {
-            max-width: functions.px-to-rem(400);
-            font-size: functions.px-to-rem(69);
         }
 
         &__image {
@@ -242,18 +231,18 @@
             order: 2;
         }
 
-        &__image--img {
+        &__image-content {
             max-width: 100%;
         }
 
         &__partner {
             width: 100%;
-            padding: functions.px-to-rem(100) functions.px-to-rem(10);
+            padding: functions.px-to-rem(80) functions.px-to-rem(10);
             box-sizing: border-box;
             gap: functions.px-to-rem(110);
         }
 
-        &__partner--img {
+        &__partner-logo {
             height: auto;
             width: auto;
         }
