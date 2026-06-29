@@ -3,6 +3,7 @@
 
 @use '/src/styles/abstract/_variables.scss';
 @use '/src/styles/abstract/_functions.scss';
+@use '/src/styles/abstract/_mixin.scss';
 
 body {
     font-family: variables.$font-primary;
@@ -27,11 +28,37 @@ p {
     font-weight: 700;
     font-size: functions.px-to-rem(14);
     line-height: 120%;
+
+    @include mixin.respond('desktop') {
+        font-size: functions.px-to-rem(16);
+    }
 }
 
 .secondary-text {
-    font-weight: 450;
+    font-weight: 400;
     font-size: functions.px-to-rem(23);
+}
+
+.heading-primary {
+    font-size: functions.px-to-rem(40);
+    @include mixin.respond('tablet') {
+        font-size: functions.px-to-rem(56);
+    }
+    @include mixin.respond('desktop') {
+        font-size: functions.px-to-rem(69);
+    }
+}
+
+.text-sm {
+    font-size: functions.px-to-rem(16);
+    font-weight: 400;
+    @include mixin.respond('tablet') {
+        font-size: functions.px-to-rem(18);
+    }
+}
+
+.icon-md {
+    font-size: functions.px-to-rem(20);
 }
 
 h1 {

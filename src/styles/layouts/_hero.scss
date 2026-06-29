@@ -1,0 +1,250 @@
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
+@use 'sass:map';
+
+.hero {
+    @include mixin.flex-col-center;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+
+    //This is to display the gradient design at top left of navabr
+    &::before {
+        content: '';
+        position: absolute;
+        top: functions.px-to-rem(-200);
+        left: functions.px-to-rem(-120);
+        width: functions.px-to-rem(500);
+        height: functions.px-to-rem(500);
+        background: radial-gradient(
+            circle,
+            rgba(255, 87, 34, 0.28) 0%,
+            rgba(255, 87, 34, 0.18) 35%,
+            rgba(255, 87, 34, 0.06) 60%,
+            transparent 75%
+        );
+        z-index: map.get(variables.$z-index, 'overlay');
+        pointer-events: none;
+    }
+
+    // Made flex visible to the all content in the hero section
+    &__info {
+        @include mixin.flex-col-center;
+        padding: functions.px-to-rem(27) functions.px-to-rem(16);
+    }
+
+    // Made the flex visible to nested content in text section
+    &__content {
+        @include mixin.flex-col-center;
+        padding-top: functions.px-to-rem(32);
+        gap: functions.px-to-rem(25);
+        text-align: center;
+        order: 2;
+    }
+
+    // to make heading aligned in center using width, height and font size properties
+    &__heading {
+        margin: 0;
+        max-width: functions.px-to-rem(400);
+    }
+
+    &__highlight {
+        color: variables.$accent-color;
+    }
+
+    &__para {
+        max-width: functions.px-to-rem(430);
+        color: variables.$p-text;
+    }
+
+    &__workbag {
+        color: variables.$accent-color;
+        display: flex;
+        padding: functions.px-to-rem(15);
+        gap: functions.px-to-rem(10);
+        align-items: center;
+        background-color: variables.$global-background-color;
+        border-radius: functions.px-to-rem(25);
+        box-shadow: 0 functions.px-to-rem(15) functions.px-to-rem(30)
+            rgba(188, 187, 187, 0.35);
+    }
+
+    // Restyled some properties of button component according to screen size as needed
+    &__buttons {
+        @include mixin.flex-col-between;
+        gap: functions.px-to-rem(22);
+        width: 100%;
+        white-space: nowrap;
+    }
+
+    &__btn {
+        width: 100%;
+        padding: functions.px-to-rem(25);
+    }
+
+    &__demo-btn {
+        border: 1px solid variables.$p-text;
+    }
+
+    &__image {
+        width: 100%;
+        display: block;
+    }
+
+    &__image-content {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    // Flex wrapped the partner section so that each brand should visible clearly as given in figma design and can automatically occupy next row itself
+    &__partner {
+        @include mixin.flex-center;
+        flex-wrap: wrap;
+        width: 100%;
+        padding: functions.px-to-rem(40) functions.px-to-rem(15);
+        box-sizing: border-box;
+        gap: functions.px-to-rem(20);
+    }
+
+    &__partner-logo {
+        max-width: functions.px-to-rem(120);
+        height: auto;
+        width: auto;
+    }
+
+    &__overlay {
+        display: none;
+    }
+
+    // These are added to make each element of the hero section responsive on each screen size
+    @include mixin.respond('tablet') {
+        &::before {
+            top: functions.px-to-rem(-200);
+            left: functions.px-to-rem(-180);
+            height: functions.px-to-rem(600);
+            width: functions.px-to-rem(600);
+        }
+
+        &__overlay {
+            display: block;
+            position: absolute;
+            left: functions.px-to-rem(38);
+            top: functions.px-to-rem(1155);
+        }
+
+        &__overlay-image {
+            width: 100%;
+        }
+
+        &__info {
+            padding: functions.px-to-rem(68);
+        }
+
+        &__content {
+            padding-top: functions.px-to-rem(50);
+            gap: functions.px-to-rem(43);
+        }
+
+        &__heading {
+            margin: 0;
+            max-width: functions.px-to-rem(600);
+        }
+
+        &__buttons {
+            @include mixin.flex-center;
+            flex-direction: row;
+            width: auto;
+        }
+
+        &__btn {
+            width: 100%;
+            padding: functions.px-to-rem(16) functions.px-to-rem(32);
+        }
+
+        &__image {
+            @include mixin.flex-col-center;
+        }
+
+        &__image-content {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        &__partner {
+            width: 100%;
+            padding: functions.px-to-rem(62) functions.px-to-rem(187);
+            box-sizing: border-box;
+            gap: functions.px-to-rem(25);
+        }
+
+        &__partner-logo {
+            max-width: functions.px-to-rem(180);
+            height: auto;
+            width: auto;
+        }
+    }
+
+    @include mixin.respond('desktop') {
+        &::before {
+            top: functions.px-to-rem(-350);
+            left: functions.px-to-rem(-280);
+            height: functions.px-to-rem(900);
+            width: functions.px-to-rem(900);
+        }
+
+        &__overlay {
+            top: functions.px-to-rem(690);
+        }
+
+        &__info {
+            @include mixin.flex-center;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: functions.px-to-rem(27) functions.px-to-rem(80)
+                functions.px-to-rem(20) functions.px-to-rem(130);
+        }
+
+        &__content {
+            padding: functions.px-to-rem(70) 0;
+            order: 1;
+            text-align: left;
+            align-items: flex-start;
+            gap: functions.px-to-rem(50);
+        }
+
+        &__heading {
+            max-width: functions.px-to-rem(400);
+        }
+
+        &__para {
+            max-width: none;
+        }
+
+        &__workbag {
+            padding: functions.px-to-rem(15) functions.px-to-rem(30);
+        }
+
+        &__image {
+            @include mixin.flex-col-center;
+            order: 2;
+        }
+
+        &__image-content {
+            max-width: 100%;
+        }
+
+        &__partner {
+            width: 100%;
+            padding: functions.px-to-rem(80) functions.px-to-rem(10);
+            box-sizing: border-box;
+            gap: functions.px-to-rem(110);
+        }
+
+        &__partner-logo {
+            height: auto;
+            width: auto;
+        }
+    }
+}
