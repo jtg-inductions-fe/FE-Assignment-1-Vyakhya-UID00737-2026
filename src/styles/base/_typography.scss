@@ -49,6 +49,23 @@ p {
     }
 }
 
+.heading-secondary {
+    font-size: functions.px-to-rem(30);
+    @include mixin.respond('tablet') {
+        font-size: functions.px-to-rem(39);
+    }
+    @include mixin.respond('desktop') {
+        font-size: functions.px-to-rem(44);
+    }
+}
+
+.text-xs {
+    font-size: functions.px-to-rem(16);
+    @include mixin.respond('tablet') {
+        font-size: functions.px-to-rem(23);
+    }
+}
+
 .text-sm {
     font-size: functions.px-to-rem(16);
     font-weight: 400;
@@ -57,8 +74,16 @@ p {
     }
 }
 
+.text-md {
+    font-size: functions.px-to-rem(18);
+}
+
 .icon-md {
     font-size: functions.px-to-rem(20);
+}
+
+.display-sm {
+    font-size: functions.px-to-rem(35);
 }
 
 h1 {

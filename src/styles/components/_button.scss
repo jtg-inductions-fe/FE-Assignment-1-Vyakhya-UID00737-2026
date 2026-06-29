@@ -5,7 +5,7 @@
 @use '/src/styles/abstract/_functions.scss';
 @use '/src/styles/abstract/_variables.scss';
 
-button {
+.btn {
     cursor: pointer;
     border: none;
     border-radius: functions.px-to-rem(35);
