@@ -21,7 +21,7 @@
             modifier classes on the menu and overlay elements.
         -->
         <nav class="navbar">
-            <div class="navbar__overlay"></div>
+            <div class="navbar__overlay" aria-hidden="true"></div>
             <!--
                 Mobile navigation drawer.
 
@@ -30,7 +30,7 @@
                 authentication buttons.
             -->
             <aside class="navbar__menu">
-                <a class="navbar__link" href="##hero-section">Home</a>
+                <a class="navbar__link" href="#hero-section">Home</a>
                 <a class="navbar__link" href="#travel-section">Discover</a>
                 <a class="navbar__link" href="#testimonial-section"
                     >Special Deals</a
@@ -47,7 +47,7 @@
             </aside>
 
             <div class="navbar__logo">
-                <a href="/">
+                <a href="/" aria-label="Go to HomePage">
                     <img
                         class="navbar__logo-img"
                         src="/assets/icons/logo.svg"
@@ -55,8 +55,8 @@
                     />
                 </a>
             </div>
-            <button class="navbar__hamburger">
-                <span class="icon-hamburger"></span>
+            <button class="navbar__hamburger" aria-label="Navigation menu">
+                <span class="icon-hamburger" aria-hidden="true"></span>
             </button>
             <div class="navbar__links">
                 <a class="navbar__link" href="#hero-section">Home</a>
@@ -74,13 +74,14 @@
 
         <main>
             <!-- hero section -->
-            <section class="hero">
+            <section id="hero-section" class="hero">
                 <!-- This contains floating overlay-->
                 <div class="hero__overlay">
                     <img
                         class="hero__overlay-image"
                         src="/assets/images/hero-float.svg"
                         alt="overlay"
+                        aria-hidden="true"
                     />
                 </div>
                 <!-- The text content of hero section divided into nested divs -->
@@ -88,7 +89,10 @@
                     <div class="hero__content">
                         <div class="hero__workbag primary-text">
                             Explore the world!
-                            <span class="icon-work-bag"></span>
+                            <span
+                                class="icon-work-bag"
+                                aria-hidden="true"
+                            ></span>
                         </div>
                         <h1 class="hero__heading heading-primary">
                             Travel
@@ -112,6 +116,7 @@
                                 <!-- kept in different spans because play-btn was not in center without it-->
                                 <span
                                     class="icon-play-btn hero__play-icon icon-md"
+                                    aria-hidden="true"
                                 ></span>
                                 <span>Watch Demo</span>
                             </button>
@@ -132,35 +137,123 @@
                 </section>
                 <!-- All the brands partner are visible here -->
                 <section class="hero__partner">
-                    <img
-                        class="hero__partner-logo"
-                        src="/assets/images/partner-img1.svg"
-                        alt="partner-img1"
-                    />
-                    <img
-                        class="hero__partner-logo"
-                        src="/assets/images/partner-img2.svg"
-                        alt="partner-img2"
-                    />
-                    <img
-                        class="hero__partner-logo"
-                        src="/assets/images/partner-img3.svg"
-                        alt="partner-img3"
-                    />
-                    <img
-                        class="hero__partner-logo"
-                        src="/assets/images/partner-img5.svg"
-                        alt="partner-img5"
-                    />
-                    <img
-                        class="hero__partner-logo"
-                        src="/assets/images/partner-img4.svg"
-                        alt="partner-img4"
-                    />
+                    <div class="hero__partner-top">
+                        <div class="hero__partner-image">
+                            <img
+                                class="hero__partner-logo"
+                                src="/assets/images/partner-img1.svg"
+                                alt="partner-img1"
+                            />
+                        </div>
+                        <div class="hero__partner-image">
+                            <img
+                                class="hero__partner-logo"
+                                src="/assets/images/partner-img2.svg"
+                                alt="partner-img2"
+                            />
+                        </div>
+                        <div class="hero__partner-image">
+                            <img
+                                class="hero__partner-logo"
+                                src="/assets/images/partner-img3.svg"
+                                alt="partner-img3"
+                            />
+                        </div>
+                    </div>
+                    <div class="hero__partner-below">
+                        <div class="hero__partner-image">
+                            <img
+                                class="hero__partner-logo"
+                                src="/assets/images/partner-img5.svg"
+                                alt="partner-img5"
+                            />
+                        </div>
+                        <div class="hero__partner-image">
+                            <img
+                                class="hero__partner-logo"
+                                src="/assets/images/partner-img4.svg"
+                                alt="partner-img4"
+                            />
+                        </div>
+                    </div>
                 </section>
             </section>
-        </main>
 
+            <!-- Travel Section -->
+            <section id="travel-section" class="travel">
+                <!-- Ellipse Layout -->
+                <div class="travel__ellipse" aria-hidden="true"></div>
+                <!-- Div to display travel bag icon in this section -->
+                <div class="travel__bag">
+                    <img
+                        class="travel__bag-image"
+                        src="/assets/images/travel-bag.svg"
+                        alt="travel-bag"
+                    />
+                </div>
+                <!-- Traveling gil image section -->
+                <picture class="travel__image">
+                    <source
+                        media="(min-width: 1025px)"
+                        srcset="/assets/images/travelgirl-desktop.png"
+                    />
+                    <source
+                        media="(min-width: 431px)"
+                        srcset="/assets/images/travelgirl-tablet.png"
+                    />
+                    <img
+                        class="travel__image-content"
+                        src="/assets/images/travelgirl-mobile.png"
+                        alt="Travelling Girl Image"
+                        loading="lazy"
+                    />
+                </picture>
+                <!-- Right side content section -->
+                <div class="travel__info">
+                    <!-- Right side header content section layout -->
+                    <div class="travel__header">
+                        <h6 class="travel__top-heading text-xs">
+                            Travel Point
+                        </h6>
+                        <h3 class="travel__heading heading-secondary">
+                            We helping you find your dream location
+                        </h3>
+                        <p class="travel__para text-sm">
+                            Contrary to popular belief, Lorem Ipsum is not
+                            simply random text. It has roots in a piece of
+                            classical Latin literature from 45 BC.
+                        </p>
+                    </div>
+                    <!-- Right side statistics grid layout -->
+                    <div class="travel__grid">
+                        <div class="travel__stat">
+                            <h4 class="travel__stat-count display-sm">500+</h4>
+                            <p class="travel__stat-label text-md">
+                                Holiday Package
+                            </p>
+                        </div>
+                        <div class="travel__stat">
+                            <h4 class="travel__stat-count display-sm">100</h4>
+                            <p class="travel__stat-label text-md">
+                                Luxury Hotel
+                            </p>
+                        </div>
+                        <div class="travel__stat">
+                            <h4 class="travel__stat-count display-sm">7</h4>
+                            <p class="travel__stat-label text-md">
+                                Premium Airlines
+                            </p>
+                        </div>
+                        <div class="travel__stat">
+                            <h4 class="travel__stat-count display-sm">2k+</h4>
+                            <p class="travel__stat-label text-md">
+                                Happy Customer
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

@@ -97,20 +97,31 @@
         object-fit: cover;
     }
 
-    // Flex wrapped the partner section so that each brand should visible clearly as given in figma design and can automatically occupy next row itself
+    // Styled partner section to show the different partner names
     &__partner {
-        @include mixin.flex-center;
-        flex-wrap: wrap;
+        @include mixin.flex-col-center;
         width: 100%;
-        padding: functions.px-to-rem(40) functions.px-to-rem(15);
-        box-sizing: border-box;
-        gap: functions.px-to-rem(20);
+        gap: functions.px-to-rem(30);
+        padding: functions.px-to-rem(45) functions.px-to-rem(20);
+    }
+
+    &__partner-top,
+    &__partner-below {
+        @include mixin.flex-center;
+        gap: functions.px-to-rem(16);
+    }
+
+    &__partner-image {
+        @include mixin.flex-center;
+        height: functions.px-to-rem(20);
     }
 
     &__partner-logo {
-        max-width: functions.px-to-rem(120);
-        height: auto;
+        height: 100%;
         width: auto;
+        max-width: 100%;
+        object-fit: contain;
+        display: block;
     }
 
     &__overlay {
@@ -173,16 +184,17 @@
         }
 
         &__partner {
-            width: 100%;
-            padding: functions.px-to-rem(62) functions.px-to-rem(187);
-            box-sizing: border-box;
-            gap: functions.px-to-rem(25);
+            gap: functions.px-to-rem(35);
+            padding-top: functions.px-to-rem(65);
         }
 
-        &__partner-logo {
-            max-width: functions.px-to-rem(180);
-            height: auto;
-            width: auto;
+        &__partner-top,
+        &__partner-below {
+            gap: functions.px-to-rem(40);
+        }
+
+        &__partner-image {
+            height: functions.px-to-rem(30);
         }
     }
 
@@ -236,15 +248,22 @@
         }
 
         &__partner {
-            width: 100%;
-            padding: functions.px-to-rem(80) functions.px-to-rem(10);
-            box-sizing: border-box;
-            gap: functions.px-to-rem(110);
+            @include mixin.flex-center;
+            flex-direction: row;
+            gap: functions.px-to-rem(92);
+            padding: functions.px-to-rem(80) functions.px-to-rem(20);
         }
 
-        &__partner-logo {
-            height: auto;
-            width: auto;
+        &__partner-top,
+        &__partner-below {
+            @include mixin.flex-between;
+            gap: functions.px-to-rem(92);
+        }
+
+        &__partner-image {
+            height: functions.px-to-rem(32);
+            display: flex;
+            align-items: center;
         }
     }
 }

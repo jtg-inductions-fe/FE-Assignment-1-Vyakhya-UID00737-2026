@@ -1,0 +1,160 @@
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
+
+//  styling for mobile first view of each section
+.travel {
+    // display travel section in column flex direction
+    @include mixin.flex-col-center;
+    width: 100%;
+    padding-top: functions.px-to-rem(50);
+    gap: functions.px-to-rem(32);
+
+    // Displays right side content in column flex direction
+    &__info {
+        @include mixin.flex-col-between;
+        gap: functions.px-to-rem(35);
+        padding: 0 functions.px-to-rem(32);
+        text-align: center;
+    }
+
+    // Displays right side header content in column flex direction
+    &__header {
+        @include mixin.flex-col-center;
+        gap: functions.px-to-rem(25);
+    }
+
+    // resizing the heading and para tags according to mobile view
+    &__top-heading {
+        color: variables.$accent-color;
+    }
+
+    &__para {
+        color: variables.$p-text;
+    }
+
+    // statistics grid to be displayed in column at mobile screen
+    &__grid {
+        @include mixin.grid-col-rows(1, 2, functions.px-to-rem(16));
+        width: 100%;
+        row-gap: functions.px-to-rem(18);
+    }
+
+    &__stat {
+        @include mixin.grid-col(1, functions.px-to-rem(16));
+        width: 100%;
+        box-sizing: border-box;
+        border: 1px solid #1918251a;
+        border-radius: functions.px-to-rem(30);
+        padding: functions.px-to-rem(32) functions.px-to-rem(30);
+        text-align: center;
+    }
+
+    // resized the content inside stats grid at mobile view
+    &__stat-count {
+        color: variables.$data-primary;
+    }
+
+    &__stat-label {
+        color: variables.$text-secondary;
+    }
+
+    // removed travel bag icon from mobile view
+    &__bag {
+        display: none;
+    }
+
+    // creating this section responsive at tablet view
+    @include mixin.respond('tablet') {
+        padding-top: functions.px-to-rem(80);
+        gap: functions.px-to-rem(62);
+        position: relative;
+
+        // ellipse styling added at tablet and desktop view
+        &__ellipse {
+            position: absolute;
+            height: functions.px-to-rem(500);
+            width: functions.px-to-rem(100);
+            background-color: variables.$ellipse-primary;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            top: functions.px-to-rem(-310);
+            right: 0;
+        }
+
+        &__info {
+            padding: 0 functions.px-to-rem(75);
+            gap: functions.px-to-rem(70);
+        }
+
+        &__header {
+            gap: functions.px-to-rem(23);
+        }
+
+        &__image {
+            padding: 0;
+            @include mixin.flex-col-center;
+            align-items: flex-start;
+        }
+
+        &__image-content {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        &__grid {
+            @include mixin.grid-col-rows(2, 2, functions.px-to-rem(16));
+            width: 100%;
+            gap: functions.px-to-rem(55);
+            row-gap: functions.px-to-rem(30);
+        }
+    }
+
+    // creating this section responsive at desktop view
+    @include mixin.respond('desktop') {
+        @include mixin.flex-between;
+        flex-direction: row;
+        padding: functions.px-to-rem(55) functions.px-to-rem(95)
+            functions.px-to-rem(30) 0;
+        gap: 0;
+
+        &__ellipse {
+            top: functions.px-to-rem(-200);
+        }
+
+        &__info {
+            padding: 0;
+            text-align: left;
+            flex: 1;
+        }
+
+        &__header {
+            align-items: flex-start;
+            gap: functions.px-to-rem(25);
+            padding: functions.px-to-rem(12) 0 0 functions.px-to-rem(8);
+        }
+
+        &__image {
+            flex: 1.75;
+        }
+
+        &__grid {
+            gap: functions.px-to-rem(32);
+        }
+
+        &__bag {
+            position: absolute;
+            display: block;
+            top: functions.px-to-rem(350);
+            right: functions.px-to-rem(55);
+        }
+
+        &__bag-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+}
