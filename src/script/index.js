@@ -43,7 +43,6 @@ const splide = new Splide('.splide', {
     perMove: 1, // number of slides the slider should skip when clicked on next or prev button
     arrows: true, // made control buttons to be visible
     pagination: true, // made the pagination to be visible
-    gap: '20px', // it defines the gap between each slide
 });
 
 // this function called the splide to be visible on web page

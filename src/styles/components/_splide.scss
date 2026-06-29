@@ -1,0 +1,93 @@
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
+
+.splide {
+    .splide__slide {
+        display: flex;
+        justify-content: center;
+    }
+
+    // Styles arrows at mobile view
+    .splide__arrow {
+        width: functions.px-to-rem(60);
+        height: functions.px-to-rem(60);
+        background-color: variables.$global-background-color;
+        top: functions.px-to-rem(65);
+        opacity: 1;
+    }
+
+    .splide__arrow--next {
+        right: functions.px-to-rem(-14);
+
+        span {
+            display: inline-block;
+            transform: rotate(
+                180deg
+            ); // Rotated the next arrow because both arrws using the same asset.
+        }
+    }
+
+    .splide__arrow--prev {
+        left: functions.px-to-rem(-14);
+    }
+
+    .splide__arrow--prev:focus,
+    .splide__arrow--next:focus {
+        background-color: variables.$background-violet;
+        color: variables.$global-background-color;
+    }
+
+    // styles pagination
+    .splide__pagination {
+        margin-top: functions.px-to-rem(24);
+        position: static;
+    }
+
+    .splide__pagination__page {
+        width: functions.px-to-rem(14);
+        height: functions.px-to-rem(14);
+    }
+
+    // change the color of pagination when it is active
+    .splide__pagination__page.is-active {
+        background: variables.$accent-color;
+        transform: scale(1.3);
+    }
+
+    // styles at tablet view
+    @include mixin.respond('tablet') {
+        .splide__arrow {
+            width: functions.px-to-rem(100);
+            height: functions.px-to-rem(100);
+            top: 36%;
+        }
+
+        .splide__arrow--next {
+            right: functions.px-to-rem(40);
+        }
+
+        .splide__arrow--prev {
+            left: functions.px-to-rem(40);
+        }
+
+        .splide__pagination {
+            margin-top: functions.px-to-rem(54);
+        }
+    }
+
+    // styles at desktop view
+    @include mixin.respond('desktop') {
+        .splide__arrow {
+            top: 35%;
+        }
+
+        .splide__arrow--next {
+            right: functions.px-to-rem(90);
+        }
+
+        .splide__arrow--prev {
+            left: functions.px-to-rem(110);
+        }
+    }
+}

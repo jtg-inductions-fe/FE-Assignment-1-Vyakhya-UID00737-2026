@@ -6,6 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="src/styles/main.scss" />
         <link rel="stylesheet" href="/assets/icons/icomoon/style.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+            rel="stylesheet"
+        />
     </head>
 
     <body>
@@ -37,10 +41,10 @@
                 >
                 <a class="navbar__link" href="#footer-section">Contact</a>
                 <div class="navbar__auth navbar__auth--mobile">
-                    <button class="navbar__auth-btn btn--primary btn--pill">
+                    <button class="navbar__auth-btn btn btn--primary btn--pill">
                         Log In
                     </button>
-                    <button class="navbar__auth-btn btn--primary btn--pill">
+                    <button class="navbar__auth-btn btn btn--primary btn--pill">
                         Sign Up
                     </button>
                 </div>
@@ -193,7 +197,6 @@
                     />
                 </div>
                 <!-- Traveling gil image section -->
-<<<<<<< HEAD
                 <picture class="travel__image">
                     <source
                         media="(min-width: 1025px)"
@@ -207,31 +210,9 @@
                         class="travel__image-content"
                         src="/assets/images/travelgirl-mobile.png"
                         alt="Travelling Girl Image"
-<<<<<<< HEAD
                         loading="lazy"
-=======
->>>>>>> 3b4517a (VN_A1_03: rebased changes done from branch VN_A1_02)
                     />
                 </picture>
-=======
-                <div class="travel__image">
-                    <picture>
-                        <source
-                            media="(min-width: 1025px)"
-                            srcset="/assets/images/travelgirl-desktop.png"
-                        />
-                        <source
-                            media="(min-width: 431px)"
-                            srcset="/assets/images/travelgirl-tablet.png"
-                        />
-                        <img
-                            class="travel__image-content"
-                            src="/assets/images/travelgirl-mobile.png"
-                            alt="Travelling Girl Image"
-                        />
-                    </picture>
-                </div>
->>>>>>> 3df050b (VN_A1_03: rebased changes done from branch VN_A1_02)
                 <!-- Right side content section -->
                 <div class="travel__info">
                     <!-- Right side header content section layout -->
@@ -278,31 +259,46 @@
                 </div>
             </section>
             <!-- Carousel Section -->
-            <!-- Using splide for carousel as it is lightweight and dependency free JS that will easily create responsive carousel-->
-            <section class="testimonial">
-                <!-- Heading for carousel section -->
+            <section id="testimonial-section" class="testimonial">
                 <div class="testimonial__heading">
-                    <h6 class="testimonial__heading--tag">Testimonials</h6>
-                    <h3 class="testimonial__heading--title">
+                    <h6 class="testimonial__tag text-xs">Testimonials</h6>
+                    <h3 class="testimonial__title heading-tertiary">
                         Trust our clients
                     </h3>
                 </div>
                 <!-- Using splide library classes for making slider -->
-                <div class="splide testimonial__slider">
+                <div
+                    class="splide testimonial__slider"
+                    aria-label="Client testimonial"
+                >
                     <div class="testimonial__background">
                         <img
-                            class="testimonial__background--img"
+                            class="testimonial__background-img"
                             src="/assets/images/background.svg"
                             alt="carousel-background"
+                            aria-hidden="true"
+                            loading="lazy"
                         />
                     </div>
                     <!-- Adding custom arrows using splide library -->
                     <div class="splide__arrows">
-                        <button class="splide__arrow splide__arrow--prev">
-                            <span class="icon-left-arow1"></span>
+                        <button
+                            class="splide__arrow splide__arrow--prev"
+                            aria-label="Previous testimonial"
+                        >
+                            <span
+                                class="icon-left-arow1"
+                                aria-hidden="true"
+                            ></span>
                         </button>
-                        <button class="splide__arrow splide__arrow--next">
-                            <span class="icon-left-arow1"></span>
+                        <button
+                            class="splide__arrow splide__arrow--next"
+                            aria-label="Next testimonial"
+                        >
+                            <span
+                                class="icon-left-arow1"
+                                aria-hidden="true"
+                            ></span>
                         </button>
                     </div>
                     <!-- Adding middle content layout using the classes of same library -->
@@ -314,33 +310,43 @@
                                 <div class="testimonial__card">
                                     <img
                                         class="testimonial__image"
-                                        src="/assets/images/carousel-info-img.svg"
+                                        src="/assets/images/carousel-info-img.png"
                                         alt="Mark Smith"
+                                        loading="lazy"
                                     />
                                     <div class="testimonial__rating">
-                                        <h5 class="testimonial__name">
+                                        <h5
+                                            class="testimonial__name heading-sm"
+                                        >
                                             Mark Smith
-                                            <span>/ Travel Enthusiast</span>
+                                            <span class="testimonial__role"
+                                                >/ Travel Enthusiast</span
+                                            >
                                         </h5>
-                                        <div class="testimonial__stars">
+                                        <div class="testimonial__stars icon-lg">
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                         </div>
                                     </div>
-                                    <p class="testimonial__text">
+                                    <p class="testimonial__text text-lg">
                                         Contrary to popular belief, Lorem Ipsum
                                         is not simply random text. It has roots
                                         in a piece of classical Latin literature
@@ -353,33 +359,43 @@
                                 <div class="testimonial__card">
                                     <img
                                         class="testimonial__image"
-                                        src="/assets/images/carousel-info-img.svg"
+                                        src="/assets/images/carousel-info-img.png"
                                         alt="John Smith"
+                                        loading="lazy"
                                     />
                                     <div class="testimonial__rating">
-                                        <h5 class="testimonial__name">
+                                        <h5
+                                            class="testimonial__name heading-sm"
+                                        >
                                             John Smith
-                                            <span>/ Travel Enthusiast</span>
+                                            <span class="testimonial__role"
+                                                >/ Travel Enthusiast</span
+                                            >
                                         </h5>
-                                        <div class="testimonial__stars">
+                                        <div class="testimonial__stars icon-lg">
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                         </div>
                                     </div>
-                                    <p class="testimonial__text">
+                                    <p class="testimonial__text text-lg">
                                         The service was amazing and the travel
                                         experience was very smooth.
                                     </p>
@@ -390,33 +406,43 @@
                                 <div class="testimonial__card">
                                     <img
                                         class="testimonial__image"
-                                        src="/assets/images/carousel-info-img.svg"
+                                        src="/assets/images/carousel-info-img.png"
                                         alt="John Smith"
+                                        loading="lazy"
                                     />
                                     <div class="testimonial__rating">
-                                        <h5 class="testimonial__name">
+                                        <h5
+                                            class="testimonial__name heading-sm"
+                                        >
                                             David Flora
-                                            <span>/ Travel Enthusiast</span>
+                                            <span class="testimonial__role"
+                                                >/ Travel Enthusiast</span
+                                            >
                                         </h5>
-                                        <div class="testimonial__stars">
+                                        <div class="testimonial__stars icon-lg">
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                             <span
                                                 class="icon-rating-star"
+                                                aria-label="Rating Stars"
                                             ></span>
                                         </div>
                                     </div>
-                                    <p class="testimonial__text">
+                                    <p class="testimonial__text text-lg">
                                         I had a fantastic experience. The entire
                                         process was seamless and the team made
                                         the journey incredibly smooth.

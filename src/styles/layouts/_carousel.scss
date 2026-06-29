@@ -1,29 +1,24 @@
-@use '../abstract/mixin' as *;
-@use '../abstract/functions';
-@use '../abstract/variables';
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
 
 .testimonial {
-    @include flex-col-center;
+    @include mixin.flex-col-center;
     width: 100%;
-    gap: functions.px-to-rem(62);
-    padding: functions.px-to-rem(120) functions.px-to-rem(32);
+    gap: functions.px-to-rem(60);
+    padding: functions.px-to-rem(130) functions.px-to-rem(32);
     text-align: center;
     box-sizing: border-box;
 
     // Made heading part to be visible flexed in columns
     &__heading {
-        @include flex-col-center;
+        @include mixin.flex-col-center;
         gap: functions.px-to-rem(16);
     }
 
     // resized headings according to mobile view
-    &__heading--tag {
-        font-size: functions.px-to-rem(16);
+    &__tag {
         color: variables.$accent-color;
-    }
-
-    &__heading--title {
-        font-size: functions.px-to-rem(32);
     }
 
     // Made slider to take full width of the screen and positon relative so that could place background and buttons w.r.t it
@@ -34,9 +29,10 @@
 
     // made the content available in card flexed in columns & gave margin to card to keep it distant from control buttons
     &__card {
-        @include flex-col-center;
+        @include mixin.flex-col-center;
+        width: 100%;
         gap: functions.px-to-rem(65);
-        margin: 0 auto; // to keep distance from side buttons
+        max-width: functions.px-to-rem(400);
     }
 
     // made image to be resized according to carousel
@@ -48,76 +44,27 @@
 
     // made rating stars to be visible in a single row
     &__stars {
-        @include flex-center;
+        @include mixin.flex-center;
         gap: functions.px-to-rem(18);
-        font-size: functions.px-to-rem(30);
     }
 
     // made rating section content flexed column wise
     &__rating {
-        @include flex-col-center;
-        gap: functions.px-to-rem(34);
+        @include mixin.flex-col-center;
+        gap: functions.px-to-rem(32);
     }
 
     // Rised the name of customer according to mobile view
     &__name {
-        font-size: functions.px-to-rem(25);
         color: variables.$data-primary;
+    }
 
-        span {
-            color: variables.$text-secondary;
-        }
+    &__role {
+        color: variables.$text-secondary;
     }
 
     &__text {
         color: variables.$p-text;
-        font-size: functions.px-to-rem(18);
-    }
-
-    // customised the styling of the arrows that are pre-available in splide
-    .splide__arrow {
-        width: functions.px-to-rem(60);
-        height: functions.px-to-rem(60);
-        background-color: variables.$global-background-color;
-        top: 12%;
-    }
-
-    .splide__arrow--next {
-        right: functions.px-to-rem(-14);
-        span {
-            display: inline-block;
-            transform: rotate(
-                180deg
-            ); // rotated the next arrow as styling was same as prev arrow
-        }
-    }
-
-    .splide__arrow--prev {
-        left: functions.px-to-rem(-14);
-    }
-
-    // made backgroud color of arrows to be violet when clicked on them
-    .splide__arrow--prev:focus,
-    .splide__arrow--next:focus {
-        background-color: variables.$background-violet;
-        color: variables.$global-background-color;
-    }
-
-    // customised the design of pagination that is pre-available in splide
-    .splide__pagination {
-        margin-top: functions.px-to-rem(24);
-        position: static;
-    }
-
-    .splide__pagination__page {
-        width: functions.px-to-rem(14);
-        height: functions.px-to-rem(14);
-    }
-
-    // change the background color of active pagination
-    .splide__pagination__page.is-active {
-        background: variables.$accent-color;
-        transform: scale(1.3);
     }
 
     &__background {
@@ -125,77 +72,33 @@
     }
 
     // Made the carousel section pixel fit to the screen for tablet view
-    @include media-tablet(431px) {
-        padding: functions.px-to-rem(34);
-
-        &__heading--tag {
-            font-size: functions.px-to-rem(23);
-        }
-
-        &__heading--title {
-            font-size: functions.px-to-rem(40);
-        }
-
-        &__text {
-            font-size: functions.px-to-rem(23);
-        }
+    @include mixin.respond('tablet') {
+        padding: functions.px-to-rem(34) functions.px-to-rem(25);
+        gap: functions.px-to-rem(55);
 
         &__card {
-            gap: functions.px-to-rem(55);
-            margin: 0 functions.px-to-rem(180);
-        }
-
-        .splide__arrow {
-            width: functions.px-to-rem(100);
-            height: functions.px-to-rem(100);
-            top: 36%;
-        }
-
-        .splide__arrow--next {
-            right: functions.px-to-rem(30);
-        }
-
-        .splide__arrow--prev {
-            left: functions.px-to-rem(30);
-        }
-
-        .splide__pagination {
-            margin-top: functions.px-to-rem(54);
+            gap: functions.px-to-rem(60);
+            max-width: functions.px-to-rem(600);
         }
 
         &__background {
             display: block;
             position: absolute;
             width: 100vw;
-            top: functions.px-to-rem(-125);
+            top: functions.px-to-rem(-110);
             left: 50%;
             transform: translateX(-50%);
         }
     }
 
     // Made the carousel section pixel fit to the screen for desktop view
-    @include media-desktop(1025px) {
-        padding-top: functions.px-to-rem(100);
+    @include mixin.respond('desktop') {
+        padding-top: functions.px-to-rem(92);
+        gap: functions.px-to-rem(58);
 
         &__card {
-            gap: functions.px-to-rem(52);
-            margin: 0 functions.px-to-rem(270);
-        }
-
-        .splide__arrow {
-            top: 33%;
-        }
-
-        .splide__arrow--next {
-            right: functions.px-to-rem(80);
-        }
-
-        .splide__arrow--prev {
-            left: functions.px-to-rem(80);
-        }
-
-        &__heading--title {
-            font-size: functions.px-to-rem(44);
+            gap: functions.px-to-rem(59);
+            max-width: functions.px-to-rem(850);
         }
 
         &__background {
