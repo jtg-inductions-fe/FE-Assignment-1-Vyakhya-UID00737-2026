@@ -65,3 +65,6 @@ To set up the project on your local environment, follow these steps:
     ```bash
     npm run lint
     ```
+
+
+Deployed Link - https://statuesque-twilight-febeda.netlify.app/
