@@ -1,3 +1,5 @@
+/* global Splide */
+
 const hamburger = document.querySelector('.navbar__hamburger');
 const menuLinks = document.querySelector('.navbar__menu');
 const overlay = document.querySelector('.navbar__overlay');
@@ -33,3 +35,15 @@ document.addEventListener('keydown', (e) => {
         closeMenu();
     }
 });
+
+// Defining properties of carousel using splide and make it visible on browser
+const splide = new Splide('.splide', {
+    type: 'loop', // loop continues to go for the available cards
+    perPage: 1, // only one card should be visible per page at a time
+    perMove: 1, // number of slides the slider should skip when clicked on next or prev button
+    arrows: true, // made control buttons to be visible
+    pagination: true, // made the pagination to be visible
+});
+
+// this function called the splide to be visible on web page
+splide.mount();

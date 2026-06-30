@@ -1,0 +1,108 @@
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
+
+.testimonial {
+    @include mixin.flex-col-center;
+    width: 100%;
+    gap: functions.px-to-rem(60);
+    padding: functions.px-to-rem(130) functions.px-to-rem(32);
+    text-align: center;
+    box-sizing: border-box;
+
+    // Made heading part to be visible flexed in columns
+    &__heading {
+        @include mixin.flex-col-center;
+        gap: functions.px-to-rem(16);
+    }
+
+    // resized headings according to mobile view
+    &__tag {
+        color: variables.$accent-color;
+    }
+
+    // Made slider to take full width of the screen and positon relative so that could place background and buttons w.r.t it
+    &__slider {
+        width: 100%;
+        position: relative;
+    }
+
+    // made the content available in card flexed in columns & gave margin to card to keep it distant from control buttons
+    &__card {
+        @include mixin.flex-col-center;
+        width: 100%;
+        gap: functions.px-to-rem(65);
+        max-width: functions.px-to-rem(400);
+    }
+
+    // made image to be resized according to carousel
+    &__image {
+        width: functions.px-to-rem(128);
+        height: functions.px-to-rem(128);
+        object-fit: cover;
+    }
+
+    // made rating stars to be visible in a single row
+    &__stars {
+        @include mixin.flex-center;
+        gap: functions.px-to-rem(18);
+    }
+
+    // made rating section content flexed column wise
+    &__rating {
+        @include mixin.flex-col-center;
+        gap: functions.px-to-rem(32);
+    }
+
+    // Rised the name of customer according to mobile view
+    &__name {
+        color: variables.$data-primary;
+    }
+
+    &__role {
+        color: variables.$text-secondary;
+    }
+
+    &__text {
+        color: variables.$p-text;
+    }
+
+    &__background {
+        display: none;
+    }
+
+    // Made the carousel section pixel fit to the screen for tablet view
+    @include mixin.respond('tablet') {
+        padding: functions.px-to-rem(34) functions.px-to-rem(25);
+        gap: functions.px-to-rem(55);
+
+        &__card {
+            gap: functions.px-to-rem(60);
+            max-width: functions.px-to-rem(600);
+        }
+
+        &__background {
+            display: block;
+            position: absolute;
+            width: 100vw;
+            top: functions.px-to-rem(-110);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    // Made the carousel section pixel fit to the screen for desktop view
+    @include mixin.respond('desktop') {
+        padding-top: functions.px-to-rem(92);
+        gap: functions.px-to-rem(58);
+
+        &__card {
+            gap: functions.px-to-rem(59);
+            max-width: functions.px-to-rem(850);
+        }
+
+        &__background {
+            top: functions.px-to-rem(-169);
+        }
+    }
+}

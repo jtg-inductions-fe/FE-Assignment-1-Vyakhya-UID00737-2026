@@ -39,6 +39,10 @@ p {
     font-size: functions.px-to-rem(23);
 }
 
+.heading-sm {
+    font-size: functions.px-to-rem(25);
+}
+
 .heading-primary {
     font-size: functions.px-to-rem(40);
     @include mixin.respond('tablet') {
@@ -53,6 +57,16 @@ p {
     font-size: functions.px-to-rem(30);
     @include mixin.respond('tablet') {
         font-size: functions.px-to-rem(39);
+    }
+    @include mixin.respond('desktop') {
+        font-size: functions.px-to-rem(44);
+    }
+}
+
+.heading-tertiary {
+    font-size: functions.px-to-rem(32);
+    @include mixin.respond('tablet') {
+        font-size: functions.px-to-rem(40);
     }
     @include mixin.respond('desktop') {
         font-size: functions.px-to-rem(44);
@@ -78,8 +92,19 @@ p {
     font-size: functions.px-to-rem(18);
 }
 
+.text-lg {
+    font-size: functions.px-to-rem(18);
+    @include mixin.respond('tablet') {
+        font-size: functions.px-to-rem(23);
+    }
+}
+
 .icon-md {
     font-size: functions.px-to-rem(20);
+}
+
+.icon-lg {
+    font-size: functions.px-to-rem(30);
 }
 
 .display-sm {
