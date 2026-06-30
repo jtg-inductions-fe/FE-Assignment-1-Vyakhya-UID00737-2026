@@ -6,7 +6,8 @@
     @include mixin.flex-col-center;
     width: 100%;
     gap: functions.px-to-rem(60);
-    padding: functions.px-to-rem(130) functions.px-to-rem(32);
+    padding-top: functions.px-to-rem(125);
+    padding-bottom: functions.px-to-rem(155);
     text-align: center;
     box-sizing: border-box;
 
@@ -31,7 +32,7 @@
     &__card {
         @include mixin.flex-col-center;
         width: 100%;
-        gap: functions.px-to-rem(65);
+        gap: functions.px-to-rem(70);
         max-width: functions.px-to-rem(400);
     }
 
@@ -73,7 +74,8 @@
 
     // Made the carousel section pixel fit to the screen for tablet view
     @include mixin.respond('tablet') {
-        padding: functions.px-to-rem(34) functions.px-to-rem(25);
+        padding-top: functions.px-to-rem(34);
+        padding-bottom: functions.px-to-rem(34);
         gap: functions.px-to-rem(55);
 
         &__card {
@@ -84,7 +86,7 @@
         &__background {
             display: block;
             position: absolute;
-            width: 100vw;
+            width: 100%;
             top: functions.px-to-rem(-110);
             left: 50%;
             transform: translateX(-50%);
@@ -93,11 +95,12 @@
 
     // Made the carousel section pixel fit to the screen for desktop view
     @include mixin.respond('desktop') {
-        padding-top: functions.px-to-rem(92);
+        padding-top: functions.px-to-rem(95);
+        padding-bottom: functions.px-to-rem(92);
         gap: functions.px-to-rem(58);
 
         &__card {
-            gap: functions.px-to-rem(59);
+            gap: functions.px-to-rem(55);
             max-width: functions.px-to-rem(850);
         }
 

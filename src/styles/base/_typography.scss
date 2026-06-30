@@ -14,6 +14,10 @@ a {
     font-weight: 700;
     font-size: functions.px-to-rem(14);
     line-height: 120%;
+    &:hover,
+    &:focus-visible {
+        color: variables.$text-secondary;
+    }
 }
 
 p {
@@ -37,6 +41,14 @@ p {
 .secondary-text {
     font-weight: 400;
     font-size: functions.px-to-rem(23);
+}
+
+.text-body {
+    font-weight: 400;
+    font-size: functions.px-to-rem(16);
+    @include mixin.respond('tablet') {
+        font-size: functions.px-to-rem(23);
+    }
 }
 
 .heading-sm {
@@ -81,6 +93,7 @@ p {
 }
 
 .text-sm {
+    color: variables.$text-primary;
     font-size: functions.px-to-rem(16);
     font-weight: 400;
     @include mixin.respond('tablet') {
@@ -99,12 +112,27 @@ p {
     }
 }
 
-.icon-md {
+.text-xl {
+    font-family: variables.$font-primary;
+    font-weight: 700;
+    font-size: functions.px-to-rem(23);
+    line-height: 120%;
+}
+
+.icon-sm {
     font-size: functions.px-to-rem(20);
+}
+
+.icon-md {
+    font-size: functions.px-to-rem(28);
 }
 
 .icon-lg {
     font-size: functions.px-to-rem(30);
+}
+
+.icon-xl {
+    font-size: functions.px-to-rem(32);
 }
 
 .display-sm {

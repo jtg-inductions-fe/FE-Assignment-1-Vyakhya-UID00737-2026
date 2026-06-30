@@ -1,7 +1,7 @@
 // Defines global base styles for the page such as smooth scrolling,
 // body background, image behavior, and menu scroll locking.
 
-@use '/src/styles/abstract' as *;
+@use '/src/styles/abstract/variables';
 
 html {
     scroll-behavior: smooth;
@@ -9,8 +9,10 @@ html {
 
 body {
     min-height: 100vh;
-    background-color: $global-background-color;
-    color: $text-primary;
+    background-color: variables.$global-background-color;
+    color: variables.$text-primary;
+    max-width: variables.$max-screen-width;
+    margin: 0 auto;
 }
 
 img {

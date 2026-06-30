@@ -1,0 +1,207 @@
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/variables';
+
+// styling for mobile first view of footer section
+.footer {
+    // styled footer content in column direction in mobile view
+    @include mixin.flex-col-center;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: functions.px-to-rem(20) functions.px-to-rem(32);
+    gap: functions.px-to-rem(80);
+    box-sizing: border-box;
+
+    // styled travlog in column to show the full content of travlog
+    &__travlog {
+        @include mixin.flex-col-center;
+        align-items: flex-start;
+        gap: functions.px-to-rem(30);
+    }
+
+    // styled logo and paragraph content in column direction
+    &__top {
+        @include mixin.flex-col-center;
+        align-items: flex-start;
+        gap: functions.px-to-rem(32);
+    }
+
+    // aligns footer logo image and website name in one row
+    &__logo {
+        @include mixin.flex-center;
+        gap: functions.px-to-rem(16);
+    }
+
+    // resizing footer logo image
+    &__logo-img {
+        width: functions.px-to-rem(40);
+        height: functions.px-to-rem(40);
+    }
+
+    // styling footer paragraph text
+    &__para {
+        color: variables.$p-text;
+    }
+
+    // displays social media icons in row
+    &__social {
+        display: flex;
+        gap: functions.px-to-rem(32);
+    }
+
+    // displays all footer resource sections in column direction for mobile
+    &__resources {
+        @include mixin.flex-col-center;
+        align-items: flex-start;
+        width: 100%;
+        gap: functions.px-to-rem(80);
+    }
+
+    // gives equal full width to each accordion section
+    &__contact {
+        @include mixin.flex-col-center;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    // accordion button styling for mobile footer links
+    &__accordian {
+        @include mixin.flex-between;
+        width: 100%;
+        border: none;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    // hides accordion content by default in mobile view
+    &__contact-card {
+        @include mixin.flex-col-center;
+        align-items: flex-start;
+        gap: functions.px-to-rem(12);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        box-sizing: border-box;
+        transition:
+            max-height 0.3s ease,
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+    }
+
+    // displays accordion card content when active class is added using JS
+    &__card--active {
+        padding-top: functions.px-to-rem(12);
+        max-height: functions.px-to-rem(160);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    // adds smooth transition to accordion arrow icon
+    &__accordian .icon-accordian {
+        transition: transform 0.3s ease;
+    }
+
+    // rotates it when card opens & closes
+    &__accordian.active .icon-accordian {
+        transform: rotate(180deg);
+    }
+
+    // displayed none footer background in mobile view
+    &__background {
+        display: none;
+    }
+
+    // created footer section responsive at tablet view
+    @include mixin.respond('tablet') {
+        position: relative;
+        padding: functions.px-to-rem(195) functions.px-to-rem(65)
+            functions.px-to-rem(64);
+        gap: functions.px-to-rem(64);
+
+        &__background {
+            position: absolute;
+            display: block;
+            width: functions.px-to-rem(130);
+            height: functions.px-to-rem(38);
+            top: functions.px-to-rem(390);
+            right: 0;
+        }
+
+        &__background-img {
+            width: 100%;
+        }
+
+        &__travlog {
+            gap: functions.px-to-rem(30);
+        }
+
+        &__resources {
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+            gap: functions.px-to-rem(38);
+        }
+
+        &__contact {
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: functions.px-to-rem(40);
+        }
+
+        &__accordian {
+            cursor: default;
+        }
+
+        &__accordian-icon {
+            display: none;
+        }
+
+        &__contact-card {
+            align-items: flex-start;
+            justify-content: flex-start;
+            width: 100%;
+            gap: functions.px-to-rem(42);
+            max-height: none;
+            overflow: visible;
+            opacity: 1;
+            visibility: visible;
+            padding-top: 0;
+        }
+
+        &__contact-content {
+            color: variables.$p-text;
+        }
+    }
+
+    // created footer section responsive at desktop view
+    @include mixin.respond('desktop') {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: functions.px-to-rem(190) functions.px-to-rem(130) 0;
+        gap: functions.px-to-rem(0);
+
+        &__background {
+            width: functions.px-to-rem(120);
+            top: functions.px-to-rem(290);
+        }
+
+        &__travlog {
+            gap: functions.px-to-rem(62);
+        }
+
+        &__resources {
+            gap: functions.px-to-rem(35);
+        }
+
+        &__contact {
+            gap: functions.px-to-rem(35);
+        }
+
+        &__contact-card {
+            gap: functions.px-to-rem(35);
+        }
+    }
+}
