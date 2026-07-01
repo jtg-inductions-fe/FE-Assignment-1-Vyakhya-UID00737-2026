@@ -2,22 +2,22 @@
 
 const hamburger = document.querySelector('.navbar__hamburger');
 const menuLinks = document.querySelector('.navbar__menu');
-const overlay = document.querySelector('.navbar__overlay');
+const overlay = document.querySelector('.overlay');
 
 // logic for toggling in navigation menu
 const openMenu = () => {
     menuLinks.hidden = false;
     menuLinks.classList.add('navbar__menu--active');
-    overlay.classList.add('navbar__overlay--active');
-    document.body.classList.add('body--menu-open');
+    overlay.classList.add('overlay--active');
+    document.body.classList.add('body--no-scroll');
     hamburger.setAttribute('aria-expanded', 'true');
     hamburger.setAttribute('aria-label', 'Close navigation menu');
 };
 
 const closeMenu = () => {
     menuLinks.classList.remove('navbar__menu--active');
-    overlay.classList.remove('navbar__overlay--active');
-    document.body.classList.remove('body--menu-open');
+    overlay.classList.remove('overlay--active');
+    document.body.classList.remove('body--no-scroll');
     hamburger.setAttribute('aria-expanded', 'false');
     hamburger.setAttribute('aria-label', 'Open navigation menu');
     menuLinks.hidden = true;
@@ -64,5 +64,21 @@ accordians.forEach((accordian) => {
         const card = this.nextElementSibling;
         this.classList.toggle('active');
         card.classList.toggle('footer__card--active');
+    });
+});
+
+// Special deals modal working
+const dealLink = document.querySelectorAll('.special-deals');
+const modal = document.querySelector('.deals');
+
+const openModal = () => {
+    overlay.classList.add('overlay--active');
+    modal.classList.add('deals--active');
+    document.body.classList.add('body--no-scroll');
+};
+
+dealLink.forEach((link) => {
+    link.addEventListener('click', () => {
+        openModal();
     });
 });

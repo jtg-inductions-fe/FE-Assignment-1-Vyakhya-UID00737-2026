@@ -1,0 +1,26 @@
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/variables';
+@use 'sass:map';
+
+.deals {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: functions.px-to-rem(360);
+    height: functions.px-to-rem(400);
+    background-color: variables.$global-background-color;
+    border-radius: functions.px-to-rem(24);
+    z-index: map.get(variables.$z-index, 'modal');
+    display: none;
+
+    &--active {
+        display: flex;
+    }
+
+    &__icon {
+        width: functions.px-to-rem(18);
+        height: functions.px-to-rem(18);
+    }
+}

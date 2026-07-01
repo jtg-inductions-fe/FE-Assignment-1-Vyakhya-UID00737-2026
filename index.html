@@ -29,7 +29,6 @@
             modifier classes on the menu and overlay elements.
         -->
         <nav class="navbar">
-            <div class="navbar__overlay" aria-hidden="true"></div>
             <!--
                 Mobile navigation drawer.
 
@@ -48,7 +47,7 @@
             <aside class="navbar__menu" id="mobile-menu" hidden>
                 <a class="navbar__link" href="#hero-section">Home</a>
                 <a class="navbar__link" href="#travel-section">Discover</a>
-                <a class="navbar__link" href="#testimonial-section"
+                <a class="navbar__link special-deals" href="#deals-modal"
                     >Special Deals</a
                 >
                 <a class="navbar__link" href="#footer-section">Contact</a>
@@ -74,7 +73,7 @@
             <div class="navbar__links">
                 <a class="navbar__link" href="#hero-section">Home</a>
                 <a class="navbar__link" href="#travel-section">Discover</a>
-                <a class="navbar__link" href="#testimonial-section"
+                <a class="navbar__link special-deals" href="#deals-modal"
                     >Special Deals</a
                 >
                 <a class="navbar__link" href="#footer-section">Contact</a>
@@ -86,6 +85,21 @@
         </nav>
 
         <main>
+            <div class="overlay" aria-hidden="true"></div>
+            <!-- Special Deals Modal -->
+            <section id="deals-modal" class="deals">
+                <div class="deals__header">
+                    <h6 class="deals__tag text-xs">
+                        <img
+                            src="/assets/icons/gift.svg"
+                            alt="gift-icon"
+                            class="deals__icon"
+                            aria-hidden="true"
+                        />
+                        Special Deals
+                    </h6>
+                </div>
+            </section>
             <!-- hero section -->
             <section id="hero-section" class="hero">
                 <!-- This contains floating overlay-->
