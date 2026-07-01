@@ -6,15 +6,21 @@ const overlay = document.querySelector('.navbar__overlay');
 
 // logic for toggling in navigation menu
 const openMenu = () => {
+    menuLinks.hidden = false;
     menuLinks.classList.add('navbar__menu--active');
     overlay.classList.add('navbar__overlay--active');
     document.body.classList.add('body--menu-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    hamburger.setAttribute('aria-label', 'Close navigation menu');
 };
 
 const closeMenu = () => {
     menuLinks.classList.remove('navbar__menu--active');
     overlay.classList.remove('navbar__overlay--active');
     document.body.classList.remove('body--menu-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-label', 'Open navigation menu');
+    menuLinks.hidden = true;
 };
 
 const toggleMenu = () => {
@@ -52,7 +58,7 @@ splide.mount();
 const accordians = document.querySelectorAll('.footer__accordian');
 
 accordians.forEach((accordian) => {
-    accordian.addEventListener('click', function () {
+    accordian.addEventListener('click', () => {
         // Toggling between adding and removing the .active class to opens the accordian content
         // Displaying card of the accordian on which clicked
         const card = this.nextElementSibling;
