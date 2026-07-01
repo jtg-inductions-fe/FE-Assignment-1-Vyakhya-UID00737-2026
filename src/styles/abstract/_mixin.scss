@@ -2,10 +2,11 @@
 // and common button styling to avoid repeating code across sections.
 
 @use '/src/styles/abstract/_variables.scss';
+@use '/src/styles/abstract/_functions.scss';
 
 $breakpoints: (
-    'tablet': 700px,
-    'desktop': 1025px,
+    'tablet': variables.$tablet,
+    'desktop': variables.$desktop,
 );
 
 // function for responding to the passed breakpoint of screen

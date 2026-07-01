@@ -32,6 +32,8 @@
         left: functions.px-to-rem(14);
     }
 
+    .splide__arrow--prev:focus-visible,
+    .splide__arrow--next:focus-visible,
     .splide__arrow--prev:focus,
     .splide__arrow--next:focus {
         background-color: variables.$background-violet;
@@ -53,6 +55,10 @@
     .splide__pagination__page.is-active {
         background: variables.$accent-color;
         transform: scale(1.3);
+        &:focus-visible {
+            outline: 2px solid variables.$background-violet;
+            outline-offset: 2px;
+        }
     }
 
     // styles at tablet view
