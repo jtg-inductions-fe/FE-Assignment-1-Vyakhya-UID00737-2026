@@ -58,7 +58,7 @@ splide.mount();
 const accordians = document.querySelectorAll('.footer__accordian');
 
 accordians.forEach((accordian) => {
-    accordian.addEventListener('click', () => {
+    accordian.addEventListener('click', function () {
         // Toggling between adding and removing the .active class to opens the accordian content
         // Displaying card of the accordian on which clicked
         const card = this.nextElementSibling;
