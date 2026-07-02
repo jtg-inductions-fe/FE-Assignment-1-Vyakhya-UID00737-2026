@@ -43,12 +43,24 @@ p {
     font-size: functions.px-to-rem(23);
 }
 
+.tertiary-text {
+    font-weight: 500;
+    font-size: functions.px-to-rem(23);
+}
+
 .text-body {
     font-weight: 400;
     font-size: functions.px-to-rem(16);
     @include mixin.respond('tablet') {
         font-size: functions.px-to-rem(23);
     }
+}
+
+.p-text {
+    line-height: 100%;
+    font-family: variables.$font-secondary;
+    font-size: functions.px-to-rem(12);
+    color: variables.$primary-p-text;
 }
 
 .heading-sm {
@@ -83,6 +95,20 @@ p {
     @include mixin.respond('desktop') {
         font-size: functions.px-to-rem(44);
     }
+}
+
+.heading-modal {
+    font-family: variables.$font-secondary;
+    font-size: functions.px-to-rem(20);
+    line-height: 100%;
+}
+
+.text-xxs {
+    font-family: variables.$font-secondary;
+    font-size: functions.px-to-rem(12);
+    font-weight: 600;
+    line-height: 100%;
+    letter-spacing: 10%;
 }
 
 .text-xs {

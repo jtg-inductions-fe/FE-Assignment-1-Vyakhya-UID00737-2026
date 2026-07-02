@@ -4,23 +4,101 @@
 @use 'sass:map';
 
 .deals {
+    @include mixin.flex-col-center;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    justify-content: flex-start;
     width: functions.px-to-rem(360);
-    height: functions.px-to-rem(400);
+    min-height: functions.px-to-rem(375);
+    height: auto;
     background-color: variables.$global-background-color;
     border-radius: functions.px-to-rem(24);
     z-index: map.get(variables.$z-index, 'modal');
+    gap: functions.px-to-rem(20);
     display: none;
 
     &--active {
         display: flex;
     }
 
+    &__header {
+        @include mixin.flex-col-center;
+        padding: functions.px-to-rem(20);
+        gap: functions.px-to-rem(8);
+        width: auto;
+        height: auto;
+        justify-content: flex-start;
+    }
+
+    &__header-tag {
+        @include mixin.flex-center;
+        gap: functions.px-to-rem(5);
+        align-items: center;
+        justify-content: center;
+    }
+
     &__icon {
         width: functions.px-to-rem(18);
         height: functions.px-to-rem(18);
+    }
+
+    &__tag {
+        color: variables.$primary-accent-color;
+    }
+
+    &__close-btn {
+        position: absolute;
+        right: functions.px-to-rem(15);
+        top: functions.px-to-rem(15);
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
+
+    &__loader {
+        position: relative;
+        gap: functions.px-to-rem(5);
+    }
+
+    &__loading-circle {
+        @include mixin.flex-center;
+        width: functions.px-to-rem(227);
+        height: functions.px-to-rem(227);
+        border-radius: 50%;
+        background-color: variables.$primary-circle;
+    }
+
+    &__arrow {
+        position: absolute;
+        width: functions.px-to-rem(22);
+        height: functions.px-to-rem(20);
+        left: functions.px-to-rem(103);
+        top: functions.px-to-rem(-12);
+    }
+
+    &__spinner-wheel {
+        position: relative;
+        width: functions.px-to-rem(227);
+        height: functions.px-to-rem(227);
+        border-radius: 50%;
+        background-color: variables.$primary-circle;
+    }
+
+    &__btn {
+        padding: functions.px-to-rem(20);
+    }
+
+    &__unlock-deals {
+        background-color: variables.$global-background-color;
+        padding: functions.px-to-rem(10) functions.px-to-rem(32);
+    }
+
+    &__counter {
+        width: functions.px-to-rem(18);
+        height: functions.px-to-rem(18);
+        border-radius: 50%;
+        background-color: variables.$background-violet;
     }
 }

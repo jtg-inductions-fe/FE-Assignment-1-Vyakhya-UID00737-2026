@@ -32,7 +32,11 @@ const toggleMenu = () => {
 };
 
 hamburger.addEventListener('click', toggleMenu);
-overlay.addEventListener('click', closeMenu);
+overlay.addEventListener('click', () => {
+    if (menuLinks.classList.contains('navbar__menu--active')) {
+        closeMenu();
+    }
+});
 document.addEventListener('keydown', (e) => {
     if (
         e.key === 'Escape' &&
@@ -70,6 +74,24 @@ accordians.forEach((accordian) => {
 // Special deals modal working
 const dealLink = document.querySelectorAll('.special-deals');
 const modal = document.querySelector('.deals');
+const closeBtn = document.querySelector('.deals__close-btn');
+
+// Spinner wheel functionality
+const loader = document.querySelector('.deals__loader');
+const spinner = document.querySelector('.deals__spinner-wheel');
+const dealsBtn = document.querySelector('.deals__btn');
+
+const showSpinnerWheel = () => {
+    loader.hidden = false;
+    spinner.hidden = true;
+    dealsBtn.hidden = true;
+
+    setTimeout(() => {
+        loader.hidden = true;
+        spinner.hidden = false;
+        dealsBtn.hidden = false;
+    }, 2000);
+};
 
 const openModal = () => {
     overlay.classList.add('overlay--active');
@@ -77,8 +99,27 @@ const openModal = () => {
     document.body.classList.add('body--no-scroll');
 };
 
+const closeModal = () => {
+    overlay.classList.remove('overlay--active');
+    modal.classList.remove('deals--active');
+    document.body.classList.remove('body--no-scroll');
+};
+
 dealLink.forEach((link) => {
     link.addEventListener('click', () => {
-        openModal();
+        if (menuLinks.classList.contains('navbar__menu--active')) {
+            closeMenu();
+            setTimeout(() => {
+                openModal();
+                showSpinnerWheel();
+            }, 300);
+        } else {
+            openModal();
+            showSpinnerWheel();
+        }
     });
+});
+
+closeBtn.addEventListener('click', () => {
+    closeModal();
 });
