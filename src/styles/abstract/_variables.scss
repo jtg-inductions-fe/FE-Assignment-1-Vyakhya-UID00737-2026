@@ -19,8 +19,14 @@ $primary-p-text: #9ca3af;
 $primary-circle: #eeeeee;
 $accent-color: #f85e9f;
 $primary-accent-color: #f4436c;
+$secondary-accent-color: #fbbf24;
+$tertiary-accent-color: #06b6d4;
+$quartnary-accent-color: #7c3aed;
+$accent-color-border: #f4436c33;
 $background-violet: #5d50c6;
 $secondary-hover: #00000011;
+$primary-shadow: #00000040;
+$secondary-shadow: #f4436c59;
 $primary-hover: #6e62ca;
 $data-primary: #ff5722;
 $ellipse-primary: #facd49;
@@ -31,4 +37,12 @@ $z-index: (
     'overlay': 10,
     'menu': 20,
     'modal': 40,
+    'arrow': 10,
 );
+
+:export {
+    primaryAccentColor: $primary-accent-color;
+    secondaryAccentColor: $secondary-accent-color;
+    tertiaryAccentColor: $tertiary-accent-color;
+    quartAccentColor: $quartnary-accent-color;
+}

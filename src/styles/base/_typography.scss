@@ -56,6 +56,23 @@ p {
     }
 }
 
+.p-text-sm {
+    font-family: variables.$font-secondary;
+    line-height: 100%;
+    letter-spacing: 4%;
+    color: variables.$primary-accent-color;
+    font-size: functions.px-to-rem(12);
+    font-weight: 700;
+}
+
+.p-text-sm-primary {
+    font-family: variables.$font-secondary;
+    line-height: 100%;
+    letter-spacing: 5%;
+    font-size: functions.px-to-rem(12);
+    font-weight: 700;
+}
+
 .p-text {
     line-height: 100%;
     font-family: variables.$font-secondary;
@@ -99,7 +116,7 @@ p {
 
 .heading-modal {
     font-family: variables.$font-secondary;
-    font-size: functions.px-to-rem(20);
+    font-size: functions.px-to-rem(22);
     line-height: 100%;
 }
 
