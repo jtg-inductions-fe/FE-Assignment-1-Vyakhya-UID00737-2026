@@ -275,7 +275,7 @@ const getWinningDeal = (angle) => {
     if (angle > 270 && angle < 360) {
         return { deal: currentDeal[1], idx: 1 };
     }
-};
+}
 
 // displaying the winning deal
 const displayWinDeal = (angle) => {
@@ -313,7 +313,7 @@ spinBtn.addEventListener('click', () => {
     generateWheelRotation();
 });
 
-const openModal = async () => {
+const openModal = () => {
     overlay.classList.add('overlay--active');
     modal.classList.add('deals--active');
     document.body.classList.add('body--no-scroll');
@@ -324,7 +324,16 @@ const openModal = async () => {
 closeBtn.addEventListener('click', () => {
     rotationCount = 0;
     spinWheel.style.transform = 'rotate(0deg)';
+    resetSpinner();
     resetWinBox();
+    rotationCount = 0;
+    spinWheel.style.transform = 'rotate(0deg)';
+    winBox.classList.remove('deals__win-deal--active');
+    dealInfo.innerHTML = '';
+    dealCode
+        .querySelectorAll('.deal-card__deal-id')
+        .forEach((code) => code.remove());
+    localStorage.clear();
     closeModal();
 });
 
