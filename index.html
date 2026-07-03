@@ -88,55 +88,76 @@
             <div class="overlay" aria-hidden="true"></div>
             <!-- Special Deals Modal -->
             <section id="deals-modal" class="deals">
-                <button class="deals__close-btn tertiary-text">X</button>
-                <div class="deals__header">
-                    <div class="deals__header-tag">
-                        <img
-                            src="/assets/icons/gift.svg"
-                            alt="gift-icon"
-                            class="deals__icon"
-                            aria-hidden="true"
-                        />
-                        <h6 class="deals__tag text-xxs">Special Deals</h6>
-                    </div>
-                    <h5 class="deals__heading heading-modal">Spin & Win!</h5>
-                    <p class="deals__para p-text">
-                        Tap the center of the wheel to spin
-                    </p>
-                </div>
-                <div class="deals__spinner">
-                    <!-- Loading state of spinner -->
-                    <div class="deals__loader">
-                        <div class="deals__arrow">
+                <button
+                    class="deals__close-btn tertiary-text"
+                    aria-label="Close deals modal"
+                >
+                    X
+                </button>
+                <section class="deals__spinner-section">
+                    <div class="deals__header">
+                        <div class="deals__header-tag">
                             <img
-                                class="deals__arrow-img"
-                                src="/assets/icons/arrow.svg"
-                                alt="Arrow pointing to Spinner"
+                                src="/assets/icons/gift.svg"
+                                alt="gift-icon"
+                                class="deals__icon"
+                                aria-hidden="true"
                             />
+                            <h6 class="deals__tag text-xxs">Special Deals</h6>
                         </div>
-                        <div class="deals__loading-circle">
-                            <span class="deals__loading-text">Loading...</span>
+                        <h5 class="deals__heading heading-modal">
+                            Spin & Win!
+                        </h5>
+                        <p class="deals__para p-text">
+                            Tap the center of the wheel to spin
+                        </p>
+                    </div>
+                    <div class="deals__spinner">
+                        <!-- Loading state of spinner -->
+                        <div class="deals__loader">
+                            <div class="deals__arrow">
+                                <img
+                                    class="deals__arrow-img"
+                                    src="/assets/icons/arrow.svg"
+                                    alt="Arrow pointing to Spinner"
+                                />
+                            </div>
+                            <div class="deals__loading-circle">
+                                <span class="deals__loading-text"
+                                    >Loading...</span
+                                >
+                            </div>
+                        </div>
+                        <!-- Spinner Wheel -->
+                        <div class="deals__spinner-wheel" hidden>
+                            <div class="deals__arrow">
+                                <img
+                                    class="deals__arrow-img"
+                                    src="/assets/icons/arrow-spin.svg"
+                                    alt="Arrow pointing to Spinner"
+                                />
+                            </div>
+                            <div class="deals__wheel">
+                                <button
+                                    class="deals__spin-btn p-text-sm"
+                                    aria-label="Spin the Wheel"
+                                >
+                                    Spin
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <!-- Spinner Wheel -->
-                    <div class="deals__spinner-wheel" hidden>
-                        <div class="deals__arrow">
-                            <img
-                                class="deals__arrow-img"
-                                src="/assets/icons/arrow-spin.svg"
-                                alt="Arrow pointing to Spinner"
-                            />
-                        </div>
-                        <div class="deals__wheel"></div>
+                    <!-- Winning result shown -->
+                    <div class="deals__win-deal"></div>
+                    <!-- Unlock deals button -->
+                    <div class="deals__btn" hidden>
+                        <button class="deals__unlock-deals btn btn--tertiary">
+                            View All Unlocked Deals
+                            <span class="counter">1</span>
+                        </button>
                     </div>
-                </div>
-                <!-- Unlock deals button -->
-                <div class="deals__btn" hidden>
-                    <button class="deals__unlock-deals primary-text">
-                        View All Unlocked Deals
-                        <span class="deals__counter">1</span>
-                    </button>
-                </div>
+                </section>
+                <section class="deals__unlock-deals-section"></section>
             </section>
             <!-- hero section -->
             <section id="hero-section" class="hero">

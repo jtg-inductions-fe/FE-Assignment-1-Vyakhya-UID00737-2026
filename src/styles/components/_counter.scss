@@ -1,0 +1,14 @@
+@use '/src/styles/abstract/_functions.scss';
+@use '/src/styles/abstract/_variables.scss';
+@use '/src/styles/abstract/_mixin.scss';
+
+// styling the counter
+.counter {
+    width: functions.px-to-rem(18);
+    height: functions.px-to-rem(18);
+    border-radius: functions.px-to-rem(10);
+    background-color: variables.$background-violet;
+    color: variables.$global-background-color;
+    font-weight: 500;
+    font-size: functions.px-to-rem(12);
+}

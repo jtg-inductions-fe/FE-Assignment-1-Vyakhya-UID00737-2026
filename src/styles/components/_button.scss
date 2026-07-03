@@ -40,6 +40,19 @@
         }
     }
 
+    &--tertiary {
+        background-color: transparent;
+        color: variables.$text-primary;
+        border: 1px solid variables.$primary-circle;
+        border-radius: functions.px-to-rem(100);
+        font-size: functions.px-to-rem(14);
+        line-height: 120%;
+        padding: functions.px-to-rem(20) functions.px-to-rem(32);
+        &:focus-visible {
+            outline-color: variables.$text-secondary;
+        }
+    }
+
     &--pill {
         padding: functions.px-to-rem(15) functions.px-to-rem(25);
     }
