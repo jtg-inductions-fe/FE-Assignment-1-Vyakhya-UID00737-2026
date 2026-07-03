@@ -81,7 +81,7 @@ const modal = document.querySelector('.deals');
 const closeBtn = document.querySelector('.deals__close-btn');
 const loader = document.querySelector('.deals__loader');
 const spinner = document.querySelector('.deals__spinner-wheel');
-const dealsBtn = document.querySelector('.deals__btn');
+const unlockBtn = document.querySelector('.deals__btn');
 
 const closeModal = () => {
     overlay.classList.remove('overlay--active');
@@ -92,12 +92,12 @@ const closeModal = () => {
 const showSpinnerWheel = () => {
     loader.hidden = false;
     spinner.hidden = true;
-    dealsBtn.hidden = true;
+    unlockBtn.hidden = true;
 
     setTimeout(() => {
         loader.hidden = true;
         spinner.hidden = false;
-        dealsBtn.hidden = false;
+        unlockBtn.hidden = false;
     }, 2000);
 };
 
@@ -124,6 +124,14 @@ dealLink.forEach((link) => {
 // Spinner wheel functionality
 const spinWheel = document.querySelector('.deals__wheel');
 const winBox = document.querySelector('.deals__win-deal');
+const unlockDealSection = document.querySelector(
+    '.deals__unlock-deals-section',
+);
+const spinnerWheelSection = document.querySelector('.deals__spinner-section');
+const showWinDeal = document.querySelector('.deals__show-win-deal');
+const backBtn = document.querySelector('.deals__back-btn');
+const count = document.querySelector('.counter');
+
 const url =
     'https://gist.githubusercontent.com/ameer-wajid-ali/1f29ebee4295cede36f8d74b45e576df/raw/122966c9a123861249f173911d8d93a76dc06d7a/';
 let dealsData = null;
@@ -159,6 +167,36 @@ const winCard = (deal) => {
                         class="deal-card__tick-icon"
                         src="/assets/icons/tick.svg"
                         alt="Green Tick Icon"
+                    />
+                </button>
+            </div>
+        </div>
+    `;
+};
+
+const winCardList = (deal) => {
+    return `
+        <div class="${deal.isExpired ? 'deal-card--expired' : 'deal-card'}">
+            <div class="deal-card__info">
+                <p class="deal-card__deal-label">${deal.label}</p>
+                <p class="${deal.isExpired ? 'deal-card__valid-date--expired' : 'deal-card__valid-date'}">${deal.isExpired ? 'Deal Expired' : `Expires in ${deal.validFor}d`}</p>
+            </div>
+            <div class="deal-card__code">
+                <p class="deal-card__deal-id">${deal.promoCode}</p>
+                <button
+                    class="deal-card__copy"
+                    aria-label="Copy promo code"
+                >
+                    <img
+                        class="deal-card__copy-icon"
+                        src="/assets/icons/copy-icon.svg"
+                        alt="Copy Icon"
+                    />
+                    <img
+                        class="deal-card__tick-icon"
+                        src="/assets/icons/tick.svg"
+                        alt="Green Tick Icon"
+                        hidden
                     />
                 </button>
             </div>
@@ -313,6 +351,63 @@ spinBtn.addEventListener('click', () => {
     generateWheelRotation();
 });
 
+// Sort deals by expiring date
+const sortDeals = (allWinDeal) => {
+    allWinDeal.sort((a, b) => b.validFor - a.validFor);
+};
+
+const copyUnlockedDealsCode = () => {
+    showWinDeal.addEventListener('click', async (e) => {
+        const copyBtn = e.target.closest('.deal-card__copy');
+        if (!copyBtn) return;
+
+        const card = copyBtn.closest('.deal-card');
+        const codeId = card.querySelector('.deal-card__deal-id');
+        const copyIcon = card.querySelector('.deal-card__copy-icon');
+        const tickIcon = card.querySelector('.deal-card__tick-icon');
+
+        await navigator.clipboard.writeText(codeId.textContent);
+        tickIcon.classList.add('deal-card__tick-icon--active');
+        copyIcon.classList.add('deal-card__copy-icon--active');
+
+        setTimeout(() => {
+            tickIcon.classList.remove('deal-card__tick-icon--active');
+            copyIcon.classList.remove('deal-card__copy-icon--active');
+        }, 2000);
+    });
+};
+
+copyUnlockedDealsCode();
+
+// Displaying all winning deals showWinDeal
+const displayAllWinDeals = () => {
+    unlockDealSection.classList.add('deals__unlock-deals-section--active');
+    spinnerWheelSection.classList.add('deals__spinner-section--disable');
+    showWinDeal.innerHTML = '';
+    if (wonDeals.length === 0) {
+        showWinDeal.innerHTML = '<div>No Deal Available</div>';
+        return;
+    }
+
+    sortDeals(wonDeals);
+    wonDeals.forEach((deal) => {
+        showWinDeal.innerHTML += winCardList(deal);
+    });
+};
+
+showWinDeal.addEventListener('click', () => {
+    copyCode();
+});
+
+unlockBtn.addEventListener('click', () => {
+    displayAllWinDeals();
+});
+
+backBtn.addEventListener('click', () => {
+    unlockDealSection.classList.remove('deals__unlock-deals-section--active');
+    spinnerWheelSection.classList.remove('deals__spinner-section--disable');
+});
+
 const openModal = () => {
     overlay.classList.add('overlay--active');
     modal.classList.add('deals--active');
@@ -324,16 +419,7 @@ const openModal = () => {
 closeBtn.addEventListener('click', () => {
     rotationCount = 0;
     spinWheel.style.transform = 'rotate(0deg)';
-    resetSpinner();
     resetWinBox();
-    rotationCount = 0;
-    spinWheel.style.transform = 'rotate(0deg)';
-    winBox.classList.remove('deals__win-deal--active');
-    dealInfo.innerHTML = '';
-    dealCode
-        .querySelectorAll('.deal-card__deal-id')
-        .forEach((code) => code.remove());
-    localStorage.clear();
     closeModal();
 });
 

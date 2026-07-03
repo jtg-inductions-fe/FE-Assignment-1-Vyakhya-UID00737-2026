@@ -16,6 +16,11 @@
     border-radius: functions.px-to-rem(16);
     gap: functions.px-to-rem(8);
 
+    &--expired {
+        border-color: variables.$secondary-card-color;
+        background-color: variables.$primary-card-color;
+    }
+
     // displaying the information of the deal that won
     &__info {
         @include mixin.flex-col-center;
@@ -57,6 +62,9 @@
         font-size: functions.px-to-rem(12);
         font-weight: 400;
         color: variables.$background-violet;
+        &--dxpired {
+            color: variables.$secondary-card-color;
+        }
     }
 
     // styling the copy button to copy winning deal's code
