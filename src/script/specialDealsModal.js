@@ -1,5 +1,10 @@
 import { closeMenu } from './utils.js';
-import { SPIN_TIME, COPY_FEEDBACK_TIME, DEALS } from './constants.js';
+import {
+    SPIN_TIME,
+    COPY_FEEDBACK_TIME,
+    DEALS,
+    MILLISECOND_PER_DAY,
+} from './constants.js';
 
 export const getSpecialDeals = () => {
     // Special deals modal working
@@ -12,6 +17,16 @@ export const getSpecialDeals = () => {
     const DEALS_BTN = document.querySelector('.deals__btn');
     const WHEEL_POINTER = document.querySelector('.deals__arrow-img');
     const OVERLAY = document.querySelector('.overlay');
+    const UNLOCK_BTN = document.querySelector('.deals__btn');
+    const UNLOCK_DEALS_SECTION = document.querySelector(
+        '.deals__unlock-deals-section',
+    );
+    const SPINNER_WHEEL_SECTION = document.querySelector(
+        '.deals__spinner-section',
+    );
+    const SHOW_WIN_DEAL = document.querySelector('.deals__show-win-deal');
+    const BACK_BTN = document.querySelector('.deals__back-btn');
+    const COUNT = document.querySelector('.counter');
 
     // added to close the modal
     const closeModal = () => {
@@ -19,6 +34,13 @@ export const getSpecialDeals = () => {
         MODAL.classList.remove('deals--active');
         WHEEL_POINTER.classList.remove('active');
         document.body.classList.remove('no-scroll');
+        UNLOCK_DEALS_SECTION.classList.remove(
+            'deals__unlock-deals-section--active',
+        );
+        SPINNER_WHEEL_SECTION.classList.remove(
+            'deals__spinner-section--disable',
+        );
+        document.body.classList.remove('body--no-scroll');
     };
 
     /**
@@ -40,6 +62,7 @@ export const getSpecialDeals = () => {
         OVERLAY.classList.add('overlay--active');
         MODAL.classList.add('deals--active');
         document.body.classList.add('no-scroll');
+        COUNT.textContent = wonDeals.length;
         await getSpinnerDeals();
         LOADER.hidden = true;
         SPINNER.hidden = false;
@@ -70,6 +93,40 @@ export const getSpecialDeals = () => {
     const DEAL_VALIDDATE = document.querySelector('.deal-card__valid-date');
     const DEAL_PROMOCODE = document.querySelector('.deal-card__deal-id');
     const DEAL_API_URL = import.meta.env.VITE_DEAL_API_URL;
+
+    // defined HTML literal to use in unlock deal-section to display n-number of all unlocked deals
+    const wonCards = (deal) => {
+        const leftDays = calculateLeftTimeForDeal(deal);
+        return `
+            <div class="deal-card ${leftDays === 0 ? 'deal-card--expired' : ''}">
+                <div class="deal-card__info">
+                    <p class="deal-card__deal-label text-label">${deal.label}</p>
+                    <p class="deal-card__valid-date p-text-primary ${leftDays === 0 ? 'deal-card__valid-date--expired' : ''}">${leftDays === 0 ? 'Deal Expired' : `Expires in ${leftDays}d`}</p>
+                </div>
+                <div class="deal-card__code">
+                    <p class="deal-card__deal-id p-text-secondary">${deal.promoCode}</p>
+                    <button
+                        class="deal-card__copy"
+                        aria-label="Copy promo code"
+                    >
+                        <img
+                            class="deal-card__copy-icon"
+                            src="/assets/icons/copy-icon.svg"
+                            alt="Copy Icon"
+                        />
+                        <img
+                            class="deal-card__tick-icon"
+                            src="/assets/icons/tick.svg"
+                            alt="Green Tick Icon"
+                            hidden
+                        />
+                    </button>
+                </div>
+            </div>
+        `;
+    };
+
+    // Spinner wheel functionality
     let dealsData = null;
     let activeDeals = [];
     let wonDeals = JSON.parse(localStorage.getItem('wonDeals')) || [];
@@ -88,24 +145,25 @@ export const getSpecialDeals = () => {
      * Shows a tick icon to indicate that
      * the code has copied successfully.
      */
-    const copyCode = () => {
-        const COPY_BTN = document.querySelector('.deal-card__copy');
-        const COPY_ICON = document.querySelector('.deal-card__copy-icon');
-        const TICK_ICON = document.querySelector('.deal-card__tick-icon');
+    const copyCode = async (copyButton) => {
+        const DEAL_CARD = copyButton.closest('.deal-card');
+        const CODE_ID = DEAL_CARD.querySelector('.deal-card__deal-id');
+        const COPY_ICON = DEAL_CARD.querySelector('.deal-card__copy-icon');
+        const TICK_ICON = DEAL_CARD.querySelector('.deal-card__tick-icon');
 
-        COPY_BTN.addEventListener('click', async () => {
-            const CODE_ID = document.querySelector('.deal-card__deal-id');
-            if (!CODE_ID) return;
+        if (!CODE_ID) return;
 
-            await navigator.clipboard.writeText(CODE_ID.textContent);
-            TICK_ICON.classList.add('deal-card__tick-icon--active');
-            COPY_ICON.classList.add('deal-card__copy-icon--active');
+        await navigator.clipboard.writeText(CODE_ID.textContent);
 
-            setTimeout(() => {
-                TICK_ICON.classList.remove('deal-card__tick-icon--active');
-                COPY_ICON.classList.remove('deal-card__copy-icon--active');
-            }, COPY_FEEDBACK_TIME);
-        });
+        TICK_ICON.hidden = false;
+        TICK_ICON.classList.add('deal-card__tick-icon--active');
+        COPY_ICON.classList.add('deal-card__copy-icon--active');
+
+        setTimeout(() => {
+            TICK_ICON.classList.remove('deal-card__tick-icon--active');
+            COPY_ICON.classList.remove('deal-card__copy-icon--active');
+            TICK_ICON.hidden = true;
+        }, COPY_FEEDBACK_TIME);
     };
 
     /**
@@ -191,11 +249,11 @@ export const getSpecialDeals = () => {
      * Display the message of no deals available
      */
     const updateSpinState = () => {
-        const NO_DEAL_AVAILABLE = activeDeals.every(
+        const NO_DEALS_AVAILABLE = activeDeals.every(
             (deal) => deal.label === 'No Deal',
         );
 
-        if (NO_DEAL_AVAILABLE) {
+        if (NO_DEALS_AVAILABLE) {
             SPIN_BTN.disabled = true;
             DEAL_MESSAGE.textContent = 'No Deals Available!';
         }
@@ -212,19 +270,19 @@ export const getSpecialDeals = () => {
             deal.remove(),
         );
         deals.forEach((deal, idx) => {
-            const dealDiv = document.createElement('div');
-            dealDiv.classList.add('deals__deal');
-            const dealSpan = document.createElement('span');
-            dealSpan.classList.add('deals__deal-text');
-            dealSpan.textContent = deal.label;
-            const response = getDealRotation(idx);
-            dealSpan.style.transform = response.rotation;
-            dealDiv.append(dealSpan);
-            dealDiv.style.backgroundColor =
+            const DEAL_DIV = document.createElement('div');
+            DEAL_DIV.classList.add('deals__deal');
+            const DEAL_SPAN = document.createElement('span');
+            DEAL_SPAN.classList.add('deals__deal-text');
+            DEAL_SPAN.textContent = deal.label;
+            const RESPONSE = getDealRotation(idx);
+            DEAL_SPAN.style.transform = RESPONSE.rotation;
+            DEAL_DIV.append(DEAL_SPAN);
+            DEAL_DIV.style.backgroundColor =
                 deal.label === 'No Deal'
-                    ? dealDiv.classList.add('deals__deal--disable')
-                    : response.selectedColor;
-            SPIN_WHEEL.append(dealDiv);
+                    ? DEAL_DIV.classList.add('deals__deal--disable')
+                    : RESPONSE.selectedColor;
+            SPIN_WHEEL.append(DEAL_DIV);
         });
         updateSpinState();
     };
@@ -276,10 +334,14 @@ export const getSpecialDeals = () => {
         DEAL_LABEL.textContent = DEAL_WON.label;
         DEAL_VALIDDATE.textContent = `Expires in ${DEAL_WON.validFor ? DEAL_WON.validFor : '7'}d`;
         DEAL_PROMOCODE.textContent = DEAL_WON.promoCode;
-        handleEventOnModal();
-        wonDeals.push(DEAL_WON);
+        wonDeals.push({
+            ...DEAL_WON,
+            validFor: DEAL_WON.validFor || 7,
+            wonDate: new Date(),
+        });
         localStorage.setItem('wonDeals', JSON.stringify(wonDeals));
         activeDeals[RESPONSE.idx] = getOneDeal(dealsData);
+        COUNT.textContent = wonDeals.length;
         displayDeals(activeDeals);
     };
 
@@ -289,12 +351,12 @@ export const getSpecialDeals = () => {
      * So, pointer will never stop on edges
      */
     const generateWheelRotation = () => {
-        const COUNT = Math.floor(Math.random() * 15) + 1;
+        let count = Math.floor(Math.random() * 15) + 1;
         let angle;
         do {
             angle = Math.floor(Math.random() * 361);
         } while (angle % 90 === 0);
-        rotationCount += COUNT * 360 + angle;
+        rotationCount += count * 360 + angle;
         SPIN_WHEEL.style.transform = `rotate(${rotationCount}deg)`;
         setTimeout(() => {
             displayWinDeal(rotationCount % 360);
@@ -315,10 +377,58 @@ export const getSpecialDeals = () => {
         MODAL.addEventListener('click', (e) => {
             const COPY_BTN = e.target.closest('.deal-card__copy');
             if (COPY_BTN) {
-                copyCode();
+                copyCode(COPY_BTN);
             }
         });
     };
+
+    // Sort deals by expiring date
+    const sortDeals = (allWinDeal) => {
+        allWinDeal.sort((a, b) => b.validFor - a.validFor);
+    };
+
+    // Displaying all winning deals showWinDeal
+    const displayAllWinDeals = () => {
+        UNLOCK_DEALS_SECTION.classList.add(
+            'deals__unlock-deals-section--active',
+        );
+        SPINNER_WHEEL_SECTION.classList.add('deals__spinner-section--disable');
+        SHOW_WIN_DEAL.innerHTML = '';
+        if (wonDeals.length === 0) {
+            SHOW_WIN_DEAL.innerHTML =
+                '<p class=text-body>No Deal Available!</p>';
+            return;
+        }
+        sortDeals(wonDeals);
+        wonDeals.forEach((deal) => {
+            SHOW_WIN_DEAL.innerHTML += wonCards(deal);
+        });
+        SHOW_WIN_DEAL.classList.add('deals__show-win-deal--active');
+    };
+
+    // calculating time left for unlocked deal to get expired
+    const calculateLeftTimeForDeal = (deal) => {
+        const DEAL_DATE = new Date(deal.wonDate);
+        const VALID_DATE = deal.validFor;
+        const CUR_DATE = new Date();
+        const TIME = Math.abs(DEAL_DATE - CUR_DATE);
+        const DAYS = Math.floor(TIME / MILLISECOND_PER_DAY);
+        return VALID_DATE - DAYS;
+    };
+
+    UNLOCK_BTN.addEventListener('click', () => {
+        displayAllWinDeals();
+    });
+
+    handleEventOnModal();
+    BACK_BTN.addEventListener('click', () => {
+        UNLOCK_DEALS_SECTION.classList.remove(
+            'deals__unlock-deals-section--active',
+        );
+        SPINNER_WHEEL_SECTION.classList.remove(
+            'deals__spinner-section--disable',
+        );
+    });
 
     // close the modal and reset all functionalities
     CLOSE_BTN.addEventListener('click', () => {

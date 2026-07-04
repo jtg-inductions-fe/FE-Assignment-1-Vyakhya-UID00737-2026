@@ -109,14 +109,6 @@
         z-index: map.get(variables.$z-index, 'arrow');
     }
 
-    &__arrow-img {
-        filter: grayscale(100%) brightness(170%);
-    }
-
-    &__arrow-img.active {
-        filter: none;
-    }
-
     &__spinner-wheel {
         position: relative;
     }
@@ -193,10 +185,10 @@
         @include mixin.flex-col-center;
         gap: functions.px-to-rem(10);
         height: functions.px-to-rem(230);
-        max-height: functions.px-to-rem(300);
+        max-height: functions.px-to-rem(320);
         overflow: auto;
         &--active {
-            justify-content: space-between;
+            justify-content: flex-start;
         }
     }
 
