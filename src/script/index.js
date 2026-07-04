@@ -1,8 +1,4 @@
 /* global Splide */
-// import { primaryAccentColor } from '/src/styles/abstract/_variables.scss';
-// import { secondaryAccentColor } from '/src/styles/abstract/_variables.scss';
-// import { tertiaryAccentColor } from '/src/styles/abstract/_variables.scss';
-// import { quartAccentColor } from '/src/styles/abstract/_variables.scss';
 
 const hamburger = document.querySelector('.navbar__hamburger');
 const menuLinks = document.querySelector('.navbar__menu');
@@ -86,6 +82,8 @@ const unlockBtn = document.querySelector('.deals__btn');
 const closeModal = () => {
     overlay.classList.remove('overlay--active');
     modal.classList.remove('deals--active');
+    unlockDealSection.classList.remove('deals__unlock-deals-section--active');
+    spinnerWheelSection.classList.remove('deals__spinner-section--disable');
     document.body.classList.remove('body--no-scroll');
 };
 
@@ -150,7 +148,7 @@ const winCard = (deal) => {
         <div class="deal-card">
             <div class="deal-card__info">
                 <p class="deal-card__deal-label">${deal.label}</p>
-                <p class="deal-card__valid-date">Expires in ${deal.validFor ? deal.validFor : 7}d</p>
+                <p class="deal-card__valid-date">Expires in ${deal.validFor != null ? deal.validFor : '7'}d</p>
             </div>
             <div class="deal-card__code">
                 <p class="deal-card__deal-id">${deal.promoCode}</p>
@@ -175,11 +173,12 @@ const winCard = (deal) => {
 };
 
 const winCardList = (deal) => {
+    const leftDays = calculateLeftTimeForDeal(deal);
     return `
-        <div class="${deal.isExpired ? 'deal-card--expired' : 'deal-card'}">
+        <div class="deal-card ${leftDays === 0 ? 'deal-card--expired' : ''}">
             <div class="deal-card__info">
                 <p class="deal-card__deal-label">${deal.label}</p>
-                <p class="${deal.isExpired ? 'deal-card__valid-date--expired' : 'deal-card__valid-date'}">${deal.isExpired ? 'Deal Expired' : `Expires in ${deal.validFor}d`}</p>
+                <p class="deal-card__valid-date ${leftDays === 0 ? 'deal-card__valid-date--expired' : ''}">${leftDays === 0 ? 'Deal Expired' : `Expires in ${leftDays}d`}</p>
             </div>
             <div class="deal-card__code">
                 <p class="deal-card__deal-id">${deal.promoCode}</p>
@@ -265,6 +264,7 @@ const getOneDeal = (allDeal) => {
 
 const colors = ['#f4436c', '#FBBF24', '#06B6D4', '#7C3AED'];
 
+// rotate text at each section in spinner wheel
 const getDealRotation = (idx) => {
     const rotations = [
         'rotate(-45deg)',
@@ -276,6 +276,7 @@ const getDealRotation = (idx) => {
     return rotations[idx];
 };
 
+// display deals in spinner wheel
 const displayDeals = (deals) => {
     spinWheel.querySelectorAll('.deals__deal').forEach((deal) => deal.remove());
     deals.forEach((deal, idx) => {
@@ -313,7 +314,7 @@ const getWinningDeal = (angle) => {
     if (angle > 270 && angle < 360) {
         return { deal: currentDeal[1], idx: 1 };
     }
-}
+};
 
 // displaying the winning deal
 const displayWinDeal = (angle) => {
@@ -326,9 +327,14 @@ const displayWinDeal = (angle) => {
     winBox.classList.add('deals__win-deal--active');
     winBox.innerHTML = winCard(dealWon);
     copyCode();
-    wonDeals.push(dealWon);
+    wonDeals.push({
+        ...dealWon,
+        validFor: dealWon.validFor || 7,
+        wonDate: new Date(),
+    });
     localStorage.setItem('wonDeals', JSON.stringify(wonDeals));
     currentDeal[response.idx] = getOneDeal(dealsData);
+    count.textContent = wonDeals.length;
     displayDeals(currentDeal);
 };
 
@@ -385,7 +391,7 @@ const displayAllWinDeals = () => {
     spinnerWheelSection.classList.add('deals__spinner-section--disable');
     showWinDeal.innerHTML = '';
     if (wonDeals.length === 0) {
-        showWinDeal.innerHTML = '<div>No Deal Available</div>';
+        showWinDeal.innerHTML = '<p class=text-body>No Deal Available!</p>';
         return;
     }
 
@@ -393,6 +399,7 @@ const displayAllWinDeals = () => {
     wonDeals.forEach((deal) => {
         showWinDeal.innerHTML += winCardList(deal);
     });
+    showWinDeal.classList.add('deals__show-win-deal--active');
 };
 
 showWinDeal.addEventListener('click', () => {
@@ -408,10 +415,20 @@ backBtn.addEventListener('click', () => {
     spinnerWheelSection.classList.remove('deals__spinner-section--disable');
 });
 
-const openModal = () => {
+const calculateLeftTimeForDeal = (deal) => {
+    const dealDate = new Date(deal.wonDate);
+    const validDate = deal.validFor;
+    const curDate = new Date();
+    const time = Math.abs(dealDate - curDate);
+    const days = Math.floor(time / (1000 * 60 * 60 * 24));
+    return validDate - days;
+};
+
+const openModal = async () => {
     overlay.classList.add('overlay--active');
     modal.classList.add('deals--active');
     document.body.classList.add('body--no-scroll');
+    count.textContent = wonDeals.length;
     await getSpinnerDeals();
 };
 

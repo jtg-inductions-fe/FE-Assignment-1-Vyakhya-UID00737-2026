@@ -45,7 +45,7 @@
         color: variables.$text-primary;
         border: 1px solid variables.$primary-circle;
         border-radius: functions.px-to-rem(100);
-        font-size: functions.px-to-rem(14);
+        font-size: functions.px-to-rem(15);
         line-height: 120%;
         padding: functions.px-to-rem(20) functions.px-to-rem(32);
         &:focus-visible {
