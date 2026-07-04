@@ -111,6 +111,14 @@
         z-index: map.get(variables.$z-index, 'arrow');
     }
 
+    &__arrow-img {
+        filter: grayscale(100%) brightness(170%);
+    }
+
+    &__arrow-img.active {
+        filter: none;
+    }
+
     &__spinner-wheel {
         position: relative;
     }
