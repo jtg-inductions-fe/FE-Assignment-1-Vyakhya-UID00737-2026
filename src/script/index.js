@@ -87,6 +87,12 @@ const closeModal = () => {
     document.body.classList.remove('body--no-scroll');
 };
 
+const closeModal = () => {
+    overlay.classList.remove('overlay--active');
+    modal.classList.remove('deals--active');
+    document.body.classList.remove('body--no-scroll');
+};
+
 const showSpinnerWheel = () => {
     loader.hidden = false;
     spinner.hidden = true;
