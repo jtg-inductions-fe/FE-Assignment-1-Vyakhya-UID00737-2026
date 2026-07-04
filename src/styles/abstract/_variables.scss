@@ -16,6 +16,7 @@ $text-primary: #000000;
 $text-secondary: #191825;
 $p-text: #19182580;
 $primary-p-text: #9ca3af;
+$secondary-p-text: #bac1ce;
 $primary-circle: #eeeeee;
 $accent-color: #f85e9f;
 $primary-accent-color: #f4436c;
@@ -39,10 +40,3 @@ $z-index: (
     'modal': 40,
     'arrow': 10,
 );
-
-:export {
-    primaryAccentColor: $primary-accent-color;
-    secondaryAccentColor: $secondary-accent-color;
-    tertiaryAccentColor: $tertiary-accent-color;
-    quartAccentColor: $quartnary-accent-color;
-}

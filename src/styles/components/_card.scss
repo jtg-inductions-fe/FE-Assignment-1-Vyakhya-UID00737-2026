@@ -5,13 +5,14 @@
 // styling the winning-deal cards
 .deal-card {
     @include mixin.flex-between;
-    width: functions.px-to-rem(300);
-    height: functions.px-to-rem(60);
+    width: functions.px-to-rem(312);
+    height: functions.px-to-rem(67);
     padding: functions.px-to-rem(16);
     border: 1px solid variables.$accent-color-border;
     background: linear-gradient(
+        to right,
         rgba(244, 67, 108, 0.1),
-        rgba(134, 58, 237, 0.1)
+        rgba(124, 58, 237, 0.1)
     );
     border-radius: functions.px-to-rem(16);
     gap: functions.px-to-rem(8);
@@ -29,33 +30,16 @@
         gap: functions.px-to-rem(8);
     }
 
-    // displaying the name of the deal
-    &__deal-label {
-        font-family: variables.$font-secondary;
-        line-height: 100%;
-        font-size: functions.px-to-rem(14);
-        font-weight: 600;
-    }
-
     // styling the code to be visibled at code section
     &__deal-id {
         border: 1px solid variables.$primary-p-text;
         padding: functions.px-to-rem(4) functions.px-to-rem(10);
         border-radius: functions.px-to-rem(8);
-        font-family: variables.$font-secondary;
-        line-height: 100%;
-        letter-spacing: 5%;
-        font-size: functions.px-to-rem(12);
-        font-weight: 700;
         background-color: variables.$global-background-color;
     }
 
     // styling the valid date
     &__valid-date {
-        font-family: variables.$font-secondary;
-        line-height: 100%;
-        font-size: functions.px-to-rem(12);
-        font-weight: 400;
         color: variables.$background-violet;
     }
 

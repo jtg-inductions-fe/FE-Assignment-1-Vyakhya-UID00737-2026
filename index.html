@@ -37,7 +37,7 @@
                 authentication buttons.
             -->
             <button
-                class="navbar__hamburger"
+                class="navbar__hamburger icon-xxl"
                 aria-label="Navigation menu"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
@@ -47,9 +47,7 @@
             <aside class="navbar__menu" id="mobile-menu" hidden>
                 <a class="navbar__link" href="#hero-section">Home</a>
                 <a class="navbar__link" href="#travel-section">Discover</a>
-                <a class="navbar__link special-deals" href="#deals-modal"
-                    >Special Deals</a
-                >
+                <a class="navbar__link special-deals">Special Deals</a>
                 <a class="navbar__link" href="#footer-section">Contact</a>
                 <div class="navbar__auth navbar__auth--mobile">
                     <button class="navbar__auth-btn btn btn--primary btn--pill">
@@ -70,12 +68,10 @@
                     />
                 </a>
             </div>
-            <div class="navbar__links">
+            <div class="navbar__links link-text">
                 <a class="navbar__link" href="#hero-section">Home</a>
                 <a class="navbar__link" href="#travel-section">Discover</a>
-                <a class="navbar__link special-deals" href="#deals-modal"
-                    >Special Deals</a
-                >
+                <a class="navbar__link special-deals">Special Deals</a>
                 <a class="navbar__link" href="#footer-section">Contact</a>
             </div>
             <div class="navbar__auth">
@@ -92,7 +88,10 @@
                     class="deals__close-btn tertiary-text"
                     aria-label="Close deals modal"
                 >
-                    X
+                    <img
+                        src="/assets/icons/close-icon.svg"
+                        alt="close button"
+                    />
                 </button>
                 <section class="deals__spinner-section">
                     <div class="deals__header">
@@ -118,7 +117,7 @@
                             <div class="deals__arrow">
                                 <img
                                     class="deals__arrow-img"
-                                    src="/assets/icons/arrow.svg"
+                                    src="/assets/icons/arrow-spin.svg"
                                     alt="Arrow pointing to Spinner"
                                 />
                             </div>
@@ -145,15 +144,48 @@
                                     Spin
                                 </button>
                             </div>
+                            <p class="deals__message display-xs"></p>
                         </div>
                     </div>
                     <!-- Winning result shown -->
-                    <div class="deals__win-deal"></div>
+                    <div class="deals__win-deal">
+                        <p class="deals__win-heading p-text-card">You won!</p>
+                        <div class="deal-card">
+                            <div class="deal-card__info">
+                                <p class="deal-card__deal-label text-label"></p>
+                                <p
+                                    class="deal-card__valid-date p-text-primary"
+                                ></p>
+                            </div>
+                            <div class="deal-card__code">
+                                <p
+                                    class="deal-card__deal-id p-text-secondary"
+                                ></p>
+                                <button
+                                    class="deal-card__copy"
+                                    aria-label="Copy promo code"
+                                >
+                                    <img
+                                        class="deal-card__copy-icon"
+                                        src="/assets/icons/copy-icon.svg"
+                                        alt="Copy Icon"
+                                    />
+                                    <img
+                                        class="deal-card__tick-icon"
+                                        src="/assets/icons/tick.svg"
+                                        alt="Green Tick Icon"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Unlock deals button -->
                     <div class="deals__btn" hidden>
-                        <button class="deals__unlock-deals btn btn--tertiary">
+                        <button
+                            class="deals__unlock-deals btn btn--tertiary display-xs"
+                        >
                             View All Unlocked Deals
-                            <span class="counter">1</span>
+                            <span class="counter p-text-primary">1</span>
                         </button>
                     </div>
                 </section>

@@ -1,7 +1,7 @@
+@use 'sass:map';
 @use '/src/styles/abstract/mixin';
 @use '/src/styles/abstract/functions';
 @use '/src/styles/abstract/variables';
-@use 'sass:map';
 
 // Implementation:
 // - Mobile-first approach.
@@ -30,7 +30,7 @@
     &__hamburger {
         @include mixin.flex-center;
         cursor: pointer;
-        font-size: functions.px-to-rem(40);
+        order: 2;
         border: none;
         background-color: transparent;
         z-index: map.get(variables.$z-index, 'hamburger');
@@ -143,8 +143,6 @@
             justify-content: space-between;
             align-items: center;
             gap: functions.px-to-rem(40);
-            font-size: functions.px-to-rem(14);
-            font-weight: 700;
         }
 
         &__link:hover {

@@ -1,5 +1,5 @@
-@use '/src/styles/abstract/variables';
 @use 'sass:map';
+@use '/src/styles/abstract/variables';
 
 .overlay {
     position: fixed;
@@ -15,6 +15,6 @@
     }
 }
 
-.body--no-scroll {
+.no-scroll {
     overflow: hidden;
 }
