@@ -117,9 +117,9 @@
     // created footer section responsive at tablet view
     @include mixin.respond('tablet') {
         position: relative;
-        padding: functions.px-to-rem(195) functions.px-to-rem(65)
+        padding: functions.px-to-rem(150) functions.px-to-rem(65)
             functions.px-to-rem(64);
-        gap: functions.px-to-rem(64);
+        gap: functions.px-to-rem(70);
 
         &__background {
             position: absolute;
@@ -180,7 +180,7 @@
     @include mixin.respond('desktop') {
         flex-direction: row;
         justify-content: space-between;
-        padding: functions.px-to-rem(190) functions.px-to-rem(130) 0;
+        padding: functions.px-to-rem(145) functions.px-to-rem(130) 0;
         gap: functions.px-to-rem(0);
 
         &__background {

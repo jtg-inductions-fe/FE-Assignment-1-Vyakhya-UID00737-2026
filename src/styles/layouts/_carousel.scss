@@ -7,7 +7,7 @@
     width: 100%;
     gap: functions.px-to-rem(60);
     padding-top: functions.px-to-rem(125);
-    padding-bottom: functions.px-to-rem(155);
+    padding-bottom: functions.px-to-rem(70);
     text-align: center;
     box-sizing: border-box;
 
@@ -65,7 +65,7 @@
     }
 
     &__text {
-        color: variables.$p-text;
+        color: variables.$p-text-secondary;
     }
 
     &__background {
@@ -74,7 +74,7 @@
 
     // Made the carousel section pixel fit to the screen for tablet view
     @include mixin.respond('tablet') {
-        padding-top: functions.px-to-rem(34);
+        padding-top: functions.px-to-rem(30);
         padding-bottom: functions.px-to-rem(34);
         gap: functions.px-to-rem(55);
 

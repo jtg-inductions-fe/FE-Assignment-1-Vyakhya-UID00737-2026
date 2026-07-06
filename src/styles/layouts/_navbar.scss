@@ -91,6 +91,17 @@
             transform: translateY(0);
         }
     }
+
+    .special-deals {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        &:focus,
+        &:focus-visible {
+            color: variables.$text-secondary;
+        }
+    }
+
     &__link {
         display: block;
         width: 100%;
@@ -103,6 +114,10 @@
             color: variables.$global-background-color;
             transition: 0.3s ease;
         }
+    }
+
+    .active {
+        color: variables.$text-secondary;
     }
 
     //These media queries are added for responsiveness on tablet and desktop screen
@@ -145,9 +160,12 @@
             gap: functions.px-to-rem(40);
         }
 
-        &__link:hover {
-            background: none;
-            color: variables.$text-secondary;
+        &__link {
+            color: variables.$p-text;
+            &:hover {
+                background: none;
+                color: variables.$text-secondary;
+            }
         }
 
         &__menu {

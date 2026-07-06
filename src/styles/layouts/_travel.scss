@@ -7,7 +7,7 @@
     // display travel section in column flex direction
     @include mixin.flex-col-center;
     width: 100%;
-    padding-top: functions.px-to-rem(50);
+    padding-top: functions.px-to-rem(60);
     gap: functions.px-to-rem(32);
 
     // Displays right side content in column flex direction
@@ -66,7 +66,7 @@
 
     // creating this section responsive at tablet view
     @include mixin.respond('tablet') {
-        padding-top: functions.px-to-rem(80);
+        padding-top: functions.px-to-rem(85);
         gap: functions.px-to-rem(62);
         position: relative;
 

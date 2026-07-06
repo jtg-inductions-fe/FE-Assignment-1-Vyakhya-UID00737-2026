@@ -61,7 +61,7 @@
     &__workbag {
         color: variables.$accent-color;
         display: flex;
-        padding: functions.px-to-rem(15);
+        padding: functions.px-to-rem(17) functions.px-to-rem(40);
         gap: functions.px-to-rem(10);
         align-items: center;
         background-color: variables.$global-background-color;
@@ -83,7 +83,7 @@
         padding: functions.px-to-rem(25);
     }
 
-    &__demo-btn {
+    &__demo-btn.btn--secondary {
         border: 1px solid variables.$p-text;
     }
 
@@ -102,7 +102,7 @@
         @include mixin.flex-col-center;
         width: 100%;
         gap: functions.px-to-rem(30);
-        padding: functions.px-to-rem(45) functions.px-to-rem(20);
+        padding: functions.px-to-rem(37) functions.px-to-rem(20);
     }
 
     &__partner-top,
@@ -235,7 +235,7 @@
         }
 
         &__workbag {
-            padding: functions.px-to-rem(15) functions.px-to-rem(30);
+            padding: functions.px-to-rem(16) functions.px-to-rem(32);
         }
 
         &__image {
