@@ -14,6 +14,7 @@
     justify-content: flex-start;
     min-height: functions.px-to-rem(375);
     height: auto;
+    max-height: functions.px-to-rem(570);
     background-color: variables.$global-background-color;
     border-radius: functions.px-to-rem(24) functions.px-to-rem(24) 0 0;
     z-index: map.get(variables.$z-index, 'modal');
@@ -39,15 +40,12 @@
 
     // styling the unlock deal section
     &__unlock-deals-section {
-        @include mixin.flex-col-center;
-        justify-content: flex-start;
         position: relative;
-        gap: functions.px-to-rem(20);
+        display: none;
         &--active {
+            @include mixin.flex-col-between;
+            gap: functions.px-to-rem(20);
             display: flex;
-        }
-        &--disable {
-            display: none;
         }
     }
 
@@ -183,6 +181,16 @@
         color: variables.$secondary-p-text;
         text-align: center;
     }
+    &__show-win-deal {
+        @include mixin.flex-col-center;
+        gap: functions.px-to-rem(10);
+        height: functions.px-to-rem(230);
+        max-height: functions.px-to-rem(320);
+        overflow: auto;
+        &--active {
+            justify-content: flex-start;
+        }
+    }
 
     // styling the button of unlocked deals
     &__btn,
@@ -192,7 +200,7 @@
         padding-bottom: functions.px-to-rem(80);
     }
 
-    &__unlock-deals {
+    &__deal-btn {
         @include mixin.flex-center;
         width: 100%;
         gap: functions.px-to-rem(10);

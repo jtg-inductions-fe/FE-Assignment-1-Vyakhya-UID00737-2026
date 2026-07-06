@@ -17,6 +17,11 @@
     border-radius: functions.px-to-rem(16);
     gap: functions.px-to-rem(8);
 
+    &--expired {
+        border-color: variables.$primary-card-color;
+        background: variables.$primary-circle;
+    }
+
     // displaying the information of the deal that won
     &__info {
         @include mixin.flex-col-center;
@@ -32,7 +37,7 @@
 
     // styling the code to be visibled at code section
     &__deal-id {
-        border: 1px solid variables.$primary-p-text;
+        border: 1px solid variables.$tertiary-card-color;
         padding: functions.px-to-rem(4) functions.px-to-rem(10);
         border-radius: functions.px-to-rem(8);
         background-color: variables.$global-background-color;
@@ -41,6 +46,9 @@
     // styling the valid date
     &__valid-date {
         color: variables.$background-violet;
+        &--expired {
+            color: variables.$secondary-card-color;
+        }
     }
 
     // styling the copy button to copy winning deal's code
