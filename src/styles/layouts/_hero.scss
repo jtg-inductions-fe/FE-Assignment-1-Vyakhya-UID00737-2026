@@ -1,7 +1,7 @@
+@use 'sass:map';
 @use '/src/styles/abstract/mixin';
 @use '/src/styles/abstract/functions';
 @use '/src/styles/abstract/variables';
-@use 'sass:map';
 
 .hero {
     @include mixin.flex-col-center;

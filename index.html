@@ -29,7 +29,6 @@
             modifier classes on the menu and overlay elements.
         -->
         <nav class="navbar">
-            <div class="navbar__overlay" aria-hidden="true"></div>
             <!--
                 Mobile navigation drawer.
 
@@ -38,7 +37,7 @@
                 authentication buttons.
             -->
             <button
-                class="navbar__hamburger"
+                class="navbar__hamburger icon-xxl"
                 aria-label="Navigation menu"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
@@ -48,9 +47,7 @@
             <aside class="navbar__menu" id="mobile-menu" hidden>
                 <a class="navbar__link" href="#hero-section">Home</a>
                 <a class="navbar__link" href="#travel-section">Discover</a>
-                <a class="navbar__link" href="#testimonial-section"
-                    >Special Deals</a
-                >
+                <a class="navbar__link special-deals">Special Deals</a>
                 <a class="navbar__link" href="#footer-section">Contact</a>
                 <div class="navbar__auth navbar__auth--mobile">
                     <button class="navbar__auth-btn btn btn--primary btn--pill">
@@ -71,12 +68,10 @@
                     />
                 </a>
             </div>
-            <div class="navbar__links">
+            <div class="navbar__links link-text">
                 <a class="navbar__link" href="#hero-section">Home</a>
                 <a class="navbar__link" href="#travel-section">Discover</a>
-                <a class="navbar__link" href="#testimonial-section"
-                    >Special Deals</a
-                >
+                <a class="navbar__link special-deals">Special Deals</a>
                 <a class="navbar__link" href="#footer-section">Contact</a>
             </div>
             <div class="navbar__auth">
@@ -86,6 +81,116 @@
         </nav>
 
         <main>
+            <div class="overlay" aria-hidden="true"></div>
+            <!-- Special Deals Modal -->
+            <section id="deals-modal" class="deals">
+                <button
+                    class="deals__close-btn tertiary-text"
+                    aria-label="Close deals modal"
+                >
+                    <img
+                        src="/assets/icons/close-icon.svg"
+                        alt="close button"
+                    />
+                </button>
+                <section class="deals__spinner-section">
+                    <div class="deals__header">
+                        <div class="deals__header-tag">
+                            <img
+                                src="/assets/icons/gift.svg"
+                                alt="gift-icon"
+                                class="deals__icon"
+                                aria-hidden="true"
+                            />
+                            <h6 class="deals__tag text-xxs">Special Deals</h6>
+                        </div>
+                        <h5 class="deals__heading heading-modal">
+                            Spin & Win!
+                        </h5>
+                        <p class="deals__para p-text">
+                            Tap the center of the wheel to spin
+                        </p>
+                    </div>
+                    <div class="deals__spinner">
+                        <!-- Loading state of spinner -->
+                        <div class="deals__loader">
+                            <div class="deals__arrow">
+                                <img
+                                    class="deals__arrow-img"
+                                    src="/assets/icons/arrow-spin.svg"
+                                    alt="Arrow pointing to Spinner"
+                                />
+                            </div>
+                            <div class="deals__loading-circle">
+                                <span class="deals__loading-text"
+                                    >Loading...</span
+                                >
+                            </div>
+                        </div>
+                        <!-- Spinner Wheel -->
+                        <div class="deals__spinner-wheel" hidden>
+                            <div class="deals__arrow">
+                                <img
+                                    class="deals__arrow-img"
+                                    src="/assets/icons/arrow-spin.svg"
+                                    alt="Arrow pointing to Spinner"
+                                />
+                            </div>
+                            <div class="deals__wheel">
+                                <button
+                                    class="deals__spin-btn p-text-sm"
+                                    aria-label="Spin the Wheel"
+                                >
+                                    Spin
+                                </button>
+                            </div>
+                            <p class="deals__message display-xs"></p>
+                        </div>
+                    </div>
+                    <!-- Winning result shown -->
+                    <div class="deals__win-deal">
+                        <p class="deals__win-heading p-text-card">You won!</p>
+                        <div class="deal-card">
+                            <div class="deal-card__info">
+                                <p class="deal-card__deal-label text-label"></p>
+                                <p
+                                    class="deal-card__valid-date p-text-primary"
+                                ></p>
+                            </div>
+                            <div class="deal-card__code">
+                                <p
+                                    class="deal-card__deal-id p-text-secondary"
+                                ></p>
+                                <button
+                                    class="deal-card__copy"
+                                    aria-label="Copy promo code"
+                                >
+                                    <img
+                                        class="deal-card__copy-icon"
+                                        src="/assets/icons/copy-icon.svg"
+                                        alt="Copy Icon"
+                                    />
+                                    <img
+                                        class="deal-card__tick-icon"
+                                        src="/assets/icons/tick.svg"
+                                        alt="Green Tick Icon"
+                                    />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Unlock deals button -->
+                    <div class="deals__btn" hidden>
+                        <button
+                            class="deals__unlock-deals btn btn--tertiary display-xs"
+                        >
+                            View All Unlocked Deals
+                            <span class="counter p-text-primary">1</span>
+                        </button>
+                    </div>
+                </section>
+                <section class="deals__unlock-deals-section"></section>
+            </section>
             <!-- hero section -->
             <section id="hero-section" class="hero">
                 <!-- This contains floating overlay-->

@@ -15,9 +15,19 @@ $global-background-color: white;
 $text-primary: #000000;
 $text-secondary: #191825;
 $p-text: #19182580;
+$primary-p-text: #9ca3af;
+$secondary-p-text: #bac1ce;
+$primary-circle: #eeeeee;
 $accent-color: #f85e9f;
+$primary-accent-color: #f4436c;
+$secondary-accent-color: #fbbf24;
+$tertiary-accent-color: #06b6d4;
+$quartnary-accent-color: #7c3aed;
+$accent-color-border: #f4436c33;
 $background-violet: #5d50c6;
 $secondary-hover: #00000011;
+$primary-shadow: #00000040;
+$secondary-shadow: #f4436c59;
 $primary-hover: #6e62ca;
 $data-primary: #ff5722;
 $ellipse-primary: #facd49;
@@ -27,4 +37,6 @@ $z-index: (
     'hamburger': 30,
     'overlay': 10,
     'menu': 20,
+    'modal': 40,
+    'arrow': 10,
 );

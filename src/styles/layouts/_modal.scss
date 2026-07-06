@@ -1,0 +1,213 @@
+@use 'sass:map';
+@use '/src/styles/abstract/functions';
+@use '/src/styles/abstract/mixin';
+@use '/src/styles/abstract/variables';
+
+// diplaying the modal touched to bottom at mobile and tablet view
+.deals {
+    @include mixin.flex-col-center;
+    position: fixed;
+    bottom: functions.px-to-rem(0);
+    left: 50%;
+    transform: translateX(-50%);
+    width: functions.px-to-rem(360);
+    justify-content: flex-start;
+    min-height: functions.px-to-rem(375);
+    height: auto;
+    background-color: variables.$global-background-color;
+    border-radius: functions.px-to-rem(24) functions.px-to-rem(24) 0 0;
+    z-index: map.get(variables.$z-index, 'modal');
+    display: none;
+
+    &--active {
+        display: flex;
+    }
+
+    // displaying the spinner section
+    &__spinner-section {
+        @include mixin.flex-col-center;
+        justify-content: flex-start;
+        position: relative;
+        gap: functions.px-to-rem(10);
+        &--active {
+            display: flex;
+        }
+        &--disable {
+            display: none;
+        }
+    }
+
+    // styling the unlock deal section
+    &__unlock-deals-section {
+        @include mixin.flex-col-center;
+        justify-content: flex-start;
+        position: relative;
+        gap: functions.px-to-rem(20);
+        &--active {
+            display: flex;
+        }
+        &--disable {
+            display: none;
+        }
+    }
+
+    // displaying the heading of modal, flexed in columns
+    &__header {
+        @include mixin.flex-col-center;
+        padding: functions.px-to-rem(25);
+        gap: functions.px-to-rem(8);
+        width: auto;
+        height: auto;
+        justify-content: flex-start;
+    }
+
+    &__header-tag {
+        @include mixin.flex-center;
+        gap: functions.px-to-rem(5);
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__icon {
+        width: functions.px-to-rem(18);
+        height: functions.px-to-rem(18);
+    }
+
+    &__tag {
+        color: variables.$primary-accent-color;
+    }
+
+    // styling the close button
+    &__close-btn {
+        position: absolute;
+        right: functions.px-to-rem(15);
+        top: functions.px-to-rem(15);
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
+
+    // styling the loader
+    &__loader {
+        position: relative;
+        gap: functions.px-to-rem(5);
+    }
+
+    &__loading-circle {
+        @include mixin.flex-center;
+        width: functions.px-to-rem(227);
+        height: functions.px-to-rem(227);
+        border-radius: 50%;
+        background-color: variables.$primary-circle;
+    }
+
+    // displaying the arrow pointing to winning deal at the top of spinner wheel and loader
+    &__arrow {
+        position: absolute;
+        width: functions.px-to-rem(22);
+        height: functions.px-to-rem(20);
+        left: functions.px-to-rem(103);
+        top: functions.px-to-rem(-12);
+        z-index: map.get(variables.$z-index, 'arrow');
+    }
+
+    &__spinner-wheel {
+        position: relative;
+    }
+
+    // styling the spinner wheel
+    &__wheel {
+        @include mixin.grid-col-rows(2, 2, 4);
+        position: relative;
+        width: functions.px-to-rem(227);
+        height: functions.px-to-rem(227);
+        row-gap: functions.px-to-rem(4);
+        column-gap: functions.px-to-rem(4);
+        border-radius: 50%;
+        overflow: hidden;
+        border: functions.px-to-rem(4) solid variables.$global-background-color;
+        box-shadow: functions.px-to-rem(0) functions.px-to-rem(0)
+            functions.px-to-rem(50) functions.px-to-rem(7)
+            variables.$primary-shadow;
+        background-color: variables.$primary-circle;
+        transition: transform 2s ease;
+    }
+
+    &__deal {
+        @include mixin.flex-center;
+        &--disable {
+            background-color: variables.$secondary-p-text;
+        }
+    }
+
+    // styling the deal text to be displaed at center of each sector in spinning wheel
+    &__deal-text {
+        text-align: center;
+        color: variables.$global-background-color;
+    }
+
+    // styling the spin button to be placed at center of spinner wheel
+    &__spin-btn {
+        position: absolute;
+        cursor: pointer;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: functions.px-to-rem(45);
+        height: functions.px-to-rem(45);
+        border-radius: 50%;
+        border: 3px solid variables.$primary-accent-color;
+        box-shadow: functions.px-to-rem(0) functions.px-to-rem(0)
+            functions.px-to-rem(14) functions.px-to-rem(0)
+            variables.$secondary-shadow;
+        &:disabled {
+            cursor: not-allowed;
+            border-color: variables.$primary-p-text;
+            color: variables.$primary-p-text;
+            box-shadow: none;
+        }
+    }
+
+    // styling the section to display the winning deal
+    &__win-deal {
+        @include mixin.flex-col-center;
+        gap: functions.px-to-rem(10);
+        display: none;
+        &--active {
+            display: flex;
+        }
+    }
+
+    &__message {
+        margin-top: 12px;
+        color: variables.$secondary-p-text;
+        text-align: center;
+    }
+
+    // styling the button of unlocked deals
+    &__btn,
+    &__back-btn {
+        width: functions.px-to-rem(312);
+        height: functions.px-to-rem(47);
+        padding-bottom: functions.px-to-rem(80);
+    }
+
+    &__unlock-deals {
+        @include mixin.flex-center;
+        width: 100%;
+        gap: functions.px-to-rem(10);
+    }
+
+    // changing the position of modal at desktop to be displayed at center of screen
+    @include mixin.respond('desktop') {
+        top: 50%;
+        left: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        border-radius: functions.px-to-rem(24);
+
+        &__header {
+            padding: functions.px-to-rem(20);
+        }
+    }
+}

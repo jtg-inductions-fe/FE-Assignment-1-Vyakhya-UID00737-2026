@@ -1,0 +1,74 @@
+@use '/src/styles/abstract/_functions.scss';
+@use '/src/styles/abstract/_variables.scss';
+@use '/src/styles/abstract/_mixin.scss';
+
+// styling the winning-deal cards
+.deal-card {
+    @include mixin.flex-between;
+    width: functions.px-to-rem(312);
+    height: functions.px-to-rem(67);
+    padding: functions.px-to-rem(16);
+    border: 1px solid variables.$accent-color-border;
+    background: linear-gradient(
+        to right,
+        rgba(244, 67, 108, 0.1),
+        rgba(124, 58, 237, 0.1)
+    );
+    border-radius: functions.px-to-rem(16);
+    gap: functions.px-to-rem(8);
+
+    // displaying the information of the deal that won
+    &__info {
+        @include mixin.flex-col-center;
+        align-items: flex-start;
+        gap: functions.px-to-rem(5);
+    }
+
+    // displaying the code section of the winning deal
+    &__code {
+        @include mixin.flex-center;
+        gap: functions.px-to-rem(8);
+    }
+
+    // styling the code to be visibled at code section
+    &__deal-id {
+        border: 1px solid variables.$primary-p-text;
+        padding: functions.px-to-rem(4) functions.px-to-rem(10);
+        border-radius: functions.px-to-rem(8);
+        background-color: variables.$global-background-color;
+    }
+
+    // styling the valid date
+    &__valid-date {
+        color: variables.$background-violet;
+    }
+
+    // styling the copy button to copy winning deal's code
+    &__copy {
+        @include mixin.flex-center;
+        width: functions.px-to-rem(16);
+        height: functions.px-to-rem(16);
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    &__copy-icon {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        &--active {
+            display: none;
+        }
+        &:focus-visible {
+            outline: 2px solid variables.$text-primary;
+        }
+    }
+
+    &__tick-icon {
+        display: none;
+        &--active {
+            display: flex;
+        }
+    }
+}
