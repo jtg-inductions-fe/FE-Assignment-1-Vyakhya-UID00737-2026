@@ -208,7 +208,41 @@
                         </p>
                     </div>
                     <!-- Show all winning deals -->
-                    <div class="deals__show-win-deal"></div>
+                    <div class="deals__show-win-deal">
+                        <template id="won-deal-template">
+                            <div class="deal-card">
+                                <div class="deal-card__info">
+                                    <p
+                                        class="deal-card__deal-label text-label"
+                                    ></p>
+                                    <p
+                                        class="deal-card__valid-date p-text-primary"
+                                    ></p>
+                                </div>
+                                <div class="deal-card__code">
+                                    <p
+                                        class="deal-card__deal-id p-text-secondary"
+                                    ></p>
+                                    <button
+                                        class="deal-card__copy"
+                                        aria-label="Copy promo code"
+                                    >
+                                        <img
+                                            class="deal-card__copy-icon"
+                                            src="/assets/icons/copy-icon.svg"
+                                            alt="Copy Icon"
+                                        />
+                                        <img
+                                            class="deal-card__tick-icon"
+                                            src="/assets/icons/tick.svg"
+                                            alt="Green Tick Icon"
+                                            hidden
+                                        />
+                                    </button>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
                     <!-- Go Back to spinner-wheel-section button -->
                     <div class="deals__back-btn">
                         <button class="deals__deal-btn btn btn--tertiary">

@@ -4,6 +4,7 @@ import {
     COPY_FEEDBACK_TIME,
     DEALS,
     MILLISECOND_PER_DAY,
+    DAYS_IN_WEEK,
 } from './constants.js';
 
 export const getSpecialDeals = () => {
@@ -40,7 +41,6 @@ export const getSpecialDeals = () => {
         SPINNER_WHEEL_SECTION.classList.remove(
             'deals__spinner-section--disable',
         );
-        document.body.classList.remove('body--no-scroll');
     };
 
     /**
@@ -93,37 +93,37 @@ export const getSpecialDeals = () => {
     const DEAL_VALIDDATE = document.querySelector('.deal-card__valid-date');
     const DEAL_PROMOCODE = document.querySelector('.deal-card__deal-id');
     const DEAL_API_URL = import.meta.env.VITE_DEAL_API_URL;
+    const WON_DEAL_TEMPLATE = document.querySelector('#won-deal-template');
 
-    // defined HTML literal to use in unlock deal-section to display n-number of all unlocked deals
-    const wonCards = (deal) => {
+    /**
+     * Creates HTML for the all won card that has to be displayed as unlocked deals
+     * checked for the days left for the deal to get expired and then marked it as expired
+     * @param {Object} deal - won deal
+     * @param {string} deal.label - label of the won deal
+     * @param {string} deal.promoCode - promoCode of won deal
+     * @param {number} deal.validFor - number of days won deal is valid
+     * @param {date} deal.wonDate - when user won the deal
+     */
+    const creatingWonDealCard = (deal) => {
         const leftDays = calculateLeftTimeForDeal(deal);
-        return `
-            <div class="deal-card ${leftDays === 0 ? 'deal-card--expired' : ''}">
-                <div class="deal-card__info">
-                    <p class="deal-card__deal-label text-label">${deal.label}</p>
-                    <p class="deal-card__valid-date p-text-primary ${leftDays === 0 ? 'deal-card__valid-date--expired' : ''}">${leftDays === 0 ? 'Deal Expired' : `Expires in ${leftDays}d`}</p>
-                </div>
-                <div class="deal-card__code">
-                    <p class="deal-card__deal-id p-text-secondary">${deal.promoCode}</p>
-                    <button
-                        class="deal-card__copy"
-                        aria-label="Copy promo code"
-                    >
-                        <img
-                            class="deal-card__copy-icon"
-                            src="/assets/icons/copy-icon.svg"
-                            alt="Copy Icon"
-                        />
-                        <img
-                            class="deal-card__tick-icon"
-                            src="/assets/icons/tick.svg"
-                            alt="Green Tick Icon"
-                            hidden
-                        />
-                    </button>
-                </div>
-            </div>
-        `;
+        const card = WON_DEAL_TEMPLATE.content.cloneNode(true);
+        const DEAL_CARD = card.querySelector('.deal-card');
+        const DEAL_LABEL = card.querySelector('.deal-card__deal-label');
+        const VALID_DATE = card.querySelector('.deal-card__valid-date');
+        const DEAL_CODE = card.querySelector('.deal-card__deal-id');
+
+        DEAL_LABEL.textContent = deal.label;
+        DEAL_CODE.textContent = deal.promoCode;
+
+        if (leftDays <= 0) {
+            DEAL_CARD.classList.add('deal-card--expired');
+            VALID_DATE.classList.add('deal-card__valid-date--expired');
+            VALID_DATE.textContent = 'Deal Expired';
+        } else {
+            VALID_DATE.textContent = `Expires in ${leftDays}d`;
+        }
+
+        return card;
     };
 
     // Spinner wheel functionality
@@ -132,7 +132,10 @@ export const getSpecialDeals = () => {
     let wonDeals = JSON.parse(localStorage.getItem('wonDeals')) || [];
     const DEAL_MESSAGE = document.querySelector('.deals__message');
 
-    // resets the winDeal box (to show no winning deal at starting state when modal opens)
+    /**
+     * Resets the winning deal card shown after spin
+     * used before new spin and when modal is closed
+     */
     const resetWinBox = () => {
         WINBOX.classList.remove('deals__win-deal--active');
         DEAL_LABEL.innerHTML = '';
@@ -259,6 +262,22 @@ export const getSpecialDeals = () => {
         }
     };
 
+    const addingDealsInfo = (deal, idx) => {
+        const DEAL_DIV = document.createElement('div');
+        DEAL_DIV.classList.add('deals__deal');
+        const DEAL_SPAN = document.createElement('span');
+        DEAL_SPAN.classList.add('deals__deal-text');
+        DEAL_SPAN.textContent = deal.label;
+        const RESPONSE = getDealRotation(idx);
+        DEAL_SPAN.style.transform = RESPONSE.rotation;
+        DEAL_DIV.append(DEAL_SPAN);
+        DEAL_DIV.style.backgroundColor =
+            deal.label === 'No Deal'
+                ? DEAL_DIV.classList.add('deals__deal--disable')
+                : RESPONSE.selectedColor;
+        SPIN_WHEEL.append(DEAL_DIV);
+    };
+
     /**
      * Display the selected deals on the spinner
      * First existing sectors will remove
@@ -270,19 +289,7 @@ export const getSpecialDeals = () => {
             deal.remove(),
         );
         deals.forEach((deal, idx) => {
-            const DEAL_DIV = document.createElement('div');
-            DEAL_DIV.classList.add('deals__deal');
-            const DEAL_SPAN = document.createElement('span');
-            DEAL_SPAN.classList.add('deals__deal-text');
-            DEAL_SPAN.textContent = deal.label;
-            const RESPONSE = getDealRotation(idx);
-            DEAL_SPAN.style.transform = RESPONSE.rotation;
-            DEAL_DIV.append(DEAL_SPAN);
-            DEAL_DIV.style.backgroundColor =
-                deal.label === 'No Deal'
-                    ? DEAL_DIV.classList.add('deals__deal--disable')
-                    : RESPONSE.selectedColor;
-            SPIN_WHEEL.append(DEAL_DIV);
+            addingDealsInfo(deal, idx);
         });
         updateSpinState();
     };
@@ -336,7 +343,7 @@ export const getSpecialDeals = () => {
         DEAL_PROMOCODE.textContent = DEAL_WON.promoCode;
         wonDeals.push({
             ...DEAL_WON,
-            validFor: DEAL_WON.validFor || 7,
+            validFor: DEAL_WON.validFor || DAYS_IN_WEEK,
             wonDate: new Date(),
         });
         localStorage.setItem('wonDeals', JSON.stringify(wonDeals));
@@ -387,7 +394,12 @@ export const getSpecialDeals = () => {
         allWinDeal.sort((a, b) => b.validFor - a.validFor);
     };
 
-    // Displaying all winning deals showWinDeal
+    /**
+     * Display all the deal that user has won
+     * used on unlock deal section to show all unlocked deals
+     * shows 'No deal available' if none of the deal is unlocked
+     * @param {Array} - take array of objects stored in localstorage that user has won
+     */
     const displayAllWinDeals = () => {
         UNLOCK_DEALS_SECTION.classList.add(
             'deals__unlock-deals-section--active',
@@ -401,12 +413,18 @@ export const getSpecialDeals = () => {
         }
         sortDeals(wonDeals);
         wonDeals.forEach((deal) => {
-            SHOW_WIN_DEAL.innerHTML += wonCards(deal);
+            SHOW_WIN_DEAL.append(creatingWonDealCard(deal));
         });
         SHOW_WIN_DEAL.classList.add('deals__show-win-deal--active');
     };
 
-    // calculating time left for unlocked deal to get expired
+    /**
+     * Calculates the number of days left for won deal to get expired
+     * @param {Object} deal - won deal object
+     * @param {date} deal.wonDate - when deal was won
+     * @param {number} deal.validFor - for how many days deal is valid
+     * @returns {number} number of days left for deal to get expired
+     */
     const calculateLeftTimeForDeal = (deal) => {
         const DEAL_DATE = new Date(deal.wonDate);
         const VALID_DATE = deal.validFor;
@@ -416,11 +434,18 @@ export const getSpecialDeals = () => {
         return VALID_DATE - DAYS;
     };
 
+    /**
+     * Displays all unlocked deals when clicked on unlock deal button
+     */
     UNLOCK_BTN.addEventListener('click', () => {
         displayAllWinDeals();
     });
 
     handleEventOnModal();
+
+    /**
+     * Back to the spinner wheel section from unlock deals section
+     */
     BACK_BTN.addEventListener('click', () => {
         UNLOCK_DEALS_SECTION.classList.remove(
             'deals__unlock-deals-section--active',
