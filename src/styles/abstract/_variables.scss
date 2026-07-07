@@ -1,9 +1,12 @@
 // This file has the naming-conventions of code based properties
 // easy to rewrite code here only later instead of re-writing it everywhere in project
 
+// breakpoints
 $max-screen-width: 1500px;
 $tablet: 700px;
 $desktop: 1025px;
+
+// fonts family
 $global-font:
     'Circular Std',
     -apple-system,
@@ -11,31 +14,49 @@ $global-font:
     'Segoe UI',
     Roboto,
     sans-serif;
-$global-background-color: white;
+$font-primary: 'Circular Std', sans-serif;
+$font-secondary: 'Inter', sans-serif;
+
+// text colors
 $text-primary: #000000;
 $text-secondary: #191825;
+$p-text-primary: #1918251a;
+$p-text-secondary: #191825bf;
 $p-text: #19182580;
-$primary-card-color: #00000033;
-$secondary-card-color: #999999;
-$tertiary-card-color: #e5e7eb;
 $primary-p-text: #9ca3af;
 $secondary-p-text: #bac1ce;
-$primary-circle: #eeeeee;
+
+// background colors
+$global-background-color: white;
+$background-violet: #5d50c6;
+
+// brand colors
 $accent-color: #f85e9f;
 $primary-accent-color: #f4436c;
 $secondary-accent-color: #fbbf24;
 $tertiary-accent-color: #06b6d4;
 $quartnary-accent-color: #7c3aed;
 $accent-color-border: #f4436c33;
-$background-violet: #5d50c6;
-$secondary-hover: #00000011;
-$primary-shadow: #00000040;
-$secondary-shadow: #f4436c59;
-$primary-hover: #6e62ca;
+
+// card colors
+$primary-card-color: #00000033;
+$secondary-card-color: #999999;
+$tertiary-card-color: #e5e7eb;
+
+// utility colors
+$primary-circle: #eeeeee;
 $data-primary: #ff5722;
 $ellipse-primary: #facd49;
-$font-primary: 'Circular Std', sans-serif;
-$font-secondary: 'Inter', sans-serif;
+
+// hover
+$primary-hover: #6e62ca;
+$secondary-hover: #00000011;
+
+// shadow
+$primary-shadow: #00000040;
+$secondary-shadow: #f4436c59;
+
+// z-index
 $z-index: (
     'hamburger': 30,
     'overlay': 10,

@@ -9,7 +9,6 @@
     cursor: pointer;
     border: none;
     border-radius: functions.px-to-rem(35);
-    font-weight: 700;
     transition: all 0.3s ease;
     &:focus-visible {
         outline: 2px solid variables.$text-secondary;

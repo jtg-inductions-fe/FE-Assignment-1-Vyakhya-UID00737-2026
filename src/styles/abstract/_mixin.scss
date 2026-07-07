@@ -68,12 +68,3 @@ $breakpoints: (
     grid-template-columns: repeat($col, 1fr);
     gap: $gap;
 }
-
-@mixin btn-style {
-    border-radius: functions.px-to-rem(100);
-    padding: functions.px-to-rem(14) functions.px-to-rem(28);
-    font-size: functions.px-to-rem(14);
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-}

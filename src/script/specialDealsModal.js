@@ -358,7 +358,7 @@ export const getSpecialDeals = () => {
      * So, pointer will never stop on edges
      */
     const generateWheelRotation = () => {
-        let count = Math.floor(Math.random() * 15) + 1;
+        let count = Math.floor(Math.random() * 15) + 5;
         let angle;
         do {
             angle = Math.floor(Math.random() * 361);
